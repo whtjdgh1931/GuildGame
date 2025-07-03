@@ -11,16 +11,17 @@ public class SoldierMaker : MonoBehaviour
     public ClassScriptableObject classScriptableObject;
 
 
-    public void MakeSoldier(string className, Soldier soldierPrefab)
+    public void MakeSoldier(string className)
     {
-        Soldier soldier = Instantiate(soldierPrefab);
         ClassData classData = classScriptableObject.GetClassDataByClassName(className);
+        Soldier soldier = Instantiate(classData.soldierPrefab);
+        soldier.level = PlayerPrefs.GetInt(className);
         
      
     }
 
     public void MakeTankerButton()
     {
-        MakeSoldier(Constants.CLASS_TANKER,soldierPrefab); 
+        MakeSoldier(Constants.CLASS_TANKER); 
     }
 }

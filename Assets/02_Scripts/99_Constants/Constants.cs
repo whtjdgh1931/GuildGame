@@ -9,6 +9,7 @@ public static class Constants
     /// </summary>
     public static string TAG_ENEMY = "Enemy";
     public static string TAG_TEAM = "Team";
+    public static string TAG_Player = "Player";
 
 
 

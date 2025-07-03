@@ -20,11 +20,6 @@ public class ClassData
 		[Header("# 클래스 이름")]
 		public string className;
 
-		[Header("# 클래스 애니메이터")]
-		public Animator classAnim;
-
-		[Header("# 클래스 이미지")]
-		public Sprite classImage;
-
+		public Soldier soldierPrefab;
 
 }

@@ -19,10 +19,19 @@ public class Soldier : MonoBehaviour
 		private void Awake()
 		{
 				attackRange = 3f;
+				attackPower = 50;
+				maxHp = 100;
+				currentHp = maxHp;
 		}
 
 		
 
 		public void SetData(ClassData classData)
 		=> this.classData = classData;		
+
+		public void DieSoldier()
+		{
+				Debug.Log("die");
+				Destroy(gameObject);
+		}
 }

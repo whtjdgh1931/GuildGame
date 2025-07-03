@@ -15,6 +15,9 @@ public class FSM : MonoBehaviour
 		//이동 컴포넌트
     private Soldier_Move solider_Move;
 
+		// 공격 컴포넌트
+		private ClassSkill soldier_Attack;
+
 
 		// 현재 솔져 상태 
 		[SerializeField]
@@ -30,15 +33,23 @@ public class FSM : MonoBehaviour
 
 		// 상태
 		private Soldier soldier;
-		
 
-		
+		// 스킬 쿨타임
+		public float skillCoolTime;
+		public float curTime;
+
+		// 기본 공격 쿨타임
+		public float attackSpeed;
+		public float curAttackTime;
+
+
 
 		public void Awake()
 		{
 				solider_Move = GetComponent<Soldier_Move>();
 				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
+				soldier_Attack = GetComponent<ClassSkill>();
 		}
 
 		public void Start()
@@ -48,8 +59,14 @@ public class FSM : MonoBehaviour
 
 		public void Update()
 		{
-				if(soldierManager.isBattle)
+				curTime += Time.deltaTime;
+				curAttackTime += Time.deltaTime;
+
+				
+				if (soldierManager.isBattle)
 				DoFsm();
+
+
 		}
 
 		public void DoFsm()
@@ -83,8 +100,10 @@ public class FSM : MonoBehaviour
 				float targetDistacne = int.MaxValue;
 				if(tag == Constants.TAG_TEAM)
 				{
-						foreach(Soldier enemy in soldierManager.enemySoldiers)
+
+						foreach (Soldier enemy in soldierManager.enemySoldiers)
 						{
+						if (enemy == null) continue;
 								float distance = Vector3.Distance(transform.position, enemy.transform.position);
 								if(distance < targetDistacne)
 								{
@@ -99,6 +118,7 @@ public class FSM : MonoBehaviour
 				{
 						foreach (Soldier team in soldierManager.teamSoldiers)
 						{
+								if (team == null) continue;
 								float distance = Vector3.Distance(transform.position, team.transform.position);
 								if (distance < targetDistacne)
 								{
@@ -107,7 +127,7 @@ public class FSM : MonoBehaviour
 								}
 						}
 				}
-
+				if(targetSoldier != null)
 				condition = Soldier_Condition.MOVE;
 
 		}
@@ -130,7 +150,21 @@ public class FSM : MonoBehaviour
 		/// </summary>
 		public void SoldierAttack()
 		{
-				Debug.Log("Attack");
+						if(targetSoldier == null)
+						{
+								condition = Soldier_Condition.SEARCH;
+								return;
+						}
+				if (curTime > skillCoolTime)
+				{
+						soldier_Attack.DoSkill(targetSoldier);
+						curTime = 0;
+				}
+				else if (curAttackTime > attackSpeed)
+				{
+						soldier_Attack.DoAttack(targetSoldier);
+						curAttackTime = 0;
+				}
 		}
 
 }
