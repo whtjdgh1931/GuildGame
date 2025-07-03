@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Soldier_Move : MonoBehaviour
 {
-    private NavMeshAgent soldierNav;
+    public NavMeshAgent soldierNav { get; private set; }
 
 		private void Awake()
 		{

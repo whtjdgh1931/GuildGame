@@ -8,6 +8,8 @@ public class SoldierManager : MonoBehaviour
 
     public List<Soldier> teamSoldiers;
 
+    public bool isBattle = false;
+
     public void StartBattle()
     {
         GameObject[] enemyArray = GameObject.FindGameObjectsWithTag(Constants.TAG_ENEMY);
@@ -23,5 +25,8 @@ public class SoldierManager : MonoBehaviour
             teamSoldiers.Add(team.GetComponent<Soldier>());
         }
         
+        isBattle = true;
     }
+
+
 }
