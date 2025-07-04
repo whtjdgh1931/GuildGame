@@ -8,6 +8,7 @@ public class Soldier : MonoBehaviour
 		private ClassData classData;
 
 
+		public int shield { get; set;}
 		public int maxHp{get;set;}
 		public int currentHp { get; set;}
 		public int attackPower{get;set;}
@@ -19,10 +20,20 @@ public class Soldier : MonoBehaviour
 		private void Awake()
 		{
 				attackRange = 3f;
+				attackPower = 50;
+				maxHp = 100;
+				currentHp = maxHp;
+				shield = 33;
 		}
 
 		
 
 		public void SetData(ClassData classData)
 		=> this.classData = classData;		
+
+		public void DieSoldier()
+		{
+				Debug.Log("die");
+				Destroy(gameObject);
+		}
 }

@@ -24,6 +24,8 @@ public class SoldierManager : MonoBehaviour
         {
             teamSoldiers.Add(team.GetComponent<Soldier>());
         }
+        teamSoldiers.Add(GameObject.FindGameObjectWithTag(Constants.TAG_Player).GetComponent<Soldier>());
+
         
         isBattle = true;
     }

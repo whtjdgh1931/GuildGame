@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6bfe2a917fbbcd4ab642d12fa7760b6, type: 3}
-  m_Name: Class
+  m_Name: PlacingClass
   m_EditorClassIdentifier: 
   classes:
   - className: Tanker
-    soldierPrefab: {fileID: 8990475558615171461, guid: a1be5c7ae968974469b5605a316f3ac1,
+    soldierPrefab: {fileID: 8990475558615171461, guid: 4d9897bc511a5984199e486e4419b56c,
       type: 3}
   - className: Warrior
-    soldierPrefab: {fileID: 8990475558615171461, guid: 64cd5be05a4df57439813760840a6fb2,
+    soldierPrefab: {fileID: 8990475558615171461, guid: 9af4533308c4dad49a1007a56a23592e,
       type: 3}
