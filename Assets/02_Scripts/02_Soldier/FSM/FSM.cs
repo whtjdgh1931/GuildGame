@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum Soldier_Condition
@@ -13,7 +11,7 @@ public enum Soldier_Condition
 public class FSM : MonoBehaviour
 {
 		//이동 컴포넌트
-    private Soldier_Move solider_Move;
+		private Soldier_Move solider_Move;
 
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
@@ -62,9 +60,9 @@ public class FSM : MonoBehaviour
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
 
-				
+
 				if (soldierManager.isBattle)
-				DoFsm();
+						DoFsm();
 
 
 		}
@@ -88,33 +86,33 @@ public class FSM : MonoBehaviour
 								break;
 				}
 		}
-				
+
 		/// <summary>
 		/// 타겟 서칭
 		/// </summary>
 		/// <param name="tag">자신의 진영</param>
 		public void SearchEnemy(string tag)
 		{
-				
-				
+
+
 				float targetDistacne = int.MaxValue;
-				if(tag == Constants.TAG_TEAM)
+				if (tag == Constants.TAG_TEAM)
 				{
 
 						foreach (Soldier enemy in soldierManager.enemySoldiers)
 						{
-						if (enemy == null) continue;
+								if (enemy == null) continue;
 								float distance = Vector3.Distance(transform.position, enemy.transform.position);
-								if(distance < targetDistacne)
+								if (distance < targetDistacne)
 								{
 										targetSoldier = enemy;
 										targetDistacne = distance;
 								}
-								
+
 						}
 
 				}
-				else if(tag == Constants.TAG_ENEMY)
+				else if (tag == Constants.TAG_ENEMY)
 				{
 						foreach (Soldier team in soldierManager.teamSoldiers)
 						{
@@ -127,8 +125,8 @@ public class FSM : MonoBehaviour
 								}
 						}
 				}
-				if(targetSoldier != null)
-				condition = Soldier_Condition.MOVE;
+				if (targetSoldier != null)
+						condition = Soldier_Condition.MOVE;
 
 		}
 
@@ -138,7 +136,7 @@ public class FSM : MonoBehaviour
 		public void SoldierMove()
 		{
 				solider_Move.SetNavDestination(targetSoldier.transform);
-				if (Vector3.Distance(transform.position,targetSoldier.transform.position) < soldier.attackRange)
+				if (Vector3.Distance(transform.position, targetSoldier.transform.position) < soldier.attackRange)
 				{
 						solider_Move.SetNavDestination(transform);
 						condition = Soldier_Condition.ATTACK;
@@ -150,15 +148,17 @@ public class FSM : MonoBehaviour
 		/// </summary>
 		public void SoldierAttack()
 		{
-						if(targetSoldier == null)
-						{
-								condition = Soldier_Condition.SEARCH;
-								return;
-						}
+				if (targetSoldier == null)
+				{
+						condition = Soldier_Condition.SEARCH;
+						return;
+				}
 				if (curTime > skillCoolTime)
 				{
 						soldier_Attack.DoSkill(targetSoldier);
 						curTime = 0;
+						curAttackTime = 0;
+
 				}
 				else if (curAttackTime > attackSpeed)
 				{

@@ -8,6 +8,7 @@ public class Soldier : MonoBehaviour
 		private ClassData classData;
 
 
+		public int shield { get; set;}
 		public int maxHp{get;set;}
 		public int currentHp { get; set;}
 		public int attackPower{get;set;}
@@ -22,6 +23,7 @@ public class Soldier : MonoBehaviour
 				attackPower = 50;
 				maxHp = 100;
 				currentHp = maxHp;
+				shield = 33;
 		}
 
 		

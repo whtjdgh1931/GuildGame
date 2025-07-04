@@ -14,4 +14,14 @@ public abstract class ClassSkill : MonoBehaviour
 		public abstract void DoSkill(Soldier target);
     
     public abstract void DoAttack(Soldier target);    
+
+		public IEnumerator RemoveShield(int shield, int second, Soldier target)
+		{
+				yield return new WaitForSeconds(second);
+				target.shield -= shield;
+				if (target.shield < 0)
+				{
+						target.shield = 0;
+				}
+		}
 }

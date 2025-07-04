@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class TankerSkill : ClassSkill
 {
-		public void Awake()
-		{
-				base.Awake();
-		}
-
+		
 		public override void DoAttack(Soldier target)
 		{
 				Debug.Log("attack" + target);
-				target.currentHp -= soldier.attackPower;
+
+				if (target.shield > 0)
+				{
+						target.shield -= soldier.attackPower;
+						if(target.shield < 0)
+						{
+								target.currentHp += target.shield;
+								target.shield = 0;
+						}
+				}
+				else target.currentHp -= soldier.attackPower;
 				if(target.currentHp < 0 )
 				{
 						target.DieSoldier();
@@ -23,9 +29,11 @@ public class TankerSkill : ClassSkill
 
 		public override void DoSkill(Soldier target)
 		{
-				Debug.Log("skill");
+				
+				soldier.shield += 30;
+				StartCoroutine(RemoveShield(30, 3, soldier));
 		}
 
 	
-
+		
 }
