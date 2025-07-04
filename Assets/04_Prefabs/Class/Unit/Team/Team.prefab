@@ -169,3 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 0
   targetSoldier: {fileID: 0}
+  skillCoolTime: 15
+  curTime: 0
+  attackSpeed: 1
+  curAttackTime: 0

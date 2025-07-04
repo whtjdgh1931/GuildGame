@@ -9,17 +9,19 @@ public class ArcherSkill : ClassSkill
 
 		public override void DoAttack(Soldier target)
 		{
+				Debug.Log("Archer Attack");
 				Arrow arrow = Instantiate(arrowPrefab);
 				arrow.target = target;
 				arrow.transform.position = transform.position;
 				arrow.arrowPower = soldier.attackPower;
+				arrow.gameObject.tag = Constants.TAG_TEAM;
 				//arrow.transform.rotation = Quaternion.LookRotation(soldier.transform.forward);
 
 		}
 
 		public override void DoSkill(Soldier target)
 		{
-				throw new System.NotImplementedException();
+				Debug.Log("ArcherSkill");
 		}
 
 	

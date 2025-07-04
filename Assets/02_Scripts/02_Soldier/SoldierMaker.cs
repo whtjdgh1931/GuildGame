@@ -129,8 +129,15 @@ public class SoldierMaker : MonoBehaviour
 
 		public void MakeWarriorButton()
 		{
-				Debug.Log("Click");
 				StartDrag(Constants.CLASS_WARRIOR);
+#if UNITY_ANDROID || UNITY_EDITOR
+				isDrag = true;
+#endif
+		}
+
+		public void MakeArcherButton()
+		{
+				StartDrag(Constants.CLASS_ARCHER);
 #if UNITY_ANDROID || UNITY_EDITOR
 				isDrag = true;
 #endif

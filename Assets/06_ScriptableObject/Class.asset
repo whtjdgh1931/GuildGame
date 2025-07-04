@@ -19,3 +19,6 @@ MonoBehaviour:
   - className: Warrior
     soldierPrefab: {fileID: 8990475558615171461, guid: 64cd5be05a4df57439813760840a6fb2,
       type: 3}
+  - className: Archer
+    soldierPrefab: {fileID: 238891537987843499, guid: f84885ae5f7128b43a5639c94a13e681,
+      type: 3}

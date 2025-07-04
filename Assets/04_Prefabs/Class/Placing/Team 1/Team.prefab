@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2fdf7c29ab0e6e844bdbb05fd7b00fcd, type: 2}
+  - {fileID: 2100000, guid: bdf0dad53b5b605408ed3b3bccc703f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,3 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 0
   targetSoldier: {fileID: 0}
+  skillCoolTime: 0
+  curTime: 0
+  attackSpeed: 0
+  curAttackTime: 0
