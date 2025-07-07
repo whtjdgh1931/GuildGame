@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 442807540348687429}
   - component: {fileID: 3256071565068242960}
   - component: {fileID: 7000287814451313215}
+  - component: {fileID: 4871873038305909613}
   m_Layer: 0
   m_Name: EnemyArcher
   m_TagString: Enemy
@@ -170,9 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 0
   targetSoldier: {fileID: 0}
-  skillCoolTime: 0
+  skillCoolTime: 15
   curTime: 0
-  attackSpeed: 0
+  attackSpeed: 1
   curAttackTime: 0
 --- !u!114 &7000287814451313215
 MonoBehaviour:
@@ -188,3 +189,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 3855060189204375498, guid: f5e194d95d036304c977c82827f9aab6,
     type: 3}
+--- !u!54 &4871873038305909613
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634890011575374678}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

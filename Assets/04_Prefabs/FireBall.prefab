@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 676152449408642327}
   - component: {fileID: 149759151302638600}
   - component: {fileID: 1140353326888560183}
-  - component: {fileID: 3855060189204375498}
+  - component: {fileID: 8678133489608955366}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b427630edd1194d84efddc050809c1, type: 2}
+  - {fileID: 2100000, guid: 54a994e9dfa36414fa942221deef5603, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3855060189204375498
+--- !u!114 &8678133489608955366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8509426847164887249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184a5317b43db2140be12edac0fe5980, type: 3}
+  m_Script: {fileID: 11500000, guid: 07d226f5b7100ac4dbdffa905969ac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}

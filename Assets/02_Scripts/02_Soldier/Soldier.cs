@@ -19,7 +19,7 @@ public class Soldier : MonoBehaviour
 
 		private void Awake()
 		{
-				attackRange = 3f;
+				attackRange = 10f;
 				attackPower = 50;
 				maxHp = 100;
 				currentHp = maxHp;

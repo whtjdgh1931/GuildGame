@@ -2,30 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class FireBall : Arrow
 {
-    public Soldier target;
-    public int arrowPower;
-		public float arrowSpeed;
 
-		public void Update()
+		public new void OnTriggerEnter(Collider other)
 		{
-				if (target == null) 
-				{
-						Destroy(gameObject);
-						return;
-				}
-				transform.LookAt(target.transform);
-				transform.position = Vector3.MoveTowards(transform.position, target.transform.position, arrowSpeed * Time.deltaTime);
-				
-		}
-
-		public void OnTriggerEnter(Collider other)
-		{
-				
 				if (other.GetComponent<Soldier>() != null && !other.CompareTag(gameObject.tag))
 				{
-						Debug.Log("ArrowHit");
+						Debug.Log("Fireball");
 						if (target.shield > 0)
 						{
 								target.shield -= arrowPower;
@@ -40,7 +24,9 @@ public class Arrow : MonoBehaviour
 						{
 								target.DieSoldier();
 						}
-				Destroy(gameObject);
+						Destroy(gameObject);
 				}
 		}
+				
+		
 }

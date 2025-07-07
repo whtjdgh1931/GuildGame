@@ -19,3 +19,15 @@ MonoBehaviour:
   - className: Warrior
     soldierPrefab: {fileID: 8990475558615171461, guid: 64cd5be05a4df57439813760840a6fb2,
       type: 3}
+  - className: Archer
+    soldierPrefab: {fileID: 238891537987843499, guid: f84885ae5f7128b43a5639c94a13e681,
+      type: 3}
+  - className: Assassin
+    soldierPrefab: {fileID: 238891537987843499, guid: e246d4d17c2598c4fb75cbb7cbf9caec,
+      type: 3}
+  - className: Healer
+    soldierPrefab: {fileID: 238891537987843499, guid: e246d4d17c2598c4fb75cbb7cbf9caec,
+      type: 3}
+  - className: Magician
+    soldierPrefab: {fileID: 238891537987843499, guid: 1d6fd5b9d59bfd744852f0de3749fdcd,
+      type: 3}
