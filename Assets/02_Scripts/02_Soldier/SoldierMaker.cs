@@ -3,14 +3,14 @@ using UnityEngine.EventSystems;
 
 public class SoldierMaker : MonoBehaviour
 {
-		// 전투원 프리팹
-		public Soldier soldierPrefab;
+
 
 		// 전투원 정보 스크립터블오브젝트
 		public ClassScriptableObject classScriptableObject;
 
 		// 전투원 미리보기 스크립터블오브젝트
 		public ClassScriptableObject placingClassScriptableObject;
+		public Soldier soldierPreviewPrefab;
 
 		private Soldier previewInstance;
 		private string previewClassName;
@@ -114,11 +114,19 @@ public class SoldierMaker : MonoBehaviour
 		public Soldier MakeSoldierPreview(string className)
 		{
 				ClassData classPreviewData = placingClassScriptableObject.GetClassDataByClassName(className);
-				Soldier soldierPreview = Instantiate(classPreviewData.soldierPrefab);
+				Soldier soldierPreview = Instantiate(soldierPreviewPrefab);
+				SoldierRange range = soldierPreview.GetComponentInChildren<SoldierRange>();
+				if (range != null)
+				{
+						Vector3 rangeScale = new(soldierPreview.attackRange, 0.1f, soldierPreview.attackRange);
+						range.transform.localScale = rangeScale;
+				}
+				else Debug.Log("range = null");
 				previewClassName = className;
 				return soldierPreview;
 		}
 
+		#region makeSoldierButton
 		public void MakeTankerButton()
 		{
 				StartDrag(Constants.CLASS_TANKER);
@@ -165,4 +173,5 @@ public class SoldierMaker : MonoBehaviour
 				isDrag = true;
 #endif
 		}
+		#endregion
 }

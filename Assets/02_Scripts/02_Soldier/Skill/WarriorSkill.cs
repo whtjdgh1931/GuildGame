@@ -26,14 +26,11 @@ public class WarriorSkill : ClassSkill
 
 		public override void DoSkill(Soldier target)
 		{
-				Debug.Log("WarriorSkill" + target);
-						Debug.Log(Mathf.RoundToInt(soldier.attackPower * 1.5f));
+			
 
 				if (target.shield > 0)
 				{
-						Debug.Log(target.shield );
 						int remain = target.shield -= Mathf.RoundToInt(soldier.attackPower*1.5f);
-						Debug.Log($"{remain}");
 						if (target.shield < 0)
 						{
 								target.currentHp += target.shield;

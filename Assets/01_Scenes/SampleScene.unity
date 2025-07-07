@@ -1289,19 +1289,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 663251162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1743819521}
-        m_TargetAssemblyTypeName: SoldierMaker, Assembly-CSharp
-        m_MethodName: MakeMagicianButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &663251162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1344,19 @@ MonoBehaviour:
   - eventID: 13
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1743819521}
+          m_TargetAssemblyTypeName: SoldierMaker, Assembly-CSharp
+          m_MethodName: MakeMagicianButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &668536891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1729,7 @@ PrefabInstance:
     - target: {fileID: 6703572660596105490, guid: e4d1b5622414a4f4fbee03c58246e196,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.64
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 6703572660596105490, guid: e4d1b5622414a4f4fbee03c58246e196,
         type: 3}
@@ -2509,6 +2509,8 @@ MonoBehaviour:
     type: 2}
   placingClassScriptableObject: {fileID: 11400000, guid: 987229e585fac634bbacd6696c0ec3e0,
     type: 2}
+  soldierPreviewPrefab: {fileID: 238891537987843499, guid: 680660929b468f84481f7e48ff152557,
+    type: 3}
 --- !u!1 &1771309617
 GameObject:
   m_ObjectHideFlags: 0

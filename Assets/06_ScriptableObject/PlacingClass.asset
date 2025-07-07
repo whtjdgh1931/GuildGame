@@ -22,3 +22,12 @@ MonoBehaviour:
   - className: Archer
     soldierPrefab: {fileID: 238891537987843499, guid: 6e600b4829ed1d0419181884e645b481,
       type: 3}
+  - className: Assassin
+    soldierPrefab: {fileID: 238891537987843499, guid: 952825c685671fd40b76052a11ca24de,
+      type: 3}
+  - className: Healer
+    soldierPrefab: {fileID: 238891537987843499, guid: d03c47db43ba28342b5ab56715b7afaa,
+      type: 3}
+  - className: Magician
+    soldierPrefab: {fileID: 238891537987843499, guid: 45510c211f872bb49948f8cfc692c617,
+      type: 3}
