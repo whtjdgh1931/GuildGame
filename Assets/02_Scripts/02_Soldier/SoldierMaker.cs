@@ -142,4 +142,27 @@ public class SoldierMaker : MonoBehaviour
 				isDrag = true;
 #endif
 		}
+
+		public void MakeAssassinButton()
+		{
+				StartDrag(Constants.CLASS_ASSASSIN);
+#if UNITY_ANDROID || UNITY_EDITOR
+				isDrag = true;
+#endif
+		}
+		public void MakeHealerButton()
+		{
+				StartDrag(Constants.CLASS_HEALER);
+#if UNITY_ANDROID || UNITY_EDITOR
+				isDrag = true;
+#endif
+		}
+
+		public void MakeMagicianButton()
+		{
+				StartDrag(Constants.CLASS_MAGICIAN);
+#if UNITY_ANDROID || UNITY_EDITOR
+				isDrag = true;
+#endif
+		}
 }
