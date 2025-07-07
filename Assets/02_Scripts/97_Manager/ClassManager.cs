@@ -61,6 +61,35 @@ public class ClassManager : MonoBehaviour
 
 		}
 
+		public List<Dictionary<string, object>> GetLevelData(string className)
+		{
+				List<Dictionary<string, object>> data;
+				switch (className) 
+				{
+						case "Tanker":
+								data = tankerData;
+								break;
+						case "Warrior":
+								data = warriorData;
+								break;
+						case "Assassin":
+								data = assassinData;
+								break;
+						case "Archer":
+								data = archerData;
+								break;
+						case "Healer":
+								data = healerData;
+								break;
+						case "Magician":
+								data = magicianData;
+								break;
+						default: data = null;
+								break;
+				}
+				return data;
+		}
+
 		public void ClassLevelUp(string className)
 		{
 				if(PlayerPrefs.GetInt(className)<Constants.maxLevel) 

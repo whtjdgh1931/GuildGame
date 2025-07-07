@@ -28,6 +28,10 @@ public class Soldier : MonoBehaviour
 			
 		}
 
+		public void SetLevelData(int level)
+		{
+				maxHp = int.Parse(classLevelData[level]["MaxHp"].ToString());
+		}
 		
 
 		public void SetData(ClassData classData)

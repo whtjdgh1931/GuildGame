@@ -104,9 +104,12 @@ public class SoldierMaker : MonoBehaviour
 		{
 				ClassData classData = classScriptableObject.GetClassDataByClassName(className);
 				Soldier soldier = Instantiate(classData.soldierPrefab, position, Quaternion.identity);
+				soldier.classLevelData = ClassManager.Instance().GetLevelData(className);
 				soldier.level = PlayerPrefs.GetInt(className);
 
 				return soldier;
+
+
 
 		}
 
