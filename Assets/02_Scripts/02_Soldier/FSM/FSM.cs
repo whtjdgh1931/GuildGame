@@ -162,7 +162,7 @@ public class FSM : MonoBehaviour
 				}
 				else if (curAttackTime > attackSpeed)
 				{
-						soldier_Attack.DoAttack(targetSoldier);
+						soldier_Attack.DoAttack(targetSoldier);	
 						curAttackTime = 0;
 				}
 		}

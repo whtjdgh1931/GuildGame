@@ -31,6 +31,8 @@ public class Soldier : MonoBehaviour
 		public void SetData(ClassData classData)
 		=> this.classData = classData;		
 
+		
+
 		public void DieSoldier()
 		{
 				Debug.Log("die");

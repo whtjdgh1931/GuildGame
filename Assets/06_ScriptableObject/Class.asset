@@ -26,7 +26,7 @@ MonoBehaviour:
     soldierPrefab: {fileID: 238891537987843499, guid: e246d4d17c2598c4fb75cbb7cbf9caec,
       type: 3}
   - className: Healer
-    soldierPrefab: {fileID: 238891537987843499, guid: e246d4d17c2598c4fb75cbb7cbf9caec,
+    soldierPrefab: {fileID: 238891537987843499, guid: aa4eb618d6edd9c4795bca52b0e0c82e,
       type: 3}
   - className: Magician
     soldierPrefab: {fileID: 238891537987843499, guid: 1d6fd5b9d59bfd744852f0de3749fdcd,
