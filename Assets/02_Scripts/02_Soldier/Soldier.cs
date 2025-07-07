@@ -7,6 +7,8 @@ public class Soldier : MonoBehaviour
 		// 클래스 정보
 		private ClassData classData;
 
+		public List<Dictionary<string, object>> classLevelData;
+
 
 		public int shield { get; set;}
 		public int maxHp{get;set;}
@@ -15,15 +17,15 @@ public class Soldier : MonoBehaviour
 		public float attackRange{get;set;}
 		public float attackSpeed{get;set;}
 		public float moveSpeed{get;set;}
+		public float skillRange { get;set;}
+
+		public float skillCoefficient { get;set;}
+
 		public int level { get; set; }
 
 		private void Awake()
 		{
-				attackRange = 10f;
-				attackPower = 50;
-				maxHp = 100;
-				currentHp = maxHp;
-				shield = 33;
+			
 		}
 
 		

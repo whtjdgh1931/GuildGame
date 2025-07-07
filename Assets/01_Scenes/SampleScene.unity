@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 668536897}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2503,8 +2503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a3b698edc2384ea01e761b31277b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierPrefab: {fileID: 238891537987843499, guid: e8eb93971d2309e428f2eac3d9db2a36,
-    type: 3}
   classScriptableObject: {fileID: 11400000, guid: 16901d8bd0b2d274191e22921b4db120,
     type: 2}
   placingClassScriptableObject: {fileID: 11400000, guid: 987229e585fac634bbacd6696c0ec3e0,

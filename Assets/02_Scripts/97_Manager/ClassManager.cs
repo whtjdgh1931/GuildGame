@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,20 +14,51 @@ public class ClassManager : MonoBehaviour
 				return instance;
 		}
 
-		public int tankerLevel;
-		public int warriorLevel;
-		public int assassinLevel;
-		public int archerLevel;
-		public int healerLevel;
-		public int magicianLevel;
+		//TODO 삭제할지 아닐지 결정
+		//public int tankerLevel;
+		//public int warriorLevel;
+		//public int assassinLevel;
+		//public int archerLevel;
+		//public int healerLevel;
+		//public int magicianLevel;
+
+
+		public string tankerDataPath;
+		public List<Dictionary<string,object>> tankerData;
+
+		public string warriorDataPath;
+		public List<Dictionary<string, object>> warriorData;
+
+		public string assassinDataPath;
+		public List<Dictionary<string, object>> assassinData;
+
+		public string archerDataPath;
+		public List<Dictionary<string, object>> archerData;
+
+		public string healerDataPath;
+		public List<Dictionary<string, object>> healerData;
+
+		public string magicianDataPath;
+		public List<Dictionary<string, object>> magicianData;
 
 		void Start()
 		{
+				tankerData = CSVReader.Read(tankerDataPath);
+				warriorData = CSVReader.Read(warriorDataPath);
+				assassinData = CSVReader.Read(assassinDataPath);
+				archerData = CSVReader.Read(archerDataPath);
+				healerData = CSVReader.Read(healerDataPath);
+				magicianData = CSVReader.Read(magicianDataPath);
+
+
+
 				if (instance == null)
 				{
 						instance = this;
 				}
-								LoadClassLevel();
+								//LoadClassLevel();
+
+
 		}
 
 		public void ClassLevelUp(string className)
@@ -34,17 +66,19 @@ public class ClassManager : MonoBehaviour
 				if(PlayerPrefs.GetInt(className)<Constants.maxLevel) 
 				PlayerPrefs.SetInt(className,PlayerPrefs.GetInt(className)+1);
 
+
 		}
 
-		public void LoadClassLevel()
-		{
-				tankerLevel = PlayerPrefs.GetInt(Constants.CLASS_TANKER);
-				warriorLevel = PlayerPrefs.GetInt(Constants.CLASS_WARRIOR);
-				assassinLevel = PlayerPrefs.GetInt(Constants.CLASS_ASSASSIN);
-				archerLevel = PlayerPrefs.GetInt(Constants.CLASS_ARCHER);
-				healerLevel = PlayerPrefs.GetInt(Constants.CLASS_HEALER);
-				magicianLevel = PlayerPrefs.GetInt(Constants.CLASS_MAGICIAN);
-		}
+		//TODO 삭제할지 말지 결정
+		//public void LoadClassLevel()
+		//{
+		//		tankerLevel = PlayerPrefs.GetInt(Constants.CLASS_TANKER);
+		//		warriorLevel = PlayerPrefs.GetInt(Constants.CLASS_WARRIOR);
+		//		assassinLevel = PlayerPrefs.GetInt(Constants.CLASS_ASSASSIN);
+		//		archerLevel = PlayerPrefs.GetInt(Constants.CLASS_ARCHER);
+		//		healerLevel = PlayerPrefs.GetInt(Constants.CLASS_HEALER);
+		//		magicianLevel = PlayerPrefs.GetInt(Constants.CLASS_MAGICIAN);
+		//}
 
 		private void ClearClassLevel()
 		{

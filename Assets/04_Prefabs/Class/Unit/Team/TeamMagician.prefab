@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 238891537987843499}
   - component: {fileID: 1709684233838702681}
   - component: {fileID: 1938871421148171859}
-  - component: {fileID: -1012268583696651979}
   - component: {fileID: -7605097124821962112}
+  - component: {fileID: 5624622317686693020}
   m_Layer: 0
   m_Name: TeamMagician
   m_TagString: Team
@@ -172,23 +172,9 @@ MonoBehaviour:
   condition: 0
   targetSoldier: {fileID: 0}
   skillCoolTime: 15
-  curTime: 0
+  curTime: 99
   attackSpeed: 1
   curAttackTime: 0
---- !u!114 &-1012268583696651979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2173417016341924701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1655e3a759efe354f8820ccef3f80d99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 8678133489608955366, guid: a127c280a038c7e479ebff05a1c3abce,
-    type: 3}
 --- !u!54 &-7605097124821962112
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,3 +202,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5624622317686693020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173417016341924701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd520242fd9558a42a399f71a056e716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Magicial_Explosion: {fileID: 4924657300524002347, guid: c898f5b1cf1b74a4f83028c46f93579f,
+    type: 3}
+  FireBall: {fileID: 8678133489608955366, guid: a127c280a038c7e479ebff05a1c3abce,
+    type: 3}

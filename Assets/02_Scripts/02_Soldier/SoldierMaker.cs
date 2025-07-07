@@ -43,7 +43,6 @@ public class SoldierMaker : MonoBehaviour
 
 				if (Input.GetMouseButtonUp(0))
 				{
-						Debug.Log("make tanker");
 						MakeSoldier(previewClassName, previewInstance.transform.position);
 						Destroy(previewInstance.gameObject);
 						isDrag = false;
