@@ -120,4 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   arrowPower: 0
-  arrowSpeed: 0
+  arrowSpeed: 5

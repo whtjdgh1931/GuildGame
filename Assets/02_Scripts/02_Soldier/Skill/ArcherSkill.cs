@@ -14,7 +14,7 @@ public class ArcherSkill : ClassSkill
 				arrow.target = target;
 				arrow.transform.position = transform.position;
 				arrow.arrowPower = soldier.attackPower;
-				arrow.gameObject.tag = Constants.TAG_TEAM;
+				arrow.gameObject.tag = gameObject.tag;
 				//arrow.transform.rotation = Quaternion.LookRotation(soldier.transform.forward);
 
 		}

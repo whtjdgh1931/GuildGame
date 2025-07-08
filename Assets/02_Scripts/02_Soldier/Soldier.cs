@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Soldier : MonoBehaviour
 {
-
+		protected bool isInit = false;
 
 		public List<Dictionary<string, object>> classLevelData;
+
 
 
 		public int shield { get; set;}
@@ -20,7 +21,7 @@ public class Soldier : MonoBehaviour
 
 		public float skillCoefficient { get;set;}
 
-		public int level { get; set; }
+		public int level;
 
 		public void SetLevelData(int level)
 		{
@@ -33,11 +34,15 @@ public class Soldier : MonoBehaviour
 				skillRange = float.Parse(classLevelData[level - 1]["SkillRange"].ToString());
 				skillCoefficient = float.Parse(classLevelData[level - 1]["SkillCoefficient"].ToString());
 				currentHp = maxHp;
+
+				GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
+
+				isInit = true;
 		}
-		
-	
+
 
 		
+
 
 		public void DieSoldier()
 		{

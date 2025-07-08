@@ -29,10 +29,11 @@ public class AssassinSkill : ClassSkill
 		{
 				Debug.Log("AssassinSkill");
 				Dart dart = Instantiate(dartPrefab);
+				Debug.Log(dart.name);
 				dart.target = target;
 				dart.transform.position = transform.position;
 				dart.arrowPower = soldier.attackPower;
-				dart.gameObject.tag = Constants.TAG_TEAM;
+				dart.gameObject.tag = gameObject.tag;
 		}
 
 		

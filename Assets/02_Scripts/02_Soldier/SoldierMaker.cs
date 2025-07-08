@@ -3,13 +3,10 @@ using UnityEngine.EventSystems;
 
 public class SoldierMaker : MonoBehaviour
 {
-
-
-		// 전투원 정보 스크립터블오브젝트
 		public ClassScriptableObject classScriptableObject;
 
-		// 전투원 미리보기 스크립터블오브젝트
-		public ClassScriptableObject placingClassScriptableObject;
+
+
 		public Soldier soldierPreviewPrefab;
 
 		private Soldier previewInstance;

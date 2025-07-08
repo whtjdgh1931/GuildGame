@@ -42,18 +42,21 @@ public class FSM : MonoBehaviour
 
 
 
-		public void Awake()
+		public void Start()
 		{
 				solider_Move = GetComponent<Soldier_Move>();
 				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
-		}
 
-		public void Start()
-		{
+				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
+				skillCoolTime = Constants.skillCoolTime;
+
+				curTime = int.MaxValue;
+				curAttackTime = int.MaxValue;
 				condition = Soldier_Condition.SEARCH;
 		}
+
 
 		public void Update()
 		{

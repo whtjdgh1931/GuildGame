@@ -15,7 +15,7 @@ public class MagicianSkill : ClassSkill
 				fireBall.target = target;
 				fireBall.transform.position = transform.position;
 				fireBall.arrowPower = soldier.attackPower;
-				fireBall.gameObject.tag = Constants.TAG_TEAM;
+				fireBall.gameObject.tag = gameObject.tag;
 		}
 
 		public override void DoSkill(Soldier target)

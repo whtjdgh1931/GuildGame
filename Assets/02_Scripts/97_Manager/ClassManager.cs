@@ -41,7 +41,7 @@ public class ClassManager : MonoBehaviour
 		public string magicianDataPath;
 		public List<Dictionary<string, object>> magicianData;
 
-		void Start()
+		void Awake()
 		{
 				tankerData = CSVReader.Read(tankerDataPath);
 				warriorData = CSVReader.Read(warriorDataPath);

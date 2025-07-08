@@ -10,33 +10,35 @@ public class HealerSkill : ClassSkill
 				holy.target = target;
 				holy.transform.position = transform.position;
 				holy.arrowPower = soldier.attackPower;
-				holy.gameObject.tag = Constants.TAG_TEAM;
+				holy.gameObject.tag = gameObject.tag;
 		}
 
 		public override void DoSkill(Soldier target)
 		{
 				Collider[] healTeam = Physics.OverlapSphere(transform.position, soldier.skillRange);
 				Soldier healTargetSoldier = null;
-				int minSoldierHp = int.MaxValue;
+				float minSoldierHp = 1f;
 				foreach (Collider healTarget in healTeam)
 				{
 						if (healTarget.GetComponent<Soldier>() == null || !healTarget.CompareTag(soldier.tag)) continue;
 						Debug.Log(healTarget.gameObject + "Heal");
-						if (minSoldierHp > healTarget.GetComponent<Soldier>().currentHp)
+						if (minSoldierHp > (float)healTarget.GetComponent<Soldier>().currentHp/healTarget.GetComponent<Soldier>().maxHp)
 						{
 								healTargetSoldier = healTarget.GetComponent<Soldier>();
-								minSoldierHp = healTargetSoldier.currentHp;
+								minSoldierHp = (float)healTarget.GetComponent<Soldier>().currentHp / healTarget.GetComponent<Soldier>().maxHp;
 						}
 
 				}
 
-				if (healTargetSoldier == null)
+				if (healTargetSoldier == null || healTargetSoldier.currentHp >= healTargetSoldier.maxHp)
 				{
+						Debug.Log("Target : null");
 						DoAttack(target);
-						GetComponent<FSM>().curTime = int.MaxValue;
+						GetComponent<FSM>().curTime = GetComponent<FSM>().skillCoolTime - 1f;
 				}
 				healTargetSoldier.currentHp += Mathf.RoundToInt(soldier.attackPower * soldier.skillCoefficient);
 				if (healTargetSoldier.currentHp > healTargetSoldier.maxHp) healTargetSoldier.currentHp = healTargetSoldier.maxHp;
+
 		}
 }
 
