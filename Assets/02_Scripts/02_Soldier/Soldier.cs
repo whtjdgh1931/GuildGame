@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Soldier : MonoBehaviour
 {
-		// 클래스 정보
-		private ClassData classData;
+
 
 		public List<Dictionary<string, object>> classLevelData;
 
@@ -23,19 +22,20 @@ public class Soldier : MonoBehaviour
 
 		public int level { get; set; }
 
-		private void Awake()
-		{
-			
-		}
-
 		public void SetLevelData(int level)
 		{
-				maxHp = int.Parse(classLevelData[level]["MaxHp"].ToString());
+				if(level<1) level=1;		
+				maxHp = int.Parse(classLevelData[level-1]["MaxHp"].ToString());
+				attackPower = int.Parse(classLevelData[level-1]["AttackPower"].ToString());
+				attackRange = float.Parse(classLevelData[level - 1]["AttackRange"].ToString());
+				attackSpeed = float.Parse(classLevelData[level - 1]["AttackSpeed"].ToString());
+				moveSpeed = float.Parse(classLevelData[level - 1]["MoveSpeed"].ToString());
+				skillRange = float.Parse(classLevelData[level - 1]["SkillRange"].ToString());
+				skillCoefficient = float.Parse(classLevelData[level - 1]["SkillCoefficient"].ToString());
+				currentHp = maxHp;
 		}
 		
-
-		public void SetData(ClassData classData)
-		=> this.classData = classData;		
+	
 
 		
 

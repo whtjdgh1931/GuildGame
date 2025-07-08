@@ -106,6 +106,7 @@ public class SoldierMaker : MonoBehaviour
 				Soldier soldier = Instantiate(classData.soldierPrefab, position, Quaternion.identity);
 				soldier.classLevelData = ClassManager.Instance().GetLevelData(className);
 				soldier.level = PlayerPrefs.GetInt(className);
+				soldier.SetLevelData(soldier.level);
 
 				return soldier;
 
@@ -115,12 +116,12 @@ public class SoldierMaker : MonoBehaviour
 
 		public Soldier MakeSoldierPreview(string className)
 		{
-				ClassData classPreviewData = placingClassScriptableObject.GetClassDataByClassName(className);
 				Soldier soldierPreview = Instantiate(soldierPreviewPrefab);
 				SoldierRange range = soldierPreview.GetComponentInChildren<SoldierRange>();
+				float attackRange = ClassManager.Instance().GetAttackRangeData(className);
 				if (range != null)
 				{
-						Vector3 rangeScale = new(soldierPreview.attackRange, 0.1f, soldierPreview.attackRange);
+						Vector3 rangeScale = new(attackRange, 0.1f,attackRange);
 						range.transform.localScale = rangeScale;
 				}
 				else Debug.Log("range = null");

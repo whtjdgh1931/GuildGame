@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd520242fd9558a42a399f71a056e716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Magicial_Explosion: {fileID: 4924657300524002347, guid: c898f5b1cf1b74a4f83028c46f93579f,
+  magician_Explosion: {fileID: 4924657300524002347, guid: c898f5b1cf1b74a4f83028c46f93579f,
     type: 3}
-  FireBall: {fileID: 8678133489608955366, guid: a127c280a038c7e479ebff05a1c3abce,
+  fireBallPrefab: {fileID: 8678133489608955366, guid: a127c280a038c7e479ebff05a1c3abce,
     type: 3}
