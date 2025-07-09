@@ -35,6 +35,7 @@ public class HealerSkill : ClassSkill
 						Debug.Log("Target : null");
 						DoAttack(target);
 						GetComponent<FSM>().curTime = GetComponent<FSM>().skillCoolTime - 1f;
+						return;
 				}
 				healTargetSoldier.currentHp += Mathf.RoundToInt(soldier.attackPower * soldier.skillCoefficient);
 				if (healTargetSoldier.currentHp > healTargetSoldier.maxHp) healTargetSoldier.currentHp = healTargetSoldier.maxHp;

@@ -10,11 +10,8 @@ public class Magicial_Explosion : MonoBehaviour
 				Collider[] hitEnemies = Physics.OverlapSphere(transform.position, soldier.skillRange);
 				foreach(Collider hitEnemy in hitEnemies)
 				{
-						Debug.Log(hitEnemy.gameObject);
 						if (hitEnemy.GetComponent<Soldier>() == null || hitEnemy.CompareTag(soldier.tag)) continue;
-						Debug.Log(hitEnemy.gameObject + "Hit");
 						Soldier target = hitEnemy.GetComponent<Soldier>();
-						Debug.Log("Explosion : " + Mathf.RoundToInt(soldier.attackPower * soldier.skillCoefficient));
 
 						if (target.shield > 0)
 						{

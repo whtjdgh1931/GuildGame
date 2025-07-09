@@ -47,6 +47,7 @@ public class Soldier : MonoBehaviour
 		public void DieSoldier()
 		{
 				Debug.Log("die");
-				Destroy(gameObject);
+				GetComponentInChildren<Animator>().SetTrigger("IsDead");
+				Destroy(gameObject,1f);
 		}
 }
