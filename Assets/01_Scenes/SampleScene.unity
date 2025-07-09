@@ -475,12 +475,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c31a7fa00747f54bb17d2af6d5976ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankerLevel: 1
-  warriorLevel: 1
-  assassinLevel: 1
-  archerLevel: 1
-  healerLevel: 1
-  magicianLevel: 1
+  tankerDataPath: TankerStat
+  warriorDataPath: WarriorStat
+  assassinDataPath: AssassinStat
+  archerDataPath: ArcherStat
+  healerDataPath: HealerStat
+  magicianDataPath: MagicianStat
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

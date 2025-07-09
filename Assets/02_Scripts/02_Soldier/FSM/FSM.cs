@@ -16,6 +16,8 @@ public class FSM : MonoBehaviour
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
 
+		private Animator anim;
+
 
 		// 현재 솔져 상태 
 		[SerializeField]
@@ -48,6 +50,7 @@ public class FSM : MonoBehaviour
 				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
+				anim = GetComponentInChildren<Animator>();
 		}
 
 		public void Start()
