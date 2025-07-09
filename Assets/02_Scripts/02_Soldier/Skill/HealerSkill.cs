@@ -1,18 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HealerSkill : MonoBehaviour
+public class HealerSkill : ClassSkill
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+		public Holy holyPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		public override void DoAttack(Soldier target)
+		{
+				Holy holy = Instantiate(holyPrefab);
+				holy.target = target;
+				holy.transform.position = transform.position;
+				holy.arrowPower = soldier.attackPower;
+				holy.gameObject.tag = gameObject.tag;
+		}
+
+		public override void DoSkill(Soldier target)
+		{
+				Collider[] healTeam = Physics.OverlapSphere(transform.position, soldier.skillRange);
+				Soldier healTargetSoldier = null;
+				float minSoldierHp = 1f;
+				foreach (Collider healTarget in healTeam)
+				{
+						if (healTarget.GetComponent<Soldier>() == null || !healTarget.CompareTag(soldier.tag)) continue;
+						Debug.Log(healTarget.gameObject + "Heal");
+						if (minSoldierHp > (float)healTarget.GetComponent<Soldier>().currentHp/healTarget.GetComponent<Soldier>().maxHp)
+						{
+								healTargetSoldier = healTarget.GetComponent<Soldier>();
+								minSoldierHp = (float)healTarget.GetComponent<Soldier>().currentHp / healTarget.GetComponent<Soldier>().maxHp;
+						}
+
+				}
+
+				if (healTargetSoldier == null || healTargetSoldier.currentHp >= healTargetSoldier.maxHp)
+				{
+						Debug.Log("Target : null");
+						DoAttack(target);
+						GetComponent<FSM>().curTime = GetComponent<FSM>().skillCoolTime - 1f;
+				}
+				healTargetSoldier.currentHp += Mathf.RoundToInt(soldier.attackPower * soldier.skillCoefficient);
+				if (healTargetSoldier.currentHp > healTargetSoldier.maxHp) healTargetSoldier.currentHp = healTargetSoldier.maxHp;
+
+		}
 }
+

@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1795764169735290515}
   - component: {fileID: 8701742383626942045}
   - component: {fileID: 5839230753323562874}
-  - component: {fileID: 5993035745753737188}
   - component: {fileID: 442807540348687429}
   - component: {fileID: 3256071565068242960}
   - component: {fileID: 7141525308379006688}
   - component: {fileID: -7629015979592242938}
+  - component: {fileID: 922137325231164343}
   m_Layer: 0
   m_Name: EnemyHealer
   m_TagString: Enemy
@@ -133,18 +133,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5993035745753737188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2634890011575374678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd9467baca4eaf4cb60f04a69ba44d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &442807540348687429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +202,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b34532edda313246b5ebd8fd8622db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holyPrefab: {fileID: -3479631539153563000, guid: 28a69279a650c1c48a8bb39e1089ea12,
+    type: 3}
+--- !u!114 &922137325231164343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634890011575374678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3671984aaac214b4ba5c1a23842dbca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  EnemyClassName: Healer

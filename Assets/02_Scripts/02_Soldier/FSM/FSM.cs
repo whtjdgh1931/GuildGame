@@ -16,8 +16,6 @@ public class FSM : MonoBehaviour
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
 
-		private Animator anim;
-
 
 		// 현재 솔져 상태 
 		[SerializeField]
@@ -44,19 +42,21 @@ public class FSM : MonoBehaviour
 
 
 
-		public void Awake()
+		public void Start()
 		{
 				solider_Move = GetComponent<Soldier_Move>();
 				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
-				anim = GetComponentInChildren<Animator>();
-		}
 
-		public void Start()
-		{
+				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
+				skillCoolTime = Constants.skillCoolTime;
+
+				curTime = int.MaxValue;
+				curAttackTime = int.MaxValue;
 				condition = Soldier_Condition.SEARCH;
 		}
+
 
 		public void Update()
 		{
@@ -139,7 +139,8 @@ public class FSM : MonoBehaviour
 		public void SoldierMove()
 		{
 				solider_Move.SetNavDestination(targetSoldier.transform);
-				if (Vector3.Distance(transform.position, targetSoldier.transform.position) < soldier.attackRange)
+				float range = curTime > skillCoolTime? Mathf.Max(soldier.attackRange,soldier.skillRange) : soldier.attackRange;
+				if (Vector3.Distance(transform.position, targetSoldier.transform.position) < range)
 				{
 						solider_Move.SetNavDestination(transform);
 						condition = Soldier_Condition.ATTACK;
@@ -158,9 +159,9 @@ public class FSM : MonoBehaviour
 				}
 				if (curTime > skillCoolTime)
 				{
-						soldier_Attack.DoSkill(targetSoldier);
 						curTime = 0;
 						curAttackTime = 0;
+						soldier_Attack.DoSkill(targetSoldier);
 
 				}
 				else if (curAttackTime > attackSpeed)
@@ -168,6 +169,8 @@ public class FSM : MonoBehaviour
 						soldier_Attack.DoAttack(targetSoldier);	
 						curAttackTime = 0;
 				}
+
+				condition = Soldier_Condition.MOVE;
 		}
 
 }

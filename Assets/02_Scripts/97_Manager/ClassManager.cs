@@ -41,7 +41,7 @@ public class ClassManager : MonoBehaviour
 		public string magicianDataPath;
 		public List<Dictionary<string, object>> magicianData;
 
-		void Start()
+		void Awake()
 		{
 				tankerData = CSVReader.Read(tankerDataPath);
 				warriorData = CSVReader.Read(warriorDataPath);
@@ -59,6 +59,68 @@ public class ClassManager : MonoBehaviour
 								//LoadClassLevel();
 
 
+		}
+
+		public List<Dictionary<string, object>> GetLevelData(string className)
+		{
+				List<Dictionary<string, object>> data;
+
+				switch (className) 
+				{
+						case "Tanker":
+								data = tankerData;
+								break;
+						case "Warrior":
+								data = warriorData;
+								break;
+						case "Assassin":
+								data = assassinData;
+								break;
+						case "Archer":
+								data = archerData;
+								break;
+						case "Healer":
+								data = healerData;
+								break;
+						case "Magician":
+								data = magicianData;
+								break;
+						default: data = null;
+								break;
+				}
+				return data;
+		}
+
+		public float GetAttackRangeData(string className)
+		{
+				List<Dictionary<string, object>> data;
+				int level = PlayerPrefs.GetInt(className);
+				switch (className)
+				{
+						case "Tanker":
+								data = tankerData;
+								break;
+						case "Warrior":
+								data = warriorData;
+								break;
+						case "Assassin":
+								data = assassinData;
+								break;
+						case "Archer":
+								data = archerData;
+								break;
+						case "Healer":
+								data = healerData;
+								break;
+						case "Magician":
+								data = magicianData;
+								break;
+						default:
+								data = null;
+								break;
+				}
+
+				return float.Parse(data[level - 1]["AttackRange"].ToString());
 		}
 
 		public void ClassLevelUp(string className)

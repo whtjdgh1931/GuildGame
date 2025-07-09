@@ -12,6 +12,7 @@ public class Soldier_Move : MonoBehaviour
 				soldierNav = GetComponent<NavMeshAgent>();
 		}
 
+
 		public void SetNavDestination(Transform destination)
 		{
 				soldierNav.SetDestination(destination.position);

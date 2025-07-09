@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class MagicianSkill : ClassSkill
 {
-		public Magicial_Explosion Magicial_Explosion;
-		public FireBall FireBall;
+		public Magicial_Explosion magician_Explosion;
+		public FireBall fireBallPrefab;
 
 
 		public override void DoAttack(Soldier target)
 		{
 				
-				Arrow arrow = Instantiate(FireBall);
-				arrow.target = target;
-				arrow.transform.position = transform.position;
-				arrow.arrowPower = soldier.attackPower;
-				arrow.gameObject.tag = Constants.TAG_TEAM;
+				FireBall fireBall = Instantiate(fireBallPrefab);
+				fireBall.target = target;
+				fireBall.transform.position = transform.position;
+				fireBall.arrowPower = soldier.attackPower;
+				fireBall.gameObject.tag = gameObject.tag;
 		}
 
 		public override void DoSkill(Soldier target)
 		{
-				Debug.Log("Skill : " + target);
-				Instantiate(Magicial_Explosion,target.transform.position,Quaternion.identity).SearchAndHitEnemy(soldier);
+				
+				Instantiate(magician_Explosion,target.transform.position,Quaternion.identity).SearchAndHitEnemy(soldier);
 		}
 }

@@ -20,6 +20,10 @@ public class ClassData
 		[Header("# 클래스 이름")]
 		public string className;
 
+		[Header("# 클래스 프리팹")]
 		public Soldier soldierPrefab;
+
+		[Header("# 클래스 레벨 데이타")]
+		public List<Dictionary<string, object>> classLevelData;
 
 }
