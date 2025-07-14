@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -113,8 +114,13 @@ public class SoldierMaker : MonoBehaviour
 
 		public Soldier MakeSoldierPreview(string className)
 		{
-				Soldier soldierPreview = Instantiate(soldierPreviewPrefab);
+				Soldier soldierPreview = MakeSoldier(className,Input.mousePosition);
 				SoldierRange range = soldierPreview.GetComponentInChildren<SoldierRange>();
+				SpriteRenderer spriteRenderer = soldierPreview.GetComponentInChildren<SpriteRenderer>();
+				Debug.Log(spriteRenderer == null);
+				Color tempColor = spriteRenderer.color;
+				tempColor.a = 0.4f;
+				spriteRenderer.color = tempColor;
 				float attackRange = ClassManager.Instance().GetAttackRangeData(className);
 				if (range != null)
 				{

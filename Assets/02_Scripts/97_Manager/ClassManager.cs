@@ -120,6 +120,7 @@ public class ClassManager : MonoBehaviour
 								break;
 				}
 
+				if (level == 0) level = 1;
 				return float.Parse(data[level - 1]["AttackRange"].ToString());
 		}
 
