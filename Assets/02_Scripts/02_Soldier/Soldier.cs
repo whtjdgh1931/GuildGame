@@ -8,7 +8,7 @@ public class Soldier : MonoBehaviour
 
 		public List<Dictionary<string, object>> classLevelData;
 
-		private SoldierRange attackRangeObject;
+		public SoldierRange attackRangeObject;
 
 
 		public int shield { get; set;}

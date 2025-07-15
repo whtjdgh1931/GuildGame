@@ -114,7 +114,6 @@ public class SoldierMaker : MonoBehaviour
 		public Soldier MakeSoldierPreview(string className)
 		{
 				Soldier soldierPreview = MakeSoldier(className,Input.mousePosition);
-				SoldierRange range = soldierPreview.GetComponentInChildren<SoldierRange>();
 				SpriteRenderer[] spriteRenderers = soldierPreview.GetComponentsInChildren<SpriteRenderer>();
 				foreach(SpriteRenderer spriteRenderer in spriteRenderers)
 				{
@@ -124,10 +123,9 @@ public class SoldierMaker : MonoBehaviour
 
 				}
 				float attackRange = ClassManager.Instance().GetAttackRangeData(className);
-				if (range != null)
+				if (soldierPreview.attackRangeObject != null)
 				{
-						Vector3 rangeScale = new(attackRange, 0.1f,attackRange);
-						range.transform.localScale = rangeScale;
+						soldierPreview.attackRangeObject.gameObject.SetActive(true);
 				}
 				previewClassName = className;
 				return soldierPreview;
