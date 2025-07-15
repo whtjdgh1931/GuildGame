@@ -5,13 +5,26 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private Soldier player;
+		static UIManager instance = null;
+
+		public static UIManager Instance()
+		{
+				return instance;
+		}
+
+		private Soldier player;
 		public Slider playerHp;
 		public Image victoryImage;
 		public Image defeatImage;
 
 		public void Awake()
 		{
+
+				if (instance == null)
+				{
+						instance = this;
+				}
+
 				player = GameObject.Find(Constants.NAME_Player).GetComponent<Soldier>();
 		}
 

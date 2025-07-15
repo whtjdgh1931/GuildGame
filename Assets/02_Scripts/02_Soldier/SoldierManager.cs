@@ -35,16 +35,19 @@ public class SoldierManager : MonoBehaviour
 				enemySoldiers.RemoveAll(soldier => soldier == null);
 				teamSoldiers.RemoveAll(soldier => soldier == null);
 
-				if (enemySoldiers.Count == 0)
+				if (teamSoldiers.Count == 0)
 				{
-						Debug.Log("½Â¸®");
-						isBattle = false;
-				}
-				else if (teamSoldiers.Count == 0)
-				{
+						UIManager.Instance().defeatImage.gameObject.SetActive(true);
+
 						Debug.Log("ÆÐ¹è");
 						isBattle = false;
 
+				}
+				else if (enemySoldiers.Count == 0)
+				{
+						UIManager.Instance().victoryImage.gameObject.SetActive(true);
+						Debug.Log("½Â¸®");
+						isBattle = false;
 				}
 
 
