@@ -11,11 +11,13 @@ public enum Soldier_Condition
 public class FSM : MonoBehaviour
 {
 		//이동 컴포넌트
-		private Soldier_Move solider_Move;
+		private Soldier_Move soldier_Move;
 
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
 
+		// 애니메이터
+		private SoldierAnim soldier_Anim;
 
 		// 현재 솔져 상태 
 		[SerializeField]
@@ -23,7 +25,7 @@ public class FSM : MonoBehaviour
 
 		// 타겟팅 된 적 솔져
 		[SerializeField]
-		private Soldier targetSoldier;
+		public Soldier targetSoldier { get; private set; }
 
 
 		// 리스트를 가지고 있는 솔져매니저
@@ -44,10 +46,11 @@ public class FSM : MonoBehaviour
 
 		public void Start()
 		{
-				solider_Move = GetComponent<Soldier_Move>();
+				soldier_Move = GetComponent<Soldier_Move>();
 				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
+				soldier_Anim = GetComponentInChildren<SoldierAnim>();
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
 				skillCoolTime = Constants.skillCoolTime;
@@ -62,6 +65,8 @@ public class FSM : MonoBehaviour
 		{
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
+
+				soldier_Anim.SetAnimMove(soldier_Move.soldierNav.velocity);
 
 
 				if (soldierManager.isBattle)
@@ -129,7 +134,9 @@ public class FSM : MonoBehaviour
 						}
 				}
 				if (targetSoldier != null)
+				{
 						condition = Soldier_Condition.MOVE;
+				}
 
 		}
 
@@ -138,11 +145,11 @@ public class FSM : MonoBehaviour
 		/// </summary>
 		public void SoldierMove()
 		{
-				solider_Move.SetNavDestination(targetSoldier.transform);
+				soldier_Move.SetNavDestination(targetSoldier.transform);
 				float range = curTime > skillCoolTime? Mathf.Max(soldier.attackRange,soldier.skillRange) : soldier.attackRange;
 				if (Vector3.Distance(transform.position, targetSoldier.transform.position) < range)
 				{
-						solider_Move.SetNavDestination(transform);
+						soldier_Move.SetNavDestination(transform);
 						condition = Soldier_Condition.ATTACK;
 				}
 		}
@@ -162,15 +169,18 @@ public class FSM : MonoBehaviour
 						curTime = 0;
 						curAttackTime = 0;
 						soldier_Attack.DoSkill(targetSoldier);
+						soldier_Anim.SetAnimSkill();
 
 				}
 				else if (curAttackTime > attackSpeed)
 				{
 						soldier_Attack.DoAttack(targetSoldier);	
 						curAttackTime = 0;
+						soldier_Anim.SetAnimAttack();
 				}
 
 				condition = Soldier_Condition.MOVE;
+
 		}
 
 }

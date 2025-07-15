@@ -11,6 +11,7 @@ public class EnemySoldier : Soldier
 				if (isInit) return;
 
 				classLevelData = ClassManager.Instance().GetLevelData(EnemyClassName);
+				level = Mathf.Min(level, Constants.maxLevel);
 				SetLevelData(level);
 		}
 

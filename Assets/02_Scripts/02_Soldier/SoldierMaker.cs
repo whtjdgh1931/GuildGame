@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -102,9 +103,8 @@ public class SoldierMaker : MonoBehaviour
 				ClassData classData = classScriptableObject.GetClassDataByClassName(className);
 				Soldier soldier = Instantiate(classData.soldierPrefab, position, Quaternion.identity);
 				soldier.classLevelData = ClassManager.Instance().GetLevelData(className);
-				soldier.level = PlayerPrefs.GetInt(className);
+				soldier.level = Mathf.Min(PlayerPrefs.GetInt(className),Constants.maxLevel);
 				soldier.SetLevelData(soldier.level);
-
 				return soldier;
 
 
@@ -113,15 +113,22 @@ public class SoldierMaker : MonoBehaviour
 
 		public Soldier MakeSoldierPreview(string className)
 		{
-				Soldier soldierPreview = Instantiate(soldierPreviewPrefab);
+				Soldier soldierPreview = MakeSoldier(className,Input.mousePosition);
 				SoldierRange range = soldierPreview.GetComponentInChildren<SoldierRange>();
+				SpriteRenderer[] spriteRenderers = soldierPreview.GetComponentsInChildren<SpriteRenderer>();
+				foreach(SpriteRenderer spriteRenderer in spriteRenderers)
+				{
+				Color tempColor = spriteRenderer.color;
+				tempColor.a = 0.4f;
+				spriteRenderer.color = tempColor;
+
+				}
 				float attackRange = ClassManager.Instance().GetAttackRangeData(className);
 				if (range != null)
 				{
 						Vector3 rangeScale = new(attackRange, 0.1f,attackRange);
 						range.transform.localScale = rangeScale;
 				}
-				else Debug.Log("range = null");
 				previewClassName = className;
 				return soldierPreview;
 		}
