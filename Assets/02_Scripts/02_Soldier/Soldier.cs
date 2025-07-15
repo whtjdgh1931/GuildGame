@@ -8,6 +8,7 @@ public class Soldier : MonoBehaviour
 
 		public List<Dictionary<string, object>> classLevelData;
 
+		private SoldierRange attackRangeObject;
 
 
 		public int shield { get; set;}
@@ -37,6 +38,14 @@ public class Soldier : MonoBehaviour
 
 				GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
 
+				attackRangeObject = GetComponentInChildren<SoldierRange>();
+				if (attackRangeObject != null)
+				{
+						Vector3 rangeScale = new(attackRange, 0.1f, attackRange);
+						attackRangeObject.transform.localScale = rangeScale;
+				attackRangeObject.gameObject.SetActive(false);
+				}
+
 				isInit = true;
 		}
 
@@ -46,8 +55,9 @@ public class Soldier : MonoBehaviour
 
 		public void DieSoldier()
 		{
-				Debug.Log("die");
-				GetComponentInChildren<Animator>().SetTrigger("IsDead");
+				Animator anim = GetComponentInChildren<Animator>();
+				if (anim!= null)
+				anim.SetTrigger("IsDead");
 				Destroy(gameObject,1f);
 		}
 }

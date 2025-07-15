@@ -25,7 +25,7 @@ public class FSM : MonoBehaviour
 
 		// 타겟팅 된 적 솔져
 		[SerializeField]
-		private Soldier targetSoldier;
+		public Soldier targetSoldier { get; private set; }
 
 
 		// 리스트를 가지고 있는 솔져매니저

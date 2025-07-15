@@ -94,7 +94,7 @@ public class ClassManager : MonoBehaviour
 		public float GetAttackRangeData(string className)
 		{
 				List<Dictionary<string, object>> data;
-				int level = PlayerPrefs.GetInt(className);
+				int level = Mathf.Min(PlayerPrefs.GetInt(className),50);
 				switch (className)
 				{
 						case "Tanker":

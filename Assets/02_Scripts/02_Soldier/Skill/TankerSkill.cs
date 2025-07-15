@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TankerSkill : ClassSkill
 {
-		
+		public GameObject shieldGameObject;
 		public override void DoAttack(Soldier target)
 		{
 				Debug.Log("attack" + target);
@@ -31,9 +31,16 @@ public class TankerSkill : ClassSkill
 		{
 				
 				soldier.shield += 30;
+				
+				
 				StartCoroutine(RemoveShield(30, 3, soldier));
 		}
 
-	
-		
+		public void Update()
+		{
+				if(soldier.shield > 0) shieldGameObject.SetActive(true);
+				else shieldGameObject.SetActive(false);	
+		}
+
+
 }

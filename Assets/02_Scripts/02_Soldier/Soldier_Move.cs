@@ -10,7 +10,7 @@ public class Soldier_Move : MonoBehaviour
 		private void Awake()
 		{
 				soldierNav = GetComponent<NavMeshAgent>();
-
+				soldierNav.updateRotation = false;
 
 		}
 

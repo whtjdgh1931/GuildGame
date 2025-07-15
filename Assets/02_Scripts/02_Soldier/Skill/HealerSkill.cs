@@ -3,6 +3,7 @@ using UnityEngine;
 public class HealerSkill : ClassSkill
 {
 		public Holy holyPrefab;
+		public GameObject healEffectPrefab;
 
 		public override void DoAttack(Soldier target)
 		{
@@ -39,6 +40,9 @@ public class HealerSkill : ClassSkill
 				}
 				healTargetSoldier.currentHp += Mathf.RoundToInt(soldier.attackPower * soldier.skillCoefficient);
 				if (healTargetSoldier.currentHp > healTargetSoldier.maxHp) healTargetSoldier.currentHp = healTargetSoldier.maxHp;
+				GameObject healEffect = Instantiate(healEffectPrefab, healTargetSoldier.transform.position, Quaternion.identity);
+				Destroy(healEffect, 1f);
+			
 
 		}
 }
