@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FSM" Collapsed="true">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCQiAIAEACAgAAAAAAAQAAAAAAAAAAYBCAAAEAAAAUA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\FSM\FSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassSkill" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\Skill\ClassSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankerSkill" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\Skill\TankerSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soldier" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABCAAABEAAAAAABRAAAAACAAAEAAAAAAAAACAAAAEA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\Soldier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soldier_Move" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEI=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\Soldier_Move.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoldierMaker" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\SoldierMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoldierManager" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAIAAIAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\SoldierManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassManager" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABACBAAECIAIAAQAAAAAAABABBAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\97_Manager\ClassManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassScriptableObject" Collapsed="true">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\02_Scripts\98_ScriptableObject\ClassScriptableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassData" Collapsed="true">
+    <Position X="12" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\98_ScriptableObject\ClassScriptableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Constants" Collapsed="true">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAAAAAAAEAAAAAAAQAAAAAAAAABAAAgAAAIQAQAABA=</HashCode>
+      <FileName>Assets\02_Scripts\99_Constants\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Readme" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAQAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\TutorialInfo\Scripts\Readme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Soldier_Condition" Collapsed="true">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAACAAAAAAAIA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Soldier\FSM\FSM.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
