@@ -22,7 +22,6 @@ public class Arrow : MonoBehaviour
 
 		public void OnTriggerEnter(Collider other)
 		{
-				
 				if (other.GetComponent<Soldier>() != null && !other.CompareTag(gameObject.tag))
 				{
 						Debug.Log("ArrowHit" + gameObject.name);

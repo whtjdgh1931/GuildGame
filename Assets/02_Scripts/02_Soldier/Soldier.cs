@@ -36,6 +36,7 @@ public class Soldier : MonoBehaviour
 				skillCoefficient = float.Parse(classLevelData[level - 1]["SkillCoefficient"].ToString());
 				currentHp = maxHp;
 
+
 				GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
 
 				attackRangeObject = GetComponentInChildren<SoldierRange>();

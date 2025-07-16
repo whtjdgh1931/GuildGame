@@ -23,10 +23,14 @@ public class SoldierManager : MonoBehaviour
 				{
 						teamSoldiers.Add(team.GetComponent<Soldier>());
 				}
-				//teamSoldiers.Add(GameObject.FindGameObjectWithTag(Constants.TAG_Player).GetComponent<Soldier>());
+				//teamSoldiers.Add(GameObject.FindGameObjectWithTag(Constants.TAG_Player).GetComponent<Soldier>());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
 
 				isBattle = true;
+
+#if UNITY_ANDROID
+				UIManager.Instance().joystickPanel.gameObject.SetActive(true);
+#endif
 		}
 
 		public void Update()

@@ -31,5 +31,6 @@ public static class Constants
 
     public static float AttackTime = 2f;
     public static float skillCoolTime = 15f;
+    public static float ultiCoolTime = 30f;
 
 }

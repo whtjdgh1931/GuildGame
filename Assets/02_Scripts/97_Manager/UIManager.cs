@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 		public Slider playerHp;
 		public Image victoryImage;
 		public Image defeatImage;
+		public RectTransform joystickPanel;
 
 		public void Awake()
 		{
@@ -26,8 +27,9 @@ public class UIManager : MonoBehaviour
 				}
 
 				player = GameObject.Find(Constants.NAME_Player).GetComponent<Soldier>();
-		}
 
+			
+		}
 		public void Update()
 		{
 				playerHp.value = (float)player.currentHp/player.maxHp;

@@ -66,6 +66,7 @@ public class FSM : MonoBehaviour
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
 
+				if(soldier_Anim != null)
 				soldier_Anim.SetAnimMove(soldier_Move.soldierNav.velocity);
 
 
@@ -164,11 +165,18 @@ public class FSM : MonoBehaviour
 						condition = Soldier_Condition.SEARCH;
 						return;
 				}
+				if(soldier.name == Constants.NAME_Player)
+				{
+						Debug.Log("PlayerAuotAttack");
+						soldier.GetComponent<Player_Attack>().DoAutoAttack();
+						return;
+				}
 				if (curTime > skillCoolTime)
 				{
 						curTime = 0;
 						curAttackTime = 0;
 						soldier_Attack.DoSkill(targetSoldier);
+						if(soldier_Anim!=null)
 						soldier_Anim.SetAnimSkill();
 
 				}
@@ -176,6 +184,7 @@ public class FSM : MonoBehaviour
 				{
 						soldier_Attack.DoAttack(targetSoldier);	
 						curAttackTime = 0;
+						if (soldier_Anim != null)
 						soldier_Anim.SetAnimAttack();
 				}
 
