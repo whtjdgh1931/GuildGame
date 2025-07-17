@@ -14,7 +14,6 @@ public abstract class Player_Skill : ClassSkill
 
 		public abstract void DoUlti(Soldier target);
 
-		
 
 		public Soldier SearchEnemyTarget(float attackRange)
     {

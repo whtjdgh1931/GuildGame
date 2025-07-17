@@ -201,6 +201,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48414854}
   m_CullTransparentMesh: 1
+--- !u!4 &55921022 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2028206065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &112216773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1959,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 55921022}
   m_Father: {fileID: 1665185287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782985849
@@ -3817,9 +3824,9 @@ GameObject:
   - component: {fileID: 1665185297}
   - component: {fileID: 1665185298}
   - component: {fileID: 1665185299}
-  - component: {fileID: 1665185300}
   - component: {fileID: 1665185301}
   - component: {fileID: 1665185302}
+  - component: {fileID: 1665185303}
   m_Layer: 0
   m_Name: Player
   m_TagString: Team
@@ -3917,7 +3924,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -3938,7 +3945,7 @@ MonoBehaviour:
   attackRangeObject: {fileID: 0}
   level: 50
   PlayerClassName: Tanker
-  isAuto: 0
+  isAuto: 1
 --- !u!114 &1665185299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,24 +3958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f487ce59341de44786bf6bd98425277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1665185300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665185286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b761f32a1844654cbf3c9f41ad61809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0, z: 0}
-  isDash: 0
-  shieldGameObject: {fileID: 1313391807561967362, guid: b939676615e55c3439d46819e1257ac5,
-    type: 3}
-  tauntEffectPrefab: {fileID: 6363972876970291531, guid: 63ccb2329ec88144f9bc96a091e73b63,
-    type: 3}
 --- !u!65 &1665185301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3988,7 +3977,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1665185302
 Rigidbody:
@@ -4017,6 +4006,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1665185303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665185286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b761f32a1844654cbf3c9f41ad61809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: 0}
+  isDash: 0
+  shieldGameObject: {fileID: 0}
+  tauntEffectPrefab: {fileID: 0}
 --- !u!1 &1743819519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,6 +4380,74 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 32b2ea31525937f4ebf1b8c3c8313940, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1001 &2028206065
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 668536895}
+    m_Modifications:
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.204
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313391807561967362, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_Name
+      value: Shield
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b939676615e55c3439d46819e1257ac5, type: 3}
 --- !u!1 &2051471101
 GameObject:
   m_ObjectHideFlags: 0

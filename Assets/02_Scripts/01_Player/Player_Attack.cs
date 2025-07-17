@@ -15,7 +15,7 @@ public class Player_Attack : MonoBehaviour
 		public void ReadyAttack()
 		{
 				player = GetComponent<Player_Soldier>();
-				playerSkill = GetComponent<Player_Skill>();
+				playerSkill = GetComponentInChildren<Player_Skill>();
 
 				curTime = float.MaxValue;
 				attackCoolTime = Constants.AttackTime / player.attackSpeed;
@@ -78,7 +78,8 @@ public class Player_Attack : MonoBehaviour
 		{
 				if (curUltiTimel >= UltiCoolTime)
 				{
-						Soldier target = playerSkill.SearchEnemyTarget(player.attackRange);
+						Debug.Log("AutoUlti");
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoUlti(target);
 						curUltiTimel = 0;
@@ -88,7 +89,8 @@ public class Player_Attack : MonoBehaviour
 
 				if (curSkillTime >= skillCoolTime)
 				{
-						Soldier target = playerSkill.SearchEnemyTarget(player.attackRange);
+						Debug.Log("AutoSkill");
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoSkill(target);
 						curSkillTime = 0;
@@ -98,7 +100,8 @@ public class Player_Attack : MonoBehaviour
 
 				if (curTime >= attackCoolTime)
 				{
-						Soldier target = playerSkill.SearchEnemyTarget(player.attackRange);
+						Debug.Log("AutoBaseAttack");
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoAttack(target);
 						curTime = 0;

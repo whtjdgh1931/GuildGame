@@ -38,7 +38,7 @@ public class Player_Tanker : Player_Skill
 		{
 				isDash = true;
 				Vector3 skillDir = mousePosition - transform.position;
-				float length = skillDir.magnitude;
+				float length = skillDir.magnitude * 0.9f;
 				skillDir.Normalize();
 				skillDir *= Mathf.Min(soldier.skillRange, length);
 				targetPos = transform.position + skillDir;
@@ -51,7 +51,16 @@ public class Player_Tanker : Player_Skill
 
 		public override void DoSkill(Soldier target)
 		{
-				Debug.Log("PlayerSkill");
+				isDash = true;
+				Vector3 skillDir = target.transform.position - transform.position;
+				float length = skillDir.magnitude * 0.9f;
+				skillDir.Normalize();
+				skillDir *= Mathf.Min(soldier.skillRange, length);
+				targetPos = transform.position + skillDir;
+				StartCoroutine(DashEnd());
+				int shield = Mathf.RoundToInt((soldier.maxHp * 0.5f));
+				soldier.shield += shield;
+				StartCoroutine(RemoveShield(shield, 2, soldier));
 		}
 
 
@@ -63,7 +72,6 @@ public class Player_Tanker : Player_Skill
 				{
 						FSM enemyFSM = enemy.GetComponent<FSM>();
 						if (enemyFSM == null || enemy.CompareTag(soldier.tag)) continue;
-						Debug.Log(enemy.gameObject + "Taunt");
 						StartCoroutine(Taunt(enemyFSM));
 
 				}
@@ -76,7 +84,18 @@ public class Player_Tanker : Player_Skill
 
 		public override void DoUlti(Soldier target)
 		{
-				Debug.Log("PlayerUlti");
+				Collider[] enemyList = Physics.OverlapSphere(transform.position, 15f);
+				foreach (Collider enemy in enemyList)
+				{
+						FSM enemyFSM = enemy.GetComponent<FSM>();
+						if (enemyFSM == null || enemy.CompareTag(soldier.tag)) continue;
+						StartCoroutine(Taunt(enemyFSM));
+
+				}
+
+				GameObject tauntEffect = Instantiate(tauntEffectPrefab, transform.position, Quaternion.identity);
+				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
+				Destroy(tauntEffect, 1f);
 		}
 
 		public void Update()
@@ -107,9 +126,10 @@ public class Player_Tanker : Player_Skill
 		public void OnTriggerEnter(Collider other)
 		{
 						if (!isDash) return;
-				if (other.gameObject.CompareTag(Constants.TAG_ENEMY))
-				{
 						Soldier target = other.gameObject.GetComponent<Soldier>();
+				if (other.gameObject.CompareTag(Constants.TAG_ENEMY)&&target!=null)
+				{
+						Debug.Log(other);
 						if (target.shield > 0)
 						{
 								target.shield -= soldier.attackPower;
