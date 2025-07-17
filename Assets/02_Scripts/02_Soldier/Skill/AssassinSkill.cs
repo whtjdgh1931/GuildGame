@@ -9,20 +9,7 @@ public class AssassinSkill : ClassSkill
 		public override void DoAttack(Soldier target)
 		{
 				Debug.Log("AssassinAttack");
-				if (target.shield > 0)
-				{
-						target.shield -= soldier.attackPower;
-						if (target.shield < 0)
-						{
-								target.currentHp += target.shield;
-								target.shield = 0;
-						}
-				}
-				else target.currentHp -= soldier.attackPower;
-				if (target.currentHp < 0)
-				{
-						target.DieSoldier();
-				}
+				DoDamage(target, soldier.attackPower);
 		}
 
 		public override void DoSkill(Soldier target)

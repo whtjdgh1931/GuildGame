@@ -17,20 +17,7 @@ public class Player_Tanker : Player_Skill
 		public GameObject tauntEffectPrefab;
 		public override void DoAttack(Soldier target)
 		{
-				if (target.shield > 0)
-				{
-						target.shield -= soldier.attackPower;
-						if (target.shield < 0)
-						{
-								target.currentHp += target.shield;
-								target.shield = 0;
-						}
-				}
-				else target.currentHp -= soldier.attackPower;
-				if (target.currentHp < 0)
-				{
-						target.DieSoldier();
-				}
+				DoDamage(target, soldier.attackPower);
 		}
 
 
@@ -130,20 +117,7 @@ public class Player_Tanker : Player_Skill
 				if (other.gameObject.CompareTag(Constants.TAG_ENEMY)&&target!=null)
 				{
 						Debug.Log(other);
-						if (target.shield > 0)
-						{
-								target.shield -= soldier.attackPower;
-								if (target.shield < 0)
-								{
-										target.currentHp += target.shield;
-										target.shield = 0;
-								}
-						}
-						else target.currentHp -= soldier.attackPower;
-						if (target.currentHp < 0)
-						{
-								target.DieSoldier();
-						}
+						DoDamage(target, soldier.attackPower);
 				}
 		}
 
