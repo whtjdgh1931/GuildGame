@@ -50,9 +50,10 @@ public class Player_Attack : MonoBehaviour
 				{
 						if (curSkillTime >= skillCoolTime)
 						{
-								Soldier target = playerSkill.SearchEnemyTarget(player.attackRange);
-								if (target == null) return;
-								playerSkill.DoSkill(target);
+								Vector3 mousePosition = Input.mousePosition;
+								Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+								targetPosition.y = 0;
+								playerSkill.DoSkill(targetPosition);
 								curSkillTime = 0;
 								curTime = 0;
 						}

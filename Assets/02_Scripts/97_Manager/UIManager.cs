@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour
 
 		public void Awake()
 		{
-
 				if (instance == null)
 				{
 						instance = this;

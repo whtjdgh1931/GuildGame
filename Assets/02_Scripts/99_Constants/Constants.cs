@@ -30,7 +30,7 @@ public static class Constants
     public static int maxLevel = 50;
 
     public static float AttackTime = 2f;
-    public static float skillCoolTime = 15f;
+    public static float skillCoolTime = 1f;
     public static float ultiCoolTime = 30f;
 
 }

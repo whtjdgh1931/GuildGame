@@ -1,9 +1,14 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Tanker : Player_Skill
 {
+		public Vector3 targetPos;
+		public bool isDash;
+
 		public override void DoAttack(Soldier target)
 		{
 				if (target.shield > 0)
@@ -20,13 +25,23 @@ public class Player_Tanker : Player_Skill
 				{
 						target.DieSoldier();
 				}
-				Debug.Log("PlayerAttack");
 		}
 
 
 		public override void DoSkill(Vector3 mousePosition)
 		{
-				throw new System.NotImplementedException();
+				isDash = true;
+				Vector3 skillDir = mousePosition - transform.position;
+				float length = skillDir.magnitude;
+				skillDir.Normalize();
+				skillDir *= Mathf.Min(soldier.skillRange, length);
+				targetPos = transform.position + skillDir;
+				Debug.Log(transform.position + skillDir);
+				StartCoroutine(DashEnd());
+				int shield = Mathf.RoundToInt((soldier.maxHp * 0.5f));
+				soldier.shield += shield;
+				StartCoroutine(RemoveShield(shield, 2, soldier));
+
 		}
 
 		public override void DoSkill(Soldier target)
@@ -44,5 +59,18 @@ public class Player_Tanker : Player_Skill
 		public override void DoUlti(Soldier target)
 		{
 				Debug.Log("PlayerUlti");
+		}
+
+		public void Update()
+		{
+				if (!isDash) return;
+				transform.position = Vector3.MoveTowards(transform.position, targetPos, soldier.moveSpeed * 50f * Time.deltaTime);
+
+		}
+
+		public IEnumerator DashEnd()
+		{
+				yield return new WaitForSeconds(0.5f);
+				isDash = false;
 		}
 }
