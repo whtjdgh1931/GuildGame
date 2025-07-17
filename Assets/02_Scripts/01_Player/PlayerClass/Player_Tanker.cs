@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -10,8 +11,10 @@ public class Player_Tanker : Player_Skill
 		public Vector3 targetPos;
 		public bool isDash;
 
-		private BoxCollider playerCollider;
 
+		public GameObject shieldGameObject;
+
+		public GameObject tauntEffectPrefab;
 		public override void DoAttack(Soldier target)
 		{
 				if (target.shield > 0)
@@ -55,7 +58,20 @@ public class Player_Tanker : Player_Skill
 
 		public override void DoUlti(Vector3 mousePosition)
 		{
-				throw new System.NotImplementedException();
+				Collider[] enemyList = Physics.OverlapSphere(transform.position, 15f);
+				foreach (Collider enemy in enemyList)
+				{
+						FSM enemyFSM = enemy.GetComponent<FSM>();
+						if (enemyFSM == null || enemy.CompareTag(soldier.tag)) continue;
+						Debug.Log(enemy.gameObject + "Taunt");
+						StartCoroutine(Taunt(enemyFSM));
+
+				}
+
+				GameObject tauntEffect = Instantiate(tauntEffectPrefab, transform.position, Quaternion.identity);
+				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
+				Destroy(tauntEffect, 1f);
+
 		}
 
 		public override void DoUlti(Soldier target)
@@ -65,6 +81,8 @@ public class Player_Tanker : Player_Skill
 
 		public void Update()
 		{
+				if (soldier.shield > 0) shieldGameObject.SetActive(true);
+				else shieldGameObject.SetActive(false);
 				if (!isDash) return;
 				transform.position = Vector3.MoveTowards(transform.position, targetPos, soldier.moveSpeed * 50f * Time.deltaTime);
 
@@ -74,6 +92,16 @@ public class Player_Tanker : Player_Skill
 		{
 				yield return new WaitForSeconds(0.5f);
 				isDash = false;
+		}
+
+		public IEnumerator Taunt(FSM enemyFSM)
+		{
+				enemyFSM.SetTargetSoldier(soldier);
+				enemyFSM.isTaunt = true;
+				yield return new WaitForSeconds(2f);
+				enemyFSM.isTaunt = false;
+				enemyFSM.SetSoldierCondition(Soldier_Condition.SEARCH);
+				
 		}
 
 		public void OnTriggerEnter(Collider other)

@@ -29,8 +29,13 @@ public static class Constants
     /// </summary>
     public static int maxLevel = 50;
 
-    public static float AttackTime = 99f;
-    public static float skillCoolTime = 1f;
+    public static float AttackTime = 2f;
+    public static float skillCoolTime = 5f;
     public static float ultiCoolTime = 30f;
 
+
+    /// <summary>
+    /// °è¼ö
+    /// </summary>
+    public static float Multi_HP = 5.0f;
 }

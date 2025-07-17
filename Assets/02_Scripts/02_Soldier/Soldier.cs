@@ -28,6 +28,7 @@ public class Soldier : MonoBehaviour
 		{
 				if(level<1) level=1;		
 				maxHp = int.Parse(classLevelData[level-1]["MaxHp"].ToString());
+				maxHp = Mathf.RoundToInt(maxHp * Constants.Multi_HP);
 				attackPower = int.Parse(classLevelData[level-1]["AttackPower"].ToString());
 				attackRange = float.Parse(classLevelData[level - 1]["AttackRange"].ToString());
 				attackSpeed = float.Parse(classLevelData[level - 1]["AttackSpeed"].ToString());

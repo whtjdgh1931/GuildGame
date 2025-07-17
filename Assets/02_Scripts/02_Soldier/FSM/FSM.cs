@@ -42,6 +42,9 @@ public class FSM : MonoBehaviour
 		public float attackSpeed;
 		public float curAttackTime;
 
+		// 도발 상태인지
+		public bool isTaunt;
+
 
 
 		public void Start()
@@ -165,13 +168,13 @@ public class FSM : MonoBehaviour
 						condition = Soldier_Condition.SEARCH;
 						return;
 				}
-				if(soldier.name == Constants.NAME_Player)
+				if(soldier.name == Constants.NAME_Player&&!isTaunt)
 				{
 						Debug.Log("PlayerAuotAttack");
 						soldier.GetComponent<Player_Attack>().DoAutoAttack();
 						return;
 				}
-				if (curTime > skillCoolTime)
+				if (curTime > skillCoolTime && !isTaunt)
 				{
 						curTime = 0;
 						curAttackTime = 0;
@@ -192,4 +195,13 @@ public class FSM : MonoBehaviour
 
 		}
 
+		public void SetTargetSoldier(Soldier targetSoldier)
+		{
+				this.targetSoldier = targetSoldier;
+		}
+
+		public void SetSoldierCondition(Soldier_Condition condition)
+		{
+				this.condition = condition;
+		}
 }

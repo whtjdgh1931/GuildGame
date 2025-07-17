@@ -62,10 +62,11 @@ public class Player_Attack : MonoBehaviour
 				{
 						if (curUltiTimel >= UltiCoolTime)
 						{
-								Soldier target = playerSkill.SearchEnemyTarget(player.attackRange);
-								if (target == null) return;
-								playerSkill.DoUlti(target);
-								curUltiTimel = 0;
+								Vector3 mousePosition = Input.mousePosition;
+								Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+								targetPosition.y = 0;
+								playerSkill.DoUlti(targetPosition);
+								curSkillTime = 0;
 								curTime = 0;
 						}
 				}
