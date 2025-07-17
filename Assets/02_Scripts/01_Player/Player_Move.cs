@@ -11,7 +11,7 @@ public class Player_Move : Soldier_Move
 
 		private Player_Soldier playerState;
 
-
+		public BoxCollider playerCollider;
 
 		public void ReadyMove()
 		{
@@ -21,7 +21,8 @@ public class Player_Move : Soldier_Move
 				playerController.enabled = !playerState.isAuto;
 				soldierNav.enabled = playerState.isAuto;
 				GetComponent<FSM>().enabled = playerState.isAuto;
-				GetComponent<BoxCollider>().enabled = playerState.isAuto;
+				playerCollider = GetComponent<BoxCollider>();
+				playerCollider.enabled = playerState.isAuto;
 		}
 
 

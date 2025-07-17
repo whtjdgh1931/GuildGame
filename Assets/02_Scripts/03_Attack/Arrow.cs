@@ -24,7 +24,6 @@ public class Arrow : MonoBehaviour
 		{
 				if (other.GetComponent<Soldier>() != null && !other.CompareTag(gameObject.tag))
 				{
-						Debug.Log("ArrowHit" + gameObject.name);
 						if (target.shield > 0)
 						{
 								target.shield -= arrowPower;
