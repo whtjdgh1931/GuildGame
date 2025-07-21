@@ -85,7 +85,6 @@ public class Player_Attack : MonoBehaviour
 		{
 				if (curUltiTimel >= UltiCoolTime)
 				{
-						Debug.Log("AutoUlti");
 						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoUlti(target);
@@ -96,7 +95,6 @@ public class Player_Attack : MonoBehaviour
 
 				if (curSkillTime >= skillCoolTime)
 				{
-						Debug.Log("AutoSkill");
 						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoSkill(target);
@@ -107,12 +105,46 @@ public class Player_Attack : MonoBehaviour
 
 				if (curTime >= attackCoolTime)
 				{
-						Debug.Log("AutoBaseAttack");
 						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoAttack(target);
 						curTime = 0;
 						return;
+				}
+		}
+
+		public void PressAtkBtn()
+		{
+				if (curTime >= attackCoolTime)
+				{
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
+						if (target == null) return;
+						playerSkill.DoAttack(target);
+						curTime = 0;
+				}
+		}
+
+		public void PressSkillBtn()
+		{
+				if (curSkillTime >= skillCoolTime)
+				{
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
+						if (target == null) return;
+						playerSkill.DoSkill(target);
+						curSkillTime = 0;
+						curTime = 0;
+				}
+		}
+
+		public void PressUltiBtn()
+		{
+				if (curUltiTimel >= UltiCoolTime)
+				{
+						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
+						if (target == null) return;
+						playerSkill.DoUlti(target);
+						curUltiTimel = 0;
+						curTime = 0;
 				}
 		}
 }
