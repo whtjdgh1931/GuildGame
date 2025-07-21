@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
 		public Slider playerHp;
 		public Image victoryImage;
 		public Image defeatImage;
-		public RectTransform joystickPanel;
+		public JoyStickPanel joystickPanel;
 
 		public void Awake()
 		{
