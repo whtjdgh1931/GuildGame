@@ -9,6 +9,17 @@ public class SoldierManager : MonoBehaviour
 
 		public bool isBattle = false;
 
+		private static SoldierManager instance = null;
+
+		public static SoldierManager Instance()
+		{
+				return instance;
+		}
+		public void Awake()
+		{
+				if (instance == null) instance = this;
+		}
+
 		public void StartBattle()
 		{
 				GameObject[] enemyArray = GameObject.FindGameObjectsWithTag(Constants.TAG_ENEMY);

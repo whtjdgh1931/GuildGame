@@ -45,7 +45,7 @@ public class Player_Archer : Player_Skill
 				Soldier target = SearchEnemyTarget(mousePosition);
 				arrow.target = target;
 				arrow.transform.position = transform.position;
-				arrow.arrowPower = soldier.attackPower*4f;
+				arrow.arrowPower = soldier.attackPower*3f;
 				arrow.transform.localScale = Vector3.one * 2f;
 
 				arrow.gameObject.tag = gameObject.tag;
@@ -57,7 +57,7 @@ public class Player_Archer : Player_Skill
 				Arrow arrow = Instantiate(arrowPrefab);
 				arrow.target = target;
 				arrow.transform.position = transform.position;
-				arrow.arrowPower = soldier.attackPower* 4f;
+				arrow.arrowPower = soldier.attackPower* 3f;
 				arrow.transform.localScale = Vector3.one * 2f;
 				arrow.gameObject.tag = gameObject.tag;
 

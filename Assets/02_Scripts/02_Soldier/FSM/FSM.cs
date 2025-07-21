@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public enum Soldier_Condition
@@ -28,10 +30,6 @@ public class FSM : MonoBehaviour
 		[SerializeField]
 		public Soldier targetSoldier { get; private set; }
 
-
-		// 리스트를 가지고 있는 솔져매니저
-		private SoldierManager soldierManager;
-
 		// 상태
 		private Soldier soldier;
 
@@ -54,7 +52,6 @@ public class FSM : MonoBehaviour
 		public void Start()
 		{
 				soldier_Move = GetComponent<Soldier_Move>();
-				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
@@ -82,7 +79,7 @@ public class FSM : MonoBehaviour
 				soldier_Anim.SetAnimMove(soldier_Move.soldierNav.velocity);
 
 
-				if (soldierManager.isBattle &&!isStun)
+				if (SoldierManager.Instance().isBattle &&!isStun)
 						DoFsm();
 
 
@@ -120,7 +117,7 @@ public class FSM : MonoBehaviour
 				if (tag == Constants.TAG_TEAM)
 				{
 
-						foreach (Soldier enemy in soldierManager.enemySoldiers)
+						foreach (Soldier enemy in SoldierManager.Instance().enemySoldiers)
 						{
 								if (enemy == null) continue;
 								float distance = Vector3.Distance(transform.position, enemy.transform.position);
@@ -135,7 +132,7 @@ public class FSM : MonoBehaviour
 				}
 				else if (tag == Constants.TAG_ENEMY)
 				{
-						foreach (Soldier team in soldierManager.teamSoldiers)
+						foreach (Soldier team in SoldierManager.Instance().teamSoldiers)
 						{
 								if (team == null) continue;
 								float distance = Vector3.Distance(transform.position, team.transform.position);
@@ -217,5 +214,23 @@ public class FSM : MonoBehaviour
 		public void SetAttackSpeed(float multi)
 		{
 				attackSpeed *= multi;
+		}
+
+		internal void ResearchTarget()
+		{
+				targetSoldier = null;
+				float targetDistacne = int.MaxValue;
+
+				foreach (Soldier team in SoldierManager.Instance().teamSoldiers)
+				{
+						if (team == null) continue;
+						if (team.gameObject.name == Constants.NAME_Player) continue;
+						float distance = Vector3.Distance(transform.position, team.transform.position);
+						if (distance < targetDistacne)
+						{
+								targetSoldier = team;
+								targetDistacne = distance;
+						}
+				}
 		}
 }
