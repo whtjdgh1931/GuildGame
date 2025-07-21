@@ -15,6 +15,7 @@ public class FSM : MonoBehaviour
 
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
+		private Player_Attack player_Attack;
 
 		// 애니메이터
 		private SoldierAnim soldier_Anim;
@@ -57,6 +58,9 @@ public class FSM : MonoBehaviour
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
+
+				if(soldier.name == Constants.NAME_Player)
+						player_Attack = GetComponent<Player_Attack>();
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
 				skillCoolTime = Constants.skillCoolTime;
@@ -176,7 +180,7 @@ public class FSM : MonoBehaviour
 				if(soldier.name == Constants.NAME_Player&&!isTaunt)
 				{
 						Debug.Log("PlayerAuotAttack");
-						soldier.GetComponent<Player_Attack>().DoAutoAttack();
+						player_Attack.DoAutoAttack();
 						return;
 				}
 				if (curTime > skillCoolTime && !isTaunt)
@@ -208,5 +212,10 @@ public class FSM : MonoBehaviour
 		public void SetSoldierCondition(Soldier_Condition condition)
 		{
 				this.condition = condition;
+		}
+
+		public void SetAttackSpeed(float multi)
+		{
+				attackSpeed *= multi;
 		}
 }

@@ -27,6 +27,11 @@ public class Player_Attack : MonoBehaviour
 				UltiCoolTime = Constants.ultiCoolTime;
 		}
 
+		public void SetAttackSpeed(float multi)
+		{
+				attackCoolTime *= multi;
+		}
+
 		public void Update()
 		{
 				curTime += Time.deltaTime;

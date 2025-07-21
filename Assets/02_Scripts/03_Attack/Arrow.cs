@@ -5,7 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public Soldier target;
-    public int arrowPower;
+    public float arrowPower;
 		public float arrowSpeed;
 
 		public void Update()
@@ -26,14 +26,14 @@ public class Arrow : MonoBehaviour
 				{
 						if (target.shield > 0)
 						{
-								target.shield -= arrowPower;
+								target.shield -= Mathf.RoundToInt(arrowPower);
 								if (target.shield < 0)
 								{
 										target.currentHp += target.shield;
 										target.shield = 0;
 								}
 						}
-						else target.currentHp -= arrowPower;
+						else target.currentHp -= Mathf.RoundToInt(arrowPower);
 						if (target.currentHp < 0)
 						{
 								target.DieSoldier();
