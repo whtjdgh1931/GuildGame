@@ -81,6 +81,7 @@ MonoBehaviour:
   attackSpeed: 0
   curAttackTime: 0
   isTaunt: 0
+  isStun: 0
 --- !u!114 &8883816089870785786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
   level: 50
-  PlayerClassName: Tanker
-  isAuto: 1
+  PlayerClassName: Warrior
+  isAuto: 0
 --- !u!114 &5116090610902682006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48581d50fea278741ab3cee06b23fcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillEffectPrefab: {fileID: 5311820884364426638, guid: 75974487d3ef10b4aa6a14822d7ec39f,
+    type: 3}
+  stunEffectPrefab: {fileID: 5796699038308311617, guid: 0eef460d529e53f43bb8bd6350d7c518,
+    type: 3}
 --- !u!1 &4964152710402782361
 GameObject:
   m_ObjectHideFlags: 0

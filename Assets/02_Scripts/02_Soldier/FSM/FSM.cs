@@ -45,6 +45,9 @@ public class FSM : MonoBehaviour
 		// 도발 상태인지
 		public bool isTaunt;
 
+		// 스턴 상태인지
+		public bool isStun;
+
 
 
 		public void Start()
@@ -66,14 +69,16 @@ public class FSM : MonoBehaviour
 
 		public void Update()
 		{
+
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
+
 
 				if(soldier_Anim != null)
 				soldier_Anim.SetAnimMove(soldier_Move.soldierNav.velocity);
 
 
-				if (soldierManager.isBattle)
+				if (soldierManager.isBattle &&!isStun)
 						DoFsm();
 
 

@@ -36,6 +36,8 @@ public class Player_Attack : MonoBehaviour
 				if (player == null) return;
 				if (player.isAuto) return;
 
+				
+
 				if (Input.GetMouseButton(0))
 				{
 						if (curTime >= attackCoolTime)
