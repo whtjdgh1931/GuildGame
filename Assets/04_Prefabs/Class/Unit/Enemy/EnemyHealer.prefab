@@ -35,8 +35,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8908992473553977203}
   - {fileID: 8751200900994946509}
@@ -164,6 +164,8 @@ MonoBehaviour:
   curTime: 0
   attackSpeed: 0
   curAttackTime: 0
+  isTaunt: 0
+  isStun: 0
 --- !u!54 &7141525308379006688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3671984aaac214b4ba5c1a23842dbca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeObject: {fileID: 0}
   level: 1
   EnemyClassName: Healer
 --- !u!1 &7792525733547112673

@@ -9,18 +9,24 @@ public class JoyStickPanel : MonoBehaviour
     public Button skillBtn;
     public Button ultiBtn;
 
+    
+    private Player_Attack playerAttack;
+
     // Start is called before the first frame update
     void Start()
     {
-        Player_Attack playerAttack = GameObject.Find(Constants.NAME_Player).GetComponent<Player_Attack>();
+				playerAttack = GameObject.Find(Constants.NAME_Player).GetComponent<Player_Attack>();
         attackBtn.onClick.AddListener(playerAttack.PressAtkBtn);
         skillBtn.onClick.AddListener(playerAttack.PressSkillBtn);
         ultiBtn.onClick.AddListener(playerAttack.PressUltiBtn);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        attackBtn.image.fillAmount = playerAttack.GetAttackCoolTime();
+        skillBtn.image.fillAmount = playerAttack.GetSkillCoolTime();
+        ultiBtn.image.fillAmount = playerAttack.GetUltiCoolTime();
+
         
     }
 }

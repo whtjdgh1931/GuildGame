@@ -52,4 +52,19 @@ public class Player_Move : Soldier_Move
 
 				
 		}
+
+		public bool SetAuto()
+		{
+				playerState.isAuto = !playerState.isAuto;
+				playerController.enabled = !playerState.isAuto;
+				soldierNav.enabled = playerState.isAuto;
+				GetComponent<FSM>().enabled = playerState.isAuto;
+				playerCollider.enabled = playerState.isAuto;
+				return playerState.isAuto;
+		}		
+
+		public bool returnAuto()
+		{
+				return playerState.isAuto;
+		}
 }

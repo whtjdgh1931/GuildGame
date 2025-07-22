@@ -51,27 +51,6 @@ public class SoldierMaker : MonoBehaviour
 						Destroy(previewInstance.gameObject);
 						isDrag = false;
 				}
-#elif UNITY_EDITOR || UNITY_ANDROID
-				if (!isDrag || !Input.GetMouseButton(0)) return;
-
-
-
-				//if (EventSystem.current.IsPointerOverGameObject())
-				//		return;
-				Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-				mousePos.y = 0;
-
-				if (previewInstance != null)
-						previewInstance.transform.position = mousePos;
-
-				if (Input.GetMouseButtonUp(0))
-				{
-						Debug.Log("up");
-						MakeSoldier(previewClassName, previewInstance.transform.position);
-						Destroy(previewInstance.gameObject);
-						isDrag = false;
-				}
-
 #elif UNITY_ANDROID
 				if (!isDrag||Input.touchCount == 0) return;
 

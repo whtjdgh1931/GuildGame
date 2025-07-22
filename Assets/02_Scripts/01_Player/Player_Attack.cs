@@ -9,7 +9,7 @@ public class Player_Attack : MonoBehaviour
 		private float attackCoolTime;
 		private float curSkillTime;
 		private float skillCoolTime;
-		private float curUltiTimel;
+		private float curUltiTime;
 		private float UltiCoolTime;
 
 		public void ReadyAttack()
@@ -23,7 +23,7 @@ public class Player_Attack : MonoBehaviour
 				curSkillTime = float.MaxValue;
 				skillCoolTime = Constants.skillCoolTime;
 
-				curUltiTimel = float.MaxValue;
+				curUltiTime = float.MaxValue;
 				UltiCoolTime = Constants.ultiCoolTime;
 		}
 
@@ -36,7 +36,7 @@ public class Player_Attack : MonoBehaviour
 		{
 				curTime += Time.deltaTime;
 				curSkillTime += Time.deltaTime;
-				curUltiTimel += Time.deltaTime;
+				curUltiTime += Time.deltaTime;
 
 				if (player == null) return;
 				if (player.isAuto) return;
@@ -67,7 +67,7 @@ public class Player_Attack : MonoBehaviour
 				}
 				else if (Input.GetKeyDown(KeyCode.R))
 				{
-						if (curUltiTimel >= UltiCoolTime)
+						if (curUltiTime >= UltiCoolTime)
 						{
 								Vector3 mousePosition = Input.mousePosition;
 								Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -83,12 +83,12 @@ public class Player_Attack : MonoBehaviour
 
 		public void DoAutoAttack()
 		{
-				if (curUltiTimel >= UltiCoolTime)
+				if (curUltiTime >= UltiCoolTime)
 				{
 						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoUlti(target);
-						curUltiTimel = 0;
+						curUltiTime = 0;
 						curTime = 0;
 						return;
 				}
@@ -138,13 +138,31 @@ public class Player_Attack : MonoBehaviour
 
 		public void PressUltiBtn()
 		{
-				if (curUltiTimel >= UltiCoolTime)
+				if (curUltiTime >= UltiCoolTime)
 				{
 						Soldier target = playerSkill.SearchEnemyTarget(Mathf.Max(player.attackRange, player.skillRange));
 						if (target == null) return;
 						playerSkill.DoUlti(target);
-						curUltiTimel = 0;
+						curUltiTime = 0;
 						curTime = 0;
 				}
 		}
+
+
+		public float GetAttackCoolTime()
+		{
+				return curTime / attackCoolTime;
+		}
+
+		public float GetUltiCoolTime()
+		{
+				return curUltiTime / UltiCoolTime;
+		}
+
+		public float GetSkillCoolTime()
+		{
+				return curSkillTime / skillCoolTime;
+
+		}
+	
 }

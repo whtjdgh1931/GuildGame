@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 		public Image defeatImage;
 		public JoyStickPanel joystickPanel;
 
-		public void Awake()
+		public void Start()
 		{
 				if (instance == null)
 				{
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
 				player = GameObject.Find(Constants.NAME_Player).GetComponent<Soldier>();
 
-			
+
 		}
 		public void Update()
 		{

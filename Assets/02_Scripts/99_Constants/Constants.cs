@@ -23,6 +23,8 @@ public static class Constants
     public static string CLASS_HEALER = "Healer";
     public static string CLASS_MAGICIAN = "Magician";
 
+    public static string CLASS_PLAYER = "PLAYER";
+
 
     /// <summary>
     /// ÃÖ´ëÄ¡

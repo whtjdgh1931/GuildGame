@@ -6,7 +6,6 @@ public class WarriorSkill : ClassSkill
 {
 		public override void DoAttack(Soldier target)
 		{
-				Debug.Log("Warriorattack" + target);
 
 				DoDamage(target, soldier.attackPower);
 				
