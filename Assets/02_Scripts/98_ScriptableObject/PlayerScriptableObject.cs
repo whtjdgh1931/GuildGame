@@ -9,8 +9,6 @@ public class PlayerScriptableObject : ScriptableObject
 
 		public PlayerClass GetClassDataByClassName(string className)
 				=> playerClasses.Find(classData => classData.className == className);
-
-
 }
 [System.Serializable]
 public class PlayerClass
@@ -20,6 +18,9 @@ public class PlayerClass
 
 		[Header("# 클래스 프리팹")]
 		public Soldier soldierPrefab;
+
+		[Header("# 클래스 이미지")]
+		public Sprite classImage;
 
 }
 

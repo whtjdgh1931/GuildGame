@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/BattleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/01_Scenes/EnemyScene/EnemyArcher.unity
+    guid: 09c4faffbd3e02648a6d87645de8f929
+  - enabled: 1
+    path: Assets/01_Scenes/EnemyScene/EnemyTanker.unity
+    guid: 7906ee70ed817d741991a192362e294b
   m_configObjects: {}

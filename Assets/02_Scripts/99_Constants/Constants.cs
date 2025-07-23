@@ -11,7 +11,9 @@ public static class Constants
     public static string TAG_TEAM = "Team";
     public static string NAME_Player = "Player";
     public static string GAMESPEED = "GameSpeed";
+    public static string ENEMYSCENE = null;
     public static string LOBBYSCENE = "LobbyScene";
+    public static string BATTLESCENE = "BattleScene";
 
 
 

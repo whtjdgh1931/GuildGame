@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BattleSceneLoad : MonoBehaviour
 {
@@ -10,14 +11,19 @@ public class BattleSceneLoad : MonoBehaviour
 
     public string playerClass = Constants.CLASS_TANKER;
 
+    public Image playerImage;
+
     public bool isAuto;
 
     // Start is called before the first frame update
     void Start()
     {
 				SceneManager.sceneLoaded -= CALLBACK_MakePlayer;
-				SceneManager.sceneLoaded += CALLBACK_MakePlayer; 
-    }
+				SceneManager.sceneLoaded += CALLBACK_MakePlayer;
+
+				playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).classImage;
+
+		}
 
 		private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)
 		{
@@ -30,15 +36,16 @@ public class BattleSceneLoad : MonoBehaviour
         player.GetComponent<Player_Soldier>().isAuto = this.isAuto;
 		}
 
-    public void PressStartButton()
-    {
-        SceneManager.LoadScene(2);
-    }
+    
 
     public void SetPlayerClassString(string playerClass)
     {
         this.playerClass = playerClass;
-    }
+        playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).classImage;
+				
+				
+
+		}
 
     public void SetAuto(bool auto)
     { this.isAuto = auto; }
