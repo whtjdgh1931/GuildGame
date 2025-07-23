@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public enum Soldier_Condition
@@ -15,6 +17,7 @@ public class FSM : MonoBehaviour
 
 		// 공격 컴포넌트
 		private ClassSkill soldier_Attack;
+		private Player_Attack player_Attack;
 
 		// 애니메이터
 		private SoldierAnim soldier_Anim;
@@ -27,10 +30,6 @@ public class FSM : MonoBehaviour
 		[SerializeField]
 		public Soldier targetSoldier { get; private set; }
 
-
-		// 리스트를 가지고 있는 솔져매니저
-		private SoldierManager soldierManager;
-
 		// 상태
 		private Soldier soldier;
 
@@ -42,15 +41,23 @@ public class FSM : MonoBehaviour
 		public float attackSpeed;
 		public float curAttackTime;
 
+		// 도발 상태인지
+		public bool isTaunt;
+
+		// 스턴 상태인지
+		public bool isStun;
+
 
 
 		public void Start()
 		{
 				soldier_Move = GetComponent<Soldier_Move>();
-				soldierManager = FindObjectOfType<SoldierManager>();
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
+
+				if(soldier.name == Constants.NAME_Player)
+						player_Attack = GetComponent<Player_Attack>();
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
 				skillCoolTime = Constants.skillCoolTime;
@@ -63,13 +70,16 @@ public class FSM : MonoBehaviour
 
 		public void Update()
 		{
+				if (!SoldierManager.Instance().isBattle) return;
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
 
+
+				if(soldier_Anim != null)
 				soldier_Anim.SetAnimMove(soldier_Move.soldierNav.velocity);
 
 
-				if (soldierManager.isBattle)
+				if (SoldierManager.Instance().isBattle &&!isStun)
 						DoFsm();
 
 
@@ -107,7 +117,7 @@ public class FSM : MonoBehaviour
 				if (tag == Constants.TAG_TEAM)
 				{
 
-						foreach (Soldier enemy in soldierManager.enemySoldiers)
+						foreach (Soldier enemy in SoldierManager.Instance().enemySoldiers)
 						{
 								if (enemy == null) continue;
 								float distance = Vector3.Distance(transform.position, enemy.transform.position);
@@ -122,7 +132,7 @@ public class FSM : MonoBehaviour
 				}
 				else if (tag == Constants.TAG_ENEMY)
 				{
-						foreach (Soldier team in soldierManager.teamSoldiers)
+						foreach (Soldier team in SoldierManager.Instance().teamSoldiers)
 						{
 								if (team == null) continue;
 								float distance = Vector3.Distance(transform.position, team.transform.position);
@@ -164,11 +174,18 @@ public class FSM : MonoBehaviour
 						condition = Soldier_Condition.SEARCH;
 						return;
 				}
-				if (curTime > skillCoolTime)
+				if(soldier.name == Constants.NAME_Player&&!isTaunt)
+				{
+						Debug.Log("PlayerAuotAttack");
+						player_Attack.DoAutoAttack();
+						return;
+				}
+				if (curTime > skillCoolTime && !isTaunt)
 				{
 						curTime = 0;
 						curAttackTime = 0;
 						soldier_Attack.DoSkill(targetSoldier);
+						if(soldier_Anim!=null)
 						soldier_Anim.SetAnimSkill();
 
 				}
@@ -176,6 +193,7 @@ public class FSM : MonoBehaviour
 				{
 						soldier_Attack.DoAttack(targetSoldier);	
 						curAttackTime = 0;
+						if (soldier_Anim != null)
 						soldier_Anim.SetAnimAttack();
 				}
 
@@ -183,4 +201,36 @@ public class FSM : MonoBehaviour
 
 		}
 
+		public void SetTargetSoldier(Soldier targetSoldier)
+		{
+				this.targetSoldier = targetSoldier;
+		}
+
+		public void SetSoldierCondition(Soldier_Condition condition)
+		{
+				this.condition = condition;
+		}
+
+		public void SetAttackSpeed(float multi)
+		{
+				attackSpeed *= multi;
+		}
+
+		internal void ResearchTarget()
+		{
+				targetSoldier = null;
+				float targetDistacne = int.MaxValue;
+
+				foreach (Soldier team in SoldierManager.Instance().teamSoldiers)
+				{
+						if (team == null) continue;
+						if (team.gameObject.name == Constants.NAME_Player) continue;
+						float distance = Vector3.Distance(transform.position, team.transform.position);
+						if (distance < targetDistacne)
+						{
+								targetSoldier = team;
+								targetDistacne = distance;
+						}
+				}
+		}
 }

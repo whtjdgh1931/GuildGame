@@ -16,18 +16,19 @@ public class UIManager : MonoBehaviour
 		public Slider playerHp;
 		public Image victoryImage;
 		public Image defeatImage;
+		public JoyStickPanel joystickPanel;
 
-		public void Awake()
+		public void Start()
 		{
-
 				if (instance == null)
 				{
 						instance = this;
 				}
 
 				player = GameObject.Find(Constants.NAME_Player).GetComponent<Soldier>();
-		}
 
+
+		}
 		public void Update()
 		{
 				playerHp.value = (float)player.currentHp/player.maxHp;

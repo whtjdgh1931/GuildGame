@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d041d67ec97a5534bba434b551c48f22, type: 3}
+  m_Name: PlayerClass
+  m_EditorClassIdentifier: 
+  playerClasses:
+  - className: Tanker
+    soldierPrefab: {fileID: 2233857760325316746, guid: a637088ac6813484c9a611c43dc45971,
+      type: 3}
+  - className: Warrior
+    soldierPrefab: {fileID: 8894160839864232370, guid: 4b70d903f375c104bad73642274ad0a9,
+      type: 3}
+  - className: Assassin
+    soldierPrefab: {fileID: 6099906899214233805, guid: 5655bd350160802488fdca42aee770f8,
+      type: 3}
+  - className: Archer
+    soldierPrefab: {fileID: 8654418310290977059, guid: b8e41de8632768345bc2ee32c5f195a1,
+      type: 3}
+  - className: Magician
+    soldierPrefab: {fileID: 5823989030491775198, guid: b08b3686c5c91c64ba1bc491391525ac,
+      type: 3}

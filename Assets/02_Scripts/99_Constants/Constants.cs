@@ -10,18 +10,22 @@ public static class Constants
     public static string TAG_ENEMY = "Enemy";
     public static string TAG_TEAM = "Team";
     public static string NAME_Player = "Player";
+    public static string GAMESPEED = "GameSpeed";
+    public static string LOBBYSCENE = "LobbyScene";
 
 
 
-    /// <summary>
-    /// 클래스
-    /// </summary>
-    public static string CLASS_TANKER = "Tanker";
+		/// <summary>
+		/// 클래스
+		/// </summary>
+		public static string CLASS_TANKER = "Tanker";
     public static string CLASS_WARRIOR = "Warrior";
     public static string CLASS_ASSASSIN = "Assassin";
     public static string CLASS_ARCHER = "Archer";
     public static string CLASS_HEALER = "Healer";
     public static string CLASS_MAGICIAN = "Magician";
+
+    public static string CLASS_PLAYER = "PLAYER";
 
 
     /// <summary>
@@ -30,6 +34,12 @@ public static class Constants
     public static int maxLevel = 50;
 
     public static float AttackTime = 2f;
-    public static float skillCoolTime = 15f;
+    public static float skillCoolTime = 5f;
+    public static float ultiCoolTime = 30f;
 
+
+    /// <summary>
+    /// 계수
+    /// </summary>
+    public static float Multi_HP = 5.0f;
 }

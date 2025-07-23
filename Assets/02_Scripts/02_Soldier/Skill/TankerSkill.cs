@@ -10,20 +10,7 @@ public class TankerSkill : ClassSkill
 		{
 				Debug.Log("attack" + target);
 
-				if (target.shield > 0)
-				{
-						target.shield -= soldier.attackPower;
-						if(target.shield < 0)
-						{
-								target.currentHp += target.shield;
-								target.shield = 0;
-						}
-				}
-				else target.currentHp -= soldier.attackPower;
-				if(target.currentHp < 0 )
-				{
-						target.DieSoldier();
-				}
+				DoDamage(target,soldier.attackPower);
 		}		
 
 

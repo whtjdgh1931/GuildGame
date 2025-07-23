@@ -9,6 +9,17 @@ public class SoldierManager : MonoBehaviour
 
 		public bool isBattle = false;
 
+		private static SoldierManager instance = null;
+
+		public static SoldierManager Instance()
+		{
+				return instance;
+		}
+		public void Awake()
+		{
+				if (instance == null) instance = this;
+		}
+
 		public void StartBattle()
 		{
 				GameObject[] enemyArray = GameObject.FindGameObjectsWithTag(Constants.TAG_ENEMY);
@@ -23,10 +34,14 @@ public class SoldierManager : MonoBehaviour
 				{
 						teamSoldiers.Add(team.GetComponent<Soldier>());
 				}
-				//teamSoldiers.Add(GameObject.FindGameObjectWithTag(Constants.TAG_Player).GetComponent<Soldier>());
-
-
 				isBattle = true;
+				Time.timeScale = PlayerPrefs.GetFloat(Constants.GAMESPEED);
+
+
+
+#if UNITY_ANDROID
+				UIManager.Instance().joystickPanel.gameObject.SetActive(true);
+#endif
 		}
 
 		public void Update()
@@ -40,13 +55,16 @@ public class SoldierManager : MonoBehaviour
 						UIManager.Instance().defeatImage.gameObject.SetActive(true);
 
 						Debug.Log("ÆÐ¹è");
+						Time.timeScale = 1.0f;
 						isBattle = false;
+
 
 				}
 				else if (enemySoldiers.Count == 0)
 				{
 						UIManager.Instance().victoryImage.gameObject.SetActive(true);
 						Debug.Log("½Â¸®");
+						Time.timeScale = 1.0f;
 						isBattle = false;
 				}
 
