@@ -35,6 +35,9 @@ public class SoldierManager : MonoBehaviour
 						teamSoldiers.Add(team.GetComponent<Soldier>());
 				}
 				isBattle = true;
+				Time.timeScale = PlayerPrefs.GetFloat(Constants.GAMESPEED);
+
+
 
 #if UNITY_ANDROID
 				UIManager.Instance().joystickPanel.gameObject.SetActive(true);
@@ -52,13 +55,16 @@ public class SoldierManager : MonoBehaviour
 						UIManager.Instance().defeatImage.gameObject.SetActive(true);
 
 						Debug.Log("ÆÐ¹è");
+						Time.timeScale = 1.0f;
 						isBattle = false;
+
 
 				}
 				else if (enemySoldiers.Count == 0)
 				{
 						UIManager.Instance().victoryImage.gameObject.SetActive(true);
 						Debug.Log("½Â¸®");
+						Time.timeScale = 1.0f;
 						isBattle = false;
 				}
 

@@ -10,7 +10,7 @@ public class Player_Archer : Player_Skill
 		private FSM player_FSM;
 		private Player_Attack player_Attack;
 
-		public void Awake()
+		public new void Awake()
 		{
 				base.Awake();
 				player_FSM = GetComponent<FSM>();

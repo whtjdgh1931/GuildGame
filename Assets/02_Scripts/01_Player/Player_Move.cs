@@ -28,6 +28,8 @@ public class Player_Move : Soldier_Move
 
 		public void Update()
 		{
+				if (!SoldierManager.Instance().isBattle) return;
+
 				if (playerState.isAuto) return;
 
         if (playerState.currentHp <= 0) return;

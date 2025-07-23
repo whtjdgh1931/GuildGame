@@ -70,7 +70,7 @@ public class FSM : MonoBehaviour
 
 		public void Update()
 		{
-
+				if (!SoldierManager.Instance().isBattle) return;
 				curTime += Time.deltaTime;
 				curAttackTime += Time.deltaTime;
 

@@ -15,7 +15,8 @@ public class BattleSceneLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.sceneLoaded += CALLBACK_MakePlayer; 
+				SceneManager.sceneLoaded -= CALLBACK_MakePlayer;
+				SceneManager.sceneLoaded += CALLBACK_MakePlayer; 
     }
 
 		private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)

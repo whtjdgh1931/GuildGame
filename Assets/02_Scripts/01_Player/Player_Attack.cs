@@ -34,6 +34,8 @@ public class Player_Attack : MonoBehaviour
 
 		public void Update()
 		{
+				if (!SoldierManager.Instance().isBattle) return;
+
 				curTime += Time.deltaTime;
 				curSkillTime += Time.deltaTime;
 				curUltiTime += Time.deltaTime;
