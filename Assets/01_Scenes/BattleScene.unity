@@ -1364,6 +1364,7 @@ GameObject:
   - component: {fileID: 479782949}
   - component: {fileID: 479782948}
   - component: {fileID: 479782947}
+  - component: {fileID: 479782950}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -1473,6 +1474,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479782945}
   m_CullTransparentMesh: 1
+--- !u!114 &479782950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479782945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffcd61308e5d1a4f815c0c0cf8ef341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494710578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +2428,7 @@ GameObject:
   - component: {fileID: 808649450}
   - component: {fileID: 808649449}
   - component: {fileID: 808649448}
+  - component: {fileID: 808649451}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -2524,6 +2538,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808649446}
   m_CullTransparentMesh: 1
+--- !u!114 &808649451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808649446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffcd61308e5d1a4f815c0c0cf8ef341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,6 +3269,7 @@ MonoBehaviour:
   victoryImage: {fileID: 112216775}
   defeatImage: {fileID: 1360645890}
   joystickPanel: {fileID: 1592537889}
+  gameResultPanel: {fileID: 1151829830}
 --- !u!1 &1038631491
 GameObject:
   m_ObjectHideFlags: 0

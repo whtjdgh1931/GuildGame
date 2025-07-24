@@ -52,6 +52,7 @@ public class SoldierManager : MonoBehaviour
 
 				if (teamSoldiers.Count == 0)
 				{
+						UIManager.Instance().gameResultPanel.gameObject.SetActive(true);
 						UIManager.Instance().defeatImage.gameObject.SetActive(true);
 
 						Debug.Log("ÆÐ¹è");
@@ -62,6 +63,8 @@ public class SoldierManager : MonoBehaviour
 				}
 				else if (enemySoldiers.Count == 0)
 				{
+						UIManager.Instance().gameResultPanel.gameObject.SetActive(true);
+						
 						UIManager.Instance().victoryImage.gameObject.SetActive(true);
 						Debug.Log("½Â¸®");
 						Time.timeScale = 1.0f;

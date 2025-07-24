@@ -15,10 +15,20 @@ public class BattleSceneLoad : MonoBehaviour
 
     public bool isAuto;
 
-    // Start is called before the first frame update
-    void Start()
+		public void Awake()
+		{
+				if (FindObjectsOfType(GetType()).Length > 1)
+				{
+						Destroy(gameObject);
+						return;
+				}
+				DontDestroyOnLoad(gameObject);
+
+		}
+
+		// Start is called before the first frame update
+		void Start()
     {
-				SceneManager.sceneLoaded -= CALLBACK_MakePlayer;
 				SceneManager.sceneLoaded += CALLBACK_MakePlayer;
 
 				playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).classImage;
@@ -29,6 +39,14 @@ public class BattleSceneLoad : MonoBehaviour
 		{
 
 				if (arg0.buildIndex != 2) return;
+
+        Debug.Log("플레이어 생성");
+				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);
+				if (existingPlayer != null)
+				{
+						Destroy(existingPlayer);
+				}
+
 				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierPrefab;
       Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player.name = Constants.NAME_Player;
@@ -49,4 +67,7 @@ public class BattleSceneLoad : MonoBehaviour
 
     public void SetAuto(bool auto)
     { this.isAuto = auto; }
+
+
+		
 }
