@@ -9,7 +9,7 @@ public class BattleSceneLoad : MonoBehaviour
 {
     public PlayerScriptableObject playerClassScriptableObject;
 
-
+	public string playerClass;
 
 
 		public void Awake()
@@ -35,6 +35,7 @@ public class BattleSceneLoad : MonoBehaviour
 
     private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)
 		{
+		if (LobbySceneUIMgr.Instance() != null) LobbySceneUIMgr.Instance().playerClass = playerClass;
 
 				if (arg0.buildIndex != 2) return;
 
@@ -44,7 +45,8 @@ public class BattleSceneLoad : MonoBehaviour
 						Destroy(existingPlayer);
 				}
 
-				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(LobbySceneUIMgr.Instance().playerClass).soldierPrefab;
+		playerClass = LobbySceneUIMgr.Instance().playerClass;
+				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierPrefab;
       Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player.name = Constants.NAME_Player;
         player.level = Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER),1);

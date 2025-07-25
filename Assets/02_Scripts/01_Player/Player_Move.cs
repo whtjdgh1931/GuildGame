@@ -1,72 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Player_Move : Soldier_Move
 {
     public FixedJoystick playerJoyStick;
 
-		private CharacterController playerController;
+    private CharacterController playerController;
 
-		private Player_Soldier playerState;
+    private Player_Soldier playerState;
 
-		public BoxCollider playerCollider;
+    public BoxCollider playerCollider;
 
-		public void ReadyMove()
-		{
-				playerController = GetComponent<CharacterController>();
-				playerState = GetComponent<Player_Soldier>();
+    private SoldierAnim soldier_Anim;
 
-				playerController.enabled = !playerState.isAuto;
-				soldierNav.enabled = playerState.isAuto;
-				GetComponent<FSM>().enabled = playerState.isAuto;
-				playerCollider = GetComponent<BoxCollider>();
-				playerCollider.enabled = playerState.isAuto;
-				playerJoyStick = UIManager.Instance().joystickPanel.GetComponentInChildren<FixedJoystick>();
-		}
+    public void ReadyMove()
+    {
+        playerController = GetComponent<CharacterController>();
+        playerState = GetComponent<Player_Soldier>();
+        soldier_Anim = GetComponentInChildren<SoldierAnim>();
+
+        playerController.enabled = !playerState.isAuto;
+        soldierNav.enabled = playerState.isAuto;
+        GetComponent<FSM>().enabled = playerState.isAuto;
+        playerCollider = GetComponent<BoxCollider>();
+        playerCollider.enabled = playerState.isAuto;
+        playerJoyStick = UIManager.Instance().joystickPanel.GetComponentInChildren<FixedJoystick>();
+    }
 
 
-		public void Update()
-		{
-				if (!SoldierManager.Instance().isBattle) return;
+    public void Update()
+    {
+        if (!SoldierManager.Instance().isBattle) return;
 
-				if (playerState.isAuto) return;
+        if (playerState.isAuto) return;
+
+        if (soldier_Anim != null)
+            soldier_Anim.SetAnimMove(playerController.velocity);
 
         if (playerState.currentHp <= 0) return;
 
-				float h = Input.GetAxis("Horizontal"); //x -1f ~ 1f
-				float v = Input.GetAxis("Vertical"); //y -1f ~ 1f
+        float h = Input.GetAxis("Horizontal"); //x -1f ~ 1f
+        float v = Input.GetAxis("Vertical"); //y -1f ~ 1f
 
 #if UNITY_ANDROID
-				if(playerJoyStick != null)
-				{
-						h = playerJoyStick.Horizontal;
-						v = playerJoyStick.Vertical;
-				}
+        if (playerJoyStick != null)
+        {
+            h = playerJoyStick.Horizontal;
+            v = playerJoyStick.Vertical;
+        }
 #endif
 
-				Vector3 moveDirection = new Vector3(h, 0f, v);
+        Vector3 moveDirection = new Vector3(h, 0f, v);
 
-				moveDirection *= playerState.moveSpeed*8.0f;
+        moveDirection *= playerState.moveSpeed * 8.0f;
 
-				playerController.Move(moveDirection * Time.deltaTime);
+        playerController.Move(moveDirection * Time.deltaTime);
 
-				
-		}
 
-		public bool SetAuto()
-		{
-				playerState.isAuto = !playerState.isAuto;
-				playerController.enabled = !playerState.isAuto;
-				soldierNav.enabled = playerState.isAuto;
-				GetComponent<FSM>().enabled = playerState.isAuto;
-				playerCollider.enabled = playerState.isAuto;
-				return playerState.isAuto;
-		}		
+    }
 
-		public bool returnAuto()
-		{
-				return playerState.isAuto;
-		}
+    public bool SetAuto()
+    {
+        playerState.isAuto = !playerState.isAuto;
+        playerController.enabled = !playerState.isAuto;
+        soldierNav.enabled = playerState.isAuto;
+        GetComponent<FSM>().enabled = playerState.isAuto;
+        playerCollider.enabled = playerState.isAuto;
+        return playerState.isAuto;
+    }
+
+    public bool returnAuto()
+    {
+        return playerState.isAuto;
+    }
 }

@@ -9,6 +9,7 @@ public class ClassSelectBtn : BtnUI
 
     public String className;
     public Image classImage;
+    public Sprite classLogoSprite;
   
     public new void Start()
     {
@@ -20,13 +21,10 @@ public class ClassSelectBtn : BtnUI
 
     private void CALLBACK_ClassSelectBtnClicked()
     {
-        LevelSceneUIManager.Instance().SetClassDataInfo(className,classImage.sprite);
+        LevelSceneUIManager.Instance().SetClassDataInfo(className,classImage.sprite,classLogoSprite);
     }
 
-    public void SetClassDataInfo()
-    {
-       
-    }
+
 
 
 }

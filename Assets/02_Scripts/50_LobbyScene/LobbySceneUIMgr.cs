@@ -33,6 +33,7 @@ public class LobbySceneUIMgr : MonoBehaviour
     }
     public void Start()
     {
+        if(playerClass == null) playerClass = Constants.CLASS_TANKER;
         SetPlayerClassString(playerClass);
 
     }

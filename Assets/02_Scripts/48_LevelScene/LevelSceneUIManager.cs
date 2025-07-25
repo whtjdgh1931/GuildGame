@@ -21,6 +21,7 @@ public class LevelSceneUIManager : MonoBehaviour
     public Text apkRangeText;
 
     public Image classImage;
+    public Image classBGImage;
 
     public List<Dictionary<string, object>> classLevelData;
 
@@ -35,10 +36,10 @@ public class LevelSceneUIManager : MonoBehaviour
         if (instance == null) instance = this;
 
         ClassSelectBtn firstBtn = contents.GetChild(0).gameObject.GetComponent<ClassSelectBtn>();
-        SetClassDataInfo(firstBtn.className,firstBtn.classImage.sprite);
+        SetClassDataInfo(firstBtn.className,firstBtn.classImage.sprite,firstBtn.classLogoSprite);
     }
 
-    public void SetClassDataInfo(string ClassName,Sprite classImageSprite)
+    public void SetClassDataInfo(string ClassName,Sprite classImageSprite,Sprite classLogoSprite)
     {
         className = ClassName;
         classLevelData = ClassManager.Instance().GetLevelData(className);
@@ -53,6 +54,7 @@ public class LevelSceneUIManager : MonoBehaviour
         apkRangeText.text = classLevelData[classLevel - 1]["AttackRange"].ToString();
 
         classImage.sprite = classImageSprite;
+        classBGImage.sprite = classLogoSprite;
 
     }
 
