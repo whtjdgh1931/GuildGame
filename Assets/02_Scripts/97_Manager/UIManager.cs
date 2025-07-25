@@ -12,11 +12,13 @@ public class UIManager : MonoBehaviour
 				return instance;
 		}
 
-		private Soldier player;
+		public Soldier player;
 		public Slider playerHp;
 		public Image victoryImage;
 		public Image defeatImage;
 		public JoyStickPanel joystickPanel;
+
+		public RectTransform gameResultPanel;
 
 		public void Start()
 		{

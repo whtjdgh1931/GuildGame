@@ -116,7 +116,6 @@ public class Player_Tanker : Player_Skill
 						Soldier target = other.gameObject.GetComponent<Soldier>();
 				if (other.gameObject.CompareTag(Constants.TAG_ENEMY)&&target!=null)
 				{
-						Debug.Log(other);
 						DoDamage(target, soldier.attackPower);
 				}
 		}

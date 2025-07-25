@@ -23,6 +23,7 @@ public class Player_Move : Soldier_Move
 				GetComponent<FSM>().enabled = playerState.isAuto;
 				playerCollider = GetComponent<BoxCollider>();
 				playerCollider.enabled = playerState.isAuto;
+				playerJoyStick = UIManager.Instance().joystickPanel.GetComponentInChildren<FixedJoystick>();
 		}
 
 
@@ -42,7 +43,6 @@ public class Player_Move : Soldier_Move
 				{
 						h = playerJoyStick.Horizontal;
 						v = playerJoyStick.Vertical;
-
 				}
 #endif
 

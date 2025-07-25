@@ -32,7 +32,6 @@ public class Player_Magician : Player_Skill
 						if (i!=targetSoldiers.Count-1)
 						{
 						LightningBoltScript soldierLightning = Instantiate(lightning);
-								Debug.Log("Lightning");
 								soldierLightning.StartObject = targetSoldiers[i].gameObject;
 								soldierLightning.EndObject = targetSoldiers[i + 1].gameObject;
 						}
@@ -53,7 +52,6 @@ public class Player_Magician : Player_Skill
 						if (i != targetSoldiers.Count - 1)
 						{
 								LightningBoltScript soldierLightning = Instantiate(lightning);
-								Debug.Log("Lightning");
 								soldierLightning.StartObject = targetSoldiers[i].gameObject;
 								soldierLightning.EndObject = targetSoldiers[i + 1].gameObject;
 						}

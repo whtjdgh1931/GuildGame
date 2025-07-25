@@ -43,7 +43,14 @@ public class ClassManager : MonoBehaviour
 
 		void Awake()
 		{
-				tankerData = CSVReader.Read(tankerDataPath);
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+        tankerData = CSVReader.Read(tankerDataPath);
 				warriorData = CSVReader.Read(warriorDataPath);
 				assassinData = CSVReader.Read(assassinDataPath);
 				archerData = CSVReader.Read(archerDataPath);
@@ -56,10 +63,10 @@ public class ClassManager : MonoBehaviour
 				{
 						instance = this;
 				}
-								//LoadClassLevel();
+		//LoadClassLevel();
 
 
-		}
+        }
 
 		public List<Dictionary<string, object>> GetLevelData(string className)
 		{

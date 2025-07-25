@@ -156,7 +156,6 @@ public class SPUM_Prefabs : MonoBehaviour
     }
     public void PlayAnimation(PlayerState PlayState, int index){
         Animator animator = _anim;
-        //Debug.Log(PlayState.ToString());
         var animations =  StateAnimationPairs[PlayState.ToString()];
         //Debug.Log(OverrideController[PlayState.ToString()].name);
         OverrideController[PlayState.ToString()] = animations[index];

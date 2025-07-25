@@ -22,7 +22,6 @@ public class HealerSkill : ClassSkill
 				foreach (Collider healTarget in healTeam)
 				{
 						if (healTarget.GetComponent<Soldier>() == null || !healTarget.CompareTag(soldier.tag)) continue;
-						Debug.Log(healTarget.gameObject + "Heal");
 						if (minSoldierHp > (float)healTarget.GetComponent<Soldier>().currentHp/healTarget.GetComponent<Soldier>().maxHp)
 						{
 								healTargetSoldier = healTarget.GetComponent<Soldier>();
@@ -33,7 +32,6 @@ public class HealerSkill : ClassSkill
 
 				if (healTargetSoldier == null || healTargetSoldier.currentHp >= healTargetSoldier.maxHp)
 				{
-						Debug.Log("Target : null");
 						DoAttack(target);
 						GetComponent<FSM>().curTime = GetComponent<FSM>().skillCoolTime - 1f;
 						return;

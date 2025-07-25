@@ -8,15 +8,12 @@ public class AssassinSkill : ClassSkill
 
 		public override void DoAttack(Soldier target)
 		{
-				Debug.Log("AssassinAttack");
 				DoDamage(target, soldier.attackPower);
 		}
 
 		public override void DoSkill(Soldier target)
 		{
-				Debug.Log("AssassinSkill");
 				Dart dart = Instantiate(dartPrefab);
-				Debug.Log(dart.name);
 				dart.target = target;
 				dart.transform.position = transform.position;
 				dart.arrowPower = soldier.attackPower;
