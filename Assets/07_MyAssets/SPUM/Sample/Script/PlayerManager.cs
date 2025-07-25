@@ -91,7 +91,6 @@ public class PlayerManager : MonoBehaviour
                     {
                         Unit.isAction = true;
                         int index = Info[StateName].FindIndex(x => x == clip);
-                        Debug.Log(State + ":" + index);
                         Unit._prefabs._anim.Rebind();
                         Unit.SetStateAnimationIndex(State, index);
                         Unit.PlayStateAnimation(State);
@@ -248,7 +247,6 @@ public class PlayerManager : MonoBehaviour
         DestroyImmediate(imageSave);
 
         Screen.SetResolution((int)_nowSize.x, (int)_nowSize.y, false);
-        Debug.Log("Screenshot Saved : " + filename);
         _bg.SetActive(true);
     }
 

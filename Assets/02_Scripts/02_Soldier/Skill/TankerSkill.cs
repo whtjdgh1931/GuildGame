@@ -8,7 +8,6 @@ public class TankerSkill : ClassSkill
 		public GameObject shieldGameObject;
 		public override void DoAttack(Soldier target)
 		{
-				Debug.Log("attack" + target);
 
 				DoDamage(target,soldier.attackPower);
 		}		

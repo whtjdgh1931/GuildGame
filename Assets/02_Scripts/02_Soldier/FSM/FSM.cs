@@ -176,7 +176,6 @@ public class FSM : MonoBehaviour
 				}
 				if(soldier.name == Constants.NAME_Player&&!isTaunt)
 				{
-						Debug.Log("PlayerAuotAttack");
 						player_Attack.DoAutoAttack();
 						return;
 				}

@@ -35,6 +35,7 @@ public static class Constants
     /// ÃÖ´ëÄ¡
     /// </summary>
     public static int maxLevel = 50;
+    public static int minLevel = 1;
 
     public static float AttackTime = 2f;
     public static float skillCoolTime = 5f;
