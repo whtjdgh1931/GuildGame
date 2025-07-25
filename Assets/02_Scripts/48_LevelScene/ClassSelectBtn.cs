@@ -9,11 +9,7 @@ public class ClassSelectBtn : BtnUI
 
     public String className;
     public Image classImage;
-    public void Awake()
-    {
-        classImage = GetComponentInChildren<Image>();
-
-    }
+  
     public new void Start()
     {
         base.Start();
