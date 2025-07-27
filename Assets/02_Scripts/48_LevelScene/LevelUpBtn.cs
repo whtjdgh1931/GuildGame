@@ -8,9 +8,11 @@ public class LevelUpBtn : BtnUI
 {
 
     public float curTime;
+    public float initTime = 1.5f;
     public float coolTime=0.3f;
 
     public bool isHold = false;
+    public bool isInit = false;
 
 
     // Start is called before the first frame update
@@ -27,9 +29,11 @@ public class LevelUpBtn : BtnUI
 
     public void Update()
     {
-        curTime += Time.deltaTime;
         if (!isHold) return;
+        curTime += Time.deltaTime;
 
+        if (curTime > initTime) isInit = true;
+        if (!isInit) return;
         if(curTime>coolTime)
         {
             CALLBACK_LevelUpBtnClicked();
@@ -46,6 +50,8 @@ public class LevelUpBtn : BtnUI
     public void OnPointerUp()
     {
         isHold = false;
+        isInit = false;
+        curTime = 0;
     }
     
 }

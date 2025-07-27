@@ -9,11 +9,8 @@ public class ClassSelectBtn : BtnUI
 
     public String className;
     public Image classImage;
-    public void Awake()
-    {
-        classImage = GetComponentInChildren<Image>();
-
-    }
+    public Sprite classLogoSprite;
+  
     public new void Start()
     {
         base.Start();
@@ -24,13 +21,10 @@ public class ClassSelectBtn : BtnUI
 
     private void CALLBACK_ClassSelectBtnClicked()
     {
-        LevelSceneUIManager.Instance().SetClassDataInfo(className,classImage.sprite);
+        LevelSceneUIManager.Instance().SetClassDataInfo(className,classImage.sprite,classLogoSprite);
     }
 
-    public void SetClassDataInfo()
-    {
-       
-    }
+
 
 
 }

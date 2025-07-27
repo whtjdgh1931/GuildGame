@@ -12,7 +12,6 @@ public class LobbySceneUIMgr : MonoBehaviour
         return instance;
 
     }
-    public Text playerClassText;
     public Text playerClassLevel;
 
     public BattleSceneLoad battleSceneLoad;
@@ -34,6 +33,7 @@ public class LobbySceneUIMgr : MonoBehaviour
     }
     public void Start()
     {
+        if(playerClass == null) playerClass = Constants.CLASS_TANKER;
         SetPlayerClassString(playerClass);
 
     }
@@ -44,16 +44,12 @@ public class LobbySceneUIMgr : MonoBehaviour
     public void SetPlayerClassString(string playerClass)
     {
         this.playerClass = playerClass;
-        playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).classImage;
-        playerClassLevel.text = "PlayerLevel : " +PlayerPrefs.GetInt(Constants.CLASS_PLAYER).ToString();
+        playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierLogoPrefab;
+        playerClassLevel.text = "Level : " +PlayerPrefs.GetInt(Constants.CLASS_PLAYER).ToString();
 
 
     }
 
-    public void Update()
-		{
-				playerClassText.text = playerClass;
-		}
 
     public void SetAuto(bool auto)
     { this.isAuto = auto; }
