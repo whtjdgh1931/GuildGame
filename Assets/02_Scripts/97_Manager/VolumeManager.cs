@@ -5,7 +5,7 @@ public class VolumeManager : MonoBehaviour
 
     private static VolumeManager instance;
 
-    public float volumeMulti = 1f;
+
 
     public static VolumeManager Instance()
     {
@@ -21,5 +21,11 @@ public class VolumeManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if(instance == null) instance = this;
+
+    }
+
+		public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
     }
 }
