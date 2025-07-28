@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadBattleSceneBtn : BtnUI
 {
-		public SceneAsset enemyScene;
+		public string enemyScene;
 
 
 		protected new void Start()
@@ -18,8 +18,8 @@ public class LoadBattleSceneBtn : BtnUI
 
 		private void CALLBACK_LoadBattleSceneBtnClicked()
 		{
-				PlayerPrefs.SetString(Constants.ENEMYSCENE, enemyScene.name);
+				PlayerPrefs.SetString(Constants.ENEMYSCENE, enemyScene);
 				SceneManager.LoadScene(Constants.BATTLESCENE);
-				SceneManager.LoadScene(enemyScene.name,LoadSceneMode.Additive);
+				SceneManager.LoadScene(enemyScene,LoadSceneMode.Additive);
 		}
 }

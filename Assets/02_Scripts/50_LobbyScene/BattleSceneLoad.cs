@@ -37,6 +37,7 @@ public class BattleSceneLoad : MonoBehaviour
 		{
 		if (LobbySceneUIMgr.Instance() != null) LobbySceneUIMgr.Instance().playerClass = playerClass;
 
+		playerClass = LobbySceneUIMgr.Instance().playerClass;
 				if (arg0.buildIndex != 2) return;
 
 				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);
@@ -45,7 +46,6 @@ public class BattleSceneLoad : MonoBehaviour
 						Destroy(existingPlayer);
 				}
 
-		playerClass = LobbySceneUIMgr.Instance().playerClass;
 				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierPrefab;
       Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player.name = Constants.NAME_Player;

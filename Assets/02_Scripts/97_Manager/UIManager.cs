@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,9 +31,16 @@ public class UIManager : MonoBehaviour
 				player = GameObject.Find(Constants.NAME_Player).GetComponent<Soldier>();
 
 
+
 		}
 		public void Update()
 		{
 				playerHp.value = (float)player.currentHp/player.maxHp;
 		}
+
+	public void SetJoystick()
+	{
+        joystickPanel.gameObject.SetActive(!player.GetComponent<Player_Soldier>().isAuto);
+
+    }
 }

@@ -43,7 +43,7 @@ public class LevelSceneUIManager : MonoBehaviour
     {
         className = ClassName;
         classLevelData = ClassManager.Instance().GetLevelData(className);
-        classLevel = PlayerPrefs.GetInt(className);
+        classLevel = Mathf.Max(1,PlayerPrefs.GetInt(className));
 
         classNameText.text = className;
         levelText.text = classLevel.ToString();
