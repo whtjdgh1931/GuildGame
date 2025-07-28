@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ade19538518efc4d927a064a5f3feaa
+guid: e7493d4b871b2284285e580d45b70da6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,22 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Healer_0
+      name: WarriorImage 1_0
       rect:
         serializedVersion: 2
-        x: 43
-        y: 8
-        width: 84
-        height: 175
+        x: 31
+        y: 30
+        width: 220
+        height: 342
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 87, z: 0, w: 88}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5cd650f1f41589468397bc2ccca2345
-      internalID: 2064561663
+      spriteID: b73bb9a496528c244b27c5d734ac9e25
+      internalID: -690105567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarriorImage 1_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 4
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfdaf5f181016d4394b627c7832201c
+      internalID: -542984920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarriorImage 1_2
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47725789f2112e4387d23e315dc2472
+      internalID: 1162515046
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Healer_0: 2064561663
+      WarriorImage 1_0: -690105567
+      WarriorImage 1_1: -542984920
+      WarriorImage 1_2: 1162515046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

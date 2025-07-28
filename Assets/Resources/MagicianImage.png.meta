@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ade19538518efc4d927a064a5f3feaa
+guid: 34ba5ee396e3da94d8e0997d50a90d7d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Healer_0
+      name: MagicianImage_0
       rect:
         serializedVersion: 2
-        x: 43
-        y: 8
-        width: 84
-        height: 175
+        x: 17
+        y: 9
+        width: 53
+        height: 91
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 87, z: 0, w: 88}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5cd650f1f41589468397bc2ccca2345
-      internalID: 2064561663
+      spriteID: fe6f76ed4544bb749835873b9cce9971
+      internalID: 674174291
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Healer_0: 2064561663
+      MagicianImage_0: 674174291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
