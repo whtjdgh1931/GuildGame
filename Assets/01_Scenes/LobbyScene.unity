@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyArcher
 --- !u!114 &25599524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyTanker
 --- !u!114 &116118996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyArcher
 --- !u!114 &269738061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 7906ee70ed817d741991a192362e294b, type: 3}
+  enemyScene: EnemyTanker
 --- !u!1 &798363266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyTanker
 --- !u!114 &825115912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyTanker
 --- !u!114 &872771148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,7 +3478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyTanker
 --- !u!1 &1439737558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,7 +3639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 7906ee70ed817d741991a192362e294b, type: 3}
+  enemyScene: EnemyArcher
 --- !u!114 &1441378400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4002,7 +4002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScene: {fileID: 102900000, guid: 09c4faffbd3e02648a6d87645de8f929, type: 3}
+  enemyScene: EnemyArcher
 --- !u!114 &1485604245
 MonoBehaviour:
   m_ObjectHideFlags: 0

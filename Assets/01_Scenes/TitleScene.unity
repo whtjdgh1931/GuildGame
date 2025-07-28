@@ -1394,7 +1394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 0}
-  volumeManager: {fileID: 0}
 --- !u!1 &947337648
 GameObject:
   m_ObjectHideFlags: 0

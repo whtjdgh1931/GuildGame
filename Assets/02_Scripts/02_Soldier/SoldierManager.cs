@@ -40,16 +40,18 @@ public class SoldierManager : MonoBehaviour
         isBattle = true;
         Time.timeScale = PlayerPrefs.GetFloat(Constants.GAMESPEED);
 
-
-
 #if UNITY_ANDROID
-        uiManager.joystickPanel.gameObject.SetActive(true);
+        uiManager.SetJoystick();
 #endif
+
     }
 
     public void Update()
     {
         if (!isBattle) return;
+#if UNITY_ANDROID
+        uiManager.SetJoystick();
+#endif
         enemySoldiers.RemoveAll(soldier => soldier == null);
         teamSoldiers.RemoveAll(soldier => soldier == null);
 
