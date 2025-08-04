@@ -50,6 +50,7 @@ public class SoldierManager : MonoBehaviour
     {
         if (!isBattle) return;
 #if UNITY_ANDROID
+        if(uiManager.player!=null)
         uiManager.SetJoystick();
 #endif
         enemySoldiers.RemoveAll(soldier => soldier == null);
