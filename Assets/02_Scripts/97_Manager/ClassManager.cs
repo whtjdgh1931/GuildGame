@@ -14,14 +14,6 @@ public class ClassManager : MonoBehaviour
 				return instance;
 		}
 
-		//TODO 삭제할지 아닐지 결정
-		//public int tankerLevel;
-		//public int warriorLevel;
-		//public int assassinLevel;
-		//public int archerLevel;
-		//public int healerLevel;
-		//public int magicianLevel;
-
 
 		public string tankerDataPath;
 		public List<Dictionary<string,object>> tankerData;
@@ -138,17 +130,6 @@ public class ClassManager : MonoBehaviour
 
 
 		}
-
-		//TODO 삭제할지 말지 결정
-		//public void LoadClassLevel()
-		//{
-		//		tankerLevel = PlayerPrefs.GetInt(Constants.CLASS_TANKER);
-		//		warriorLevel = PlayerPrefs.GetInt(Constants.CLASS_WARRIOR);
-		//		assassinLevel = PlayerPrefs.GetInt(Constants.CLASS_ASSASSIN);
-		//		archerLevel = PlayerPrefs.GetInt(Constants.CLASS_ARCHER);
-		//		healerLevel = PlayerPrefs.GetInt(Constants.CLASS_HEALER);
-		//		magicianLevel = PlayerPrefs.GetInt(Constants.CLASS_MAGICIAN);
-		//}
 
 		private void ClearClassLevel()
 		{
