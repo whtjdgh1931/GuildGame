@@ -55,6 +55,8 @@ public class FSM : MonoBehaviour
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
+				if (soldier_Anim == null) GetComponentInChildren<PlayerAnim>();
+				Debug.Log(soldier_Anim,gameObject);
 
 				if(soldier.name == Constants.NAME_Player)
 						player_Attack = GetComponent<Player_Attack>();
