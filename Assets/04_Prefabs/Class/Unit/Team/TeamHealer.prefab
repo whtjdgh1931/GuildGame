@@ -401,16 +401,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2041219803408278701, guid: 756d23efaba392744bc0c9903883f5a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3840596063043631634, guid: 756d23efaba392744bc0c9903883f5a1,
         type: 3}
       propertyPath: m_Name
       value: Priest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352485464663641524, guid: 756d23efaba392744bc0c9903883f5a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7371497903738610096, guid: 756d23efaba392744bc0c9903883f5a1,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9240fd14d3416d64b95ee62b0d75aff4, type: 2}
+    - target: {fileID: 7739344743321098665, guid: 756d23efaba392744bc0c9903883f5a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101844050629138969, guid: 756d23efaba392744bc0c9903883f5a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

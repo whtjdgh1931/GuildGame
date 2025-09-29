@@ -404,10 +404,20 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c443760320738df41801c64ff799f338, type: 2}
+    - target: {fileID: 2987003889649230204, guid: 0c91f4db5753a1b4e9cdf5ca7c72b7af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7310790704800701054, guid: 0c91f4db5753a1b4e9cdf5ca7c72b7af,
         type: 3}
       propertyPath: m_Name
       value: Assassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352566781559306811, guid: 0c91f4db5753a1b4e9cdf5ca7c72b7af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

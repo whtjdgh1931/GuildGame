@@ -20,7 +20,7 @@ public class LevelSceneUIManager : MonoBehaviour
     public Text apkPowerText;
     public Text apkRangeText;
 
-    public Image classImage;
+    public Camera selectCharacterCamera;
     public Image classBGImage;
 
     public List<Dictionary<string, object>> classLevelData;
@@ -36,10 +36,10 @@ public class LevelSceneUIManager : MonoBehaviour
         if (instance == null) instance = this;
 
         ClassSelectBtn firstBtn = contents.GetChild(0).gameObject.GetComponent<ClassSelectBtn>();
-        SetClassDataInfo(firstBtn.className,firstBtn.classImage.sprite,firstBtn.classLogoSprite);
+        SetClassDataInfo(firstBtn.className,firstBtn.characterPosition,firstBtn.classLogoSprite);
     }
 
-    public void SetClassDataInfo(string ClassName,Sprite classImageSprite,Sprite classLogoSprite)
+    public void SetClassDataInfo(string ClassName, Vector3Int selectVector,Sprite classLogoSprite)
     {
         className = ClassName;
         classLevelData = ClassManager.Instance().GetLevelData(className);
@@ -52,8 +52,8 @@ public class LevelSceneUIManager : MonoBehaviour
 
         apkPowerText.text = classLevelData[classLevel - 1]["AttackPower"].ToString();
         apkRangeText.text = classLevelData[classLevel - 1]["AttackRange"].ToString();
-
-        classImage.sprite = classImageSprite;
+        selectCharacterCamera.transform.localPosition = selectVector;
+        
         classBGImage.sprite = classLogoSprite;
 
     }

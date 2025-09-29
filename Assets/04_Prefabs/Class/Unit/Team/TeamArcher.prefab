@@ -354,6 +354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 341179445230883269, guid: d2d9134f5df157049a5d1d995c0d8935,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5132558305362759029, guid: d2d9134f5df157049a5d1d995c0d8935,
         type: 3}
       propertyPath: m_Controller
@@ -407,6 +412,11 @@ PrefabInstance:
     - target: {fileID: 6391449794989648154, guid: d2d9134f5df157049a5d1d995c0d8935,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454485944103786932, guid: d2d9134f5df157049a5d1d995c0d8935,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
