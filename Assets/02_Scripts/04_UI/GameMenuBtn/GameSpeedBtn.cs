@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameSpeedBtn : BtnUI
 {
-    public Text text;
+    public TextMeshProUGUI text;
 
 		public enum GameSpeed
 		{ 
@@ -22,7 +23,7 @@ public class GameSpeedBtn : BtnUI
 		public new void Start()
 		{
 				base.Start();
-				text = GetComponentInChildren<Text>();
+				text = GetComponentInChildren<TextMeshProUGUI>();
 				button = GetComponent<Button>();
 
 				button.onClick.AddListener(CALLBACK_GameSpeedBtnClicked);

@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd9467baca4eaf4cb60f04a69ba44d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeObject: {fileID: 0}
   level: 0
 --- !u!114 &1709684233838702681
 MonoBehaviour:
@@ -174,6 +175,8 @@ MonoBehaviour:
   curTime: 99
   attackSpeed: 1
   curAttackTime: 0
+  isTaunt: 0
+  isStun: 0
 --- !u!54 &1649679641212061733
 Rigidbody:
   m_ObjectHideFlags: 0

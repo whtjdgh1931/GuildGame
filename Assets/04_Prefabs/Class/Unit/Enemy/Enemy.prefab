@@ -161,6 +161,8 @@ MonoBehaviour:
   curTime: 0
   attackSpeed: 0
   curAttackTime: 0
+  isTaunt: 0
+  isStun: 0
 --- !u!54 &7141525308379006688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,5 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3671984aaac214b4ba5c1a23842dbca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRangeObject: {fileID: 0}
   level: 0
   EnemyClassName: 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class LevelSceneUIManager : MonoBehaviour
@@ -14,11 +15,11 @@ public class LevelSceneUIManager : MonoBehaviour
 
     public string className;
     public int classLevel;
-    public Text classNameText;
-    public Text levelText;
-    public Text hpText;
-    public Text apkPowerText;
-    public Text apkRangeText;
+    public TextMeshProUGUI classNameText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI apkPowerText;
+    public TextMeshProUGUI apkRangeText;
 
     public Camera selectCharacterCamera;
     public Image classBGImage;
