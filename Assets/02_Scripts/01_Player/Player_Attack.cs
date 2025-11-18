@@ -5,11 +5,12 @@ public class Player_Attack : MonoBehaviour
     private Player_Skill playerSkill;
     private Player_Soldier player;
     private SoldierAnim soldier_Anim;
-
+    public SoldierAnim Soldier_Anim { get { return soldier_Anim; } }
 
 
     private float curTime;
     private float attackCoolTime;
+    public float AttackCoolTime { get { return attackCoolTime; } }
     private float curSkillTime;
     private float skillCoolTime;
     private float curUltiTime;

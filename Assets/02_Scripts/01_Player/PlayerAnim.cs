@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerAnim : MonoBehaviour
+public class PlayerAnim : SoldierAnim
 {
-    private NavMeshAgent agent;
     private SpriteRenderer[] spriteRenderers;
-    private Animator anim;
-    private FSM FSM;
     private bool isFlip;
 
     private void Awake()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         FSM = GetComponentInParent<FSM>();
@@ -39,24 +35,5 @@ public class PlayerAnim : MonoBehaviour
 
     }
 
-    public void SetAnimAttack()
-    {
-        anim.SetTrigger("IsAttack");
-    }
-
-    public void SetAnimSkill()
-    {
-        anim.SetTrigger("IsSkill");
-
-    }
-
-    public void SetAnimMove(Vector3 velocity)
-    {
-        anim.SetBool("IsMove", !Mathf.Approximately(velocity.magnitude, 0));
-    }
-
-    public void SetAnimUlti()
-    {
-        anim.SetTrigger("IsUlti");
-    }
+   
 }

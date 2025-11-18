@@ -55,20 +55,58 @@ public class FSM : MonoBehaviour
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
-				if (soldier_Anim == null) GetComponentInChildren<PlayerAnim>();
+				if (soldier_Anim == null)
+				{
+						soldier_Anim = GetComponentInChildren<PlayerAnim>();
+				}
+
 				Debug.Log(soldier_Anim,gameObject);
+
 
 				if(soldier.name == Constants.NAME_Player)
 						player_Attack = GetComponent<Player_Attack>();
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
+				if(player_Attack != null)
+				{
+						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
+						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+				}
 				skillCoolTime = Constants.skillCoolTime;
 
 				curTime = int.MaxValue;
 				curAttackTime = int.MaxValue;
 				condition = Soldier_Condition.SEARCH;
 		}
+		public void Initialize()
+		{
+				soldier_Move = GetComponent<Soldier_Move>();
+				soldier = GetComponent<Soldier>();
+				soldier_Attack = GetComponent<ClassSkill>();
 
+				if (soldier.name == Constants.NAME_Player)
+						player_Attack = GetComponent<Player_Attack>();
+
+				soldier_Anim = GetComponentInChildren<SoldierAnim>();
+				if (soldier_Anim == null)
+				{
+						soldier_Anim=GetComponentInChildren<PlayerAnim>();
+						Debug.Log("Search PlayerAnim");
+				}
+				Debug.Log(soldier_Anim, gameObject);
+
+				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
+				if (player_Attack != null)
+				{
+						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
+						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+				}
+				skillCoolTime = Constants.skillCoolTime;
+
+				curTime = int.MaxValue;
+				curAttackTime = int.MaxValue;
+				condition = Soldier_Condition.SEARCH;
+		}
 
 		public void Update()
 		{
@@ -234,4 +272,6 @@ public class FSM : MonoBehaviour
 						}
 				}
 		}
+
+		
 }

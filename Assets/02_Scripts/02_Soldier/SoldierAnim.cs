@@ -4,14 +4,12 @@ using UnityEngine.AI;
 
 public class SoldierAnim : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Animator anim;
-    private FSM FSM;
+    protected Animator anim;
+    protected FSM FSM;
     private Character4D character;
 
     private void Awake()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         character = GetComponent<Character4D>();
         FSM = GetComponentInParent<FSM>();
@@ -31,24 +29,24 @@ public class SoldierAnim : MonoBehaviour
 
     }
 
-    public void SetAnimAttack()
+    public virtual void SetAnimAttack()
     {
         Debug.Log("Attack");
         anim.SetTrigger("IsAttack");
     }
 
-    public void SetAnimSkill()
+    public virtual void SetAnimSkill()
     {
         anim.SetTrigger("IsSkill");
 
     }
 
-    public void SetAnimMove(Vector3 velocity)
+    public virtual void SetAnimMove(Vector3 velocity)
     {
         anim.SetBool("IsMove", !Mathf.Approximately(velocity.magnitude, 0));
     }
 
-    public void SetAnimUlti()
+    public virtual void SetAnimUlti()
     {
         anim.SetTrigger("IsUlti");
     }

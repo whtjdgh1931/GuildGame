@@ -21,6 +21,10 @@ public class Player_Soldier : Soldier
 				attackPower *= 2;
 				GetComponent<Player_Attack>().ReadyAttack();
 				GetComponent<Player_Move>().ReadyMove();
-
+				FSM fsm = GetComponent<FSM>();
+				if(fsm != null )
+				{
+						fsm.Initialize();
+				}
 		}
 }
