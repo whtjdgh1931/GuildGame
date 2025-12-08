@@ -47,3 +47,60 @@ public static class Constants
     /// </summary>
     public static float Multi_HP = 5.0f;
 }
+
+public enum World
+{
+		World1 = 1,
+		World2 = 2,
+		World3 = 3,
+    World4 = 4,
+    World5 = 5,
+    World6 = 6,
+    World7 = 7,
+    World8 = 8,
+    World9 = 9,
+    World10 = 10,
+    World11 = 11,
+    World12 = 12,
+    World13 = 13,
+    World14 = 14,
+    World15 = 15,
+    World16 = 16,
+    World17 = 17,
+    World18 = 18,
+		// 계속 확장 가능
+}
+
+public enum Level
+{
+		Level1 = 1,
+		Level2 = 2,
+		Level3 = 3,
+    Level4 = 4,
+    Level5 = 5,
+    Level6 = 6,
+    Level7 = 7,
+    Level8 = 8,
+    Level9 = 9,
+    Level10 = 10,
+    Level11 = 11,
+    Level12 = 12,
+    Level13 = 13,
+    Level14 = 14,
+    Level15 = 15,
+    Level16 = 16,
+    Level17 = 17,
+    Level18 = 18,
+		// 계속 확장 가능
+}
+
+public static class StageHelper
+{
+		public static string ToSceneName(World world, Level level)
+		{
+				// "1-2" 형태로 변환
+				return $"{(int)world}-{(int)level}";
+		}
+}
+
+
