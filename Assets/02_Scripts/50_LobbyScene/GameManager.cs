@@ -5,84 +5,98 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
+    // 싱글톤 인스턴스
+    public static GameManager Instance { get; private set; }
 
-    public static GameManager Instance()
-    {
-        return instance;
+    //[Header("UI References")]
+    //public Text playerClassLevel;
+    //public Image playerImage;
+    //public InputField playerLevelInputField;
 
-    }
-    public Text playerClassLevel;
-
+    [Header("Game References")]
     public BattleSceneLoad battleSceneLoad;
-
-
     public PlayerScriptableObject playerClassScriptableObject;
 
+    [Header("Player Data")]
     public string playerClass;
-
-    public Image playerImage;
-
-    public InputField playerLevelInputField;
-
     public bool isAuto;
 
-    public void Awake()
+    public static GameManager GetInstance()
     {
-        if(instance == null) instance = this;
-
-
-        
+        if (Instance == null)
+        {
+            // 새 GameObject를 만들어 붙임
+            GameObject go = new GameObject("GameManager");
+            Instance = go.AddComponent<GameManager>();
+            DontDestroyOnLoad(go);
+        }
+        return Instance;
     }
-    public void Start()
+
+
+    private void Awake()
     {
-        if(playerClass == null) playerClass = PlayerPrefs.GetString(Constants.CLASS_PLAYER,Constants.CLASS_TANKER);
-        PlayerPrefs.SetInt(Constants.CLASS_PLAYER, Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER), 1));
+        // 싱글톤 보장
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        // PlayerPrefs에서 클래스/레벨 불러오기
+        if (string.IsNullOrEmpty(playerClass))
+            playerClass = PlayerPrefs.GetString(Constants.CLASS_PLAYER_CLASS, Constants.CLASS_TANKER);
+
+        PlayerPrefs.SetInt(Constants.CLASS_PLAYER_LEVEL,
+            Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER_LEVEL), 1));
+
         SetPlayerClassString(playerClass);
-
     }
-
-
-
 
     public void SetPlayerClassString(string playerClass)
     {
         this.playerClass = playerClass;
-        playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierLogoPrefab;
-        playerClassLevel.text = "Level : " +PlayerPrefs.GetInt(Constants.CLASS_PLAYER).ToString();
+
+        //// UI 업데이트
+        //playerImage.sprite = playerClassScriptableObject
+        //    .GetClassDataByClassName(playerClass).soldierLogoPrefab;
+
+        //playerClassLevel.text = "Level : " +
+        //    PlayerPrefs.GetInt(Constants.CLASS_PLAYER_LEVEL).ToString();
+
+        // 자동 여부 반영
         SetAuto(PlayerPrefs.GetInt("isAuto") == 1);
-        PlayerPrefs.SetString(Constants.CLASS_PLAYER, playerClass);
+
+        // 클래스 저장
+        PlayerPrefs.SetString(Constants.CLASS_PLAYER_CLASS, playerClass);
     }
 
-
     public void SetAuto(bool auto)
-    { isAuto = auto;
-        int autoInt = 0;
-        if(auto)
-        {
-            autoInt = 1;
-        }
-        PlayerPrefs.SetInt("isAuto", autoInt);
+    {
+        isAuto = auto;
+        PlayerPrefs.SetInt("isAuto", auto ? 1 : 0);
     }
 
     public void SetPlayerLevel()
     {
-        string level = playerLevelInputField.text;
-        // 문자열 level을 정수로 파싱
-        if (int.TryParse(level, out int parsedLevel))
-        {
-            // 유효한 범위로 클램핑
-            int playerLevel = Mathf.Clamp(parsedLevel, Constants.minLevel, Constants.maxLevel);
+        //string level = playerLevelInputField.text;
 
-            // 저장
-            PlayerPrefs.SetInt(Constants.CLASS_PLAYER, playerLevel);
+        //if (int.TryParse(level, out int parsedLevel))
+        //{
+        //    int playerLevel = Mathf.Clamp(parsedLevel, Constants.minLevel, Constants.maxLevel);
+        //    PlayerPrefs.SetInt(Constants.CLASS_PLAYER_LEVEL, playerLevel);
 
-            SetPlayerClassString(playerClass);
-        }
-        else
-        {
-            Debug.LogWarning("레벨 문자열 파싱 실패: " + level);
-        }
+        //    SetPlayerClassString(playerClass);
+        //}
+        //else
+        //{
+        //    //Debug.LogWarning("레벨 문자열 파싱 실패: " + level);
+        //}
     }
-
 }
