@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/01_Scenes/LevelScene.unity
     guid: 3629be2a38cc0be44a48f1d148183237
   - enabled: 1
+    path: Assets/01_Scenes/StageScene.unity
+    guid: 8425f5a616070234e9e379ec45b75c34
+  - enabled: 1
     path: Assets/01_Scenes/EnemyScene/EnemyArcher.unity
     guid: 09c4faffbd3e02648a6d87645de8f929
   - enabled: 1

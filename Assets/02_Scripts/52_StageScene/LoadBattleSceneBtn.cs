@@ -11,7 +11,7 @@ public class LoadBattleSceneBtn : BtnUI
 		[SerializeField] private Level _level;
 
 
-		protected new void Start()
+		public void InitBtn()
 		{
 				base.Start();
 				button.onClick.AddListener(CALLBACK_LoadBattleSceneBtnClicked);
@@ -26,6 +26,12 @@ public class LoadBattleSceneBtn : BtnUI
 				SceneManager.LoadScene(Constants.BATTLESCENE);
 				SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 		}
+
+	public void SetStage(World world, Level level)
+	{
+		_world = world;
+		_level = level;
+	}
 
 		
 }

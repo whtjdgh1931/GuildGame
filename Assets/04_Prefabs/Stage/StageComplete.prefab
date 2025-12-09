@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 404496696332951173}
   - component: {fileID: 7247144460918965823}
   - component: {fileID: 1193444945392306680}
+  - component: {fileID: 8238520166602971359}
   m_Layer: 5
   m_Name: StageComplete
   m_TagString: Untagged
@@ -332,3 +333,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8238520166602971359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634346292417535650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6e6ac2d5cf0c44ba324b9cafc094ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1193444945392306680}
+  _world: 0
+  _level: 0

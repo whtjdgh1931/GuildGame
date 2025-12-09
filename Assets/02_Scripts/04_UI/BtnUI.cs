@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class BtnUI : MonoBehaviour
 {
-		protected Button button;
+		[SerializeField] protected Button button;
 
 
-		protected void Start()
+		protected virtual void Start()
     {
 				button = GetComponent<Button>();
 
