@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbySceneUIMgr : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    private static LobbySceneUIMgr instance;
+    private static GameManager instance;
 
-    public static LobbySceneUIMgr Instance()
+    public static GameManager Instance()
     {
         return instance;
 
@@ -19,7 +19,7 @@ public class LobbySceneUIMgr : MonoBehaviour
 
     public PlayerScriptableObject playerClassScriptableObject;
 
-    public string playerClass = Constants.CLASS_TANKER;
+    public string playerClass;
 
     public Image playerImage;
 
@@ -31,10 +31,12 @@ public class LobbySceneUIMgr : MonoBehaviour
     {
         if(instance == null) instance = this;
 
+
+        
     }
     public void Start()
     {
-        if(playerClass == null) playerClass = Constants.CLASS_TANKER;
+        if(playerClass == null) playerClass = PlayerPrefs.GetString(Constants.CLASS_PLAYER,Constants.CLASS_TANKER);
         PlayerPrefs.SetInt(Constants.CLASS_PLAYER, Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER), 1));
         SetPlayerClassString(playerClass);
 
@@ -48,13 +50,20 @@ public class LobbySceneUIMgr : MonoBehaviour
         this.playerClass = playerClass;
         playerImage.sprite = playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierLogoPrefab;
         playerClassLevel.text = "Level : " +PlayerPrefs.GetInt(Constants.CLASS_PLAYER).ToString();
-
-
+        SetAuto(PlayerPrefs.GetInt("isAuto") == 1);
+        PlayerPrefs.SetString(Constants.CLASS_PLAYER, playerClass);
     }
 
 
     public void SetAuto(bool auto)
-    { this.isAuto = auto; }
+    { isAuto = auto;
+        int autoInt = 0;
+        if(auto)
+        {
+            autoInt = 1;
+        }
+        PlayerPrefs.SetInt("isAuto", autoInt);
+    }
 
     public void SetPlayerLevel()
     {

@@ -35,9 +35,9 @@ public class BattleSceneLoad : MonoBehaviour
 
     private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)
 		{
-		if (LobbySceneUIMgr.Instance() != null) LobbySceneUIMgr.Instance().playerClass = playerClass;
+		if (GameManager.Instance() != null) GameManager.Instance().playerClass = playerClass;
 
-		playerClass = LobbySceneUIMgr.Instance().playerClass;
+		playerClass = GameManager.Instance().playerClass;
 				if (arg0.buildIndex != 2) return;
 
 				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);
@@ -50,7 +50,7 @@ public class BattleSceneLoad : MonoBehaviour
       Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player.name = Constants.NAME_Player;
         player.level = Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER),1);
-		player.GetComponent<Player_Soldier>().isAuto = LobbySceneUIMgr.Instance().isAuto;
+		player.GetComponent<Player_Soldier>().isAuto = GameManager.Instance().isAuto;
 		}
 
  
