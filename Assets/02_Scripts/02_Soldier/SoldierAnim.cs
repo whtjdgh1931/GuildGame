@@ -31,7 +31,7 @@ public class SoldierAnim : MonoBehaviour
 
     public virtual void SetAnimAttack()
     {
-        Debug.Log("Attack");
+        
         anim.SetTrigger("IsAttack");
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,8 @@ public class BattleSceneLoad : MonoBehaviour
 {
     public PlayerScriptableObject playerClassScriptableObject;
 
-	public string playerClass;
+		
+
 
 
 		public void Awake()
@@ -35,9 +37,8 @@ public class BattleSceneLoad : MonoBehaviour
 
     private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)
 		{
-		GameManager.GetInstance().playerClass = playerClass;
-
-		playerClass = GameManager.GetInstance().playerClass;
+				
+		string playerClass = GameManager.GetInstance().playerClass;
 				if (arg0.buildIndex != 2) return;
 
 				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);

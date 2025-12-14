@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,29 +7,37 @@ public class LoadBattleSceneBtn : BtnUI
 {
 		[SerializeField] private World _world;
 		[SerializeField] private Level _level;
-
+		[SerializeField] TextMeshProUGUI stageNum;
 
 		public void InitBtn()
 		{
 				base.Start();
 				button.onClick.AddListener(CALLBACK_LoadBattleSceneBtnClicked);
+				AddBtnAnim();
 		}
 
 		private void CALLBACK_LoadBattleSceneBtnClicked()
 		{
 				string sceneName = StageHelper.ToSceneName(_world, _level);
-				PlayerPrefs.SetString(Constants.ENEMYSCENE, sceneName);
 
+				GameManager.GetInstance().SetStageKey($"Stage_{(int)_world}_{(int)_level}_Cleared");
+				PlayerPrefs.SetString(Constants.ENEMYSCENE, sceneName);
 
 				SceneManager.LoadScene(Constants.BATTLESCENE);
 				SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 		}
 
-	public void SetStage(World world, Level level)
-	{
-		_world = world;
-		_level = level;
-	}
+		public void SetStage(World world, Level level)
+		{
+				_world = world;
+				_level = level;
+				
+				if (stageNum != null)
+				{
 
-		
+						stageNum.text = "Stage" + "\n"+ ((int)level).ToString();
+				}
+		}
+
+
 }

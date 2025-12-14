@@ -70,6 +70,7 @@ public class SoldierManager : MonoBehaviour
         }
         else if (enemySoldiers.Count == 0)
         {
+            PlayerPrefs.SetInt(GameManager.GetInstance().stageKey, 1);
             uiManager.gameResultPanel.gameObject.SetActive(true);
             uiManager.defeatImage.gameObject.SetActive(false);
 

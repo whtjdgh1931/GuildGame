@@ -65,6 +65,7 @@ public class Player_Move : Soldier_Move
         soldierNav.enabled = playerState.isAuto;
         GetComponent<FSM>().enabled = playerState.isAuto;
         playerCollider.enabled = playerState.isAuto;
+        GameManager.GetInstance().SetAuto(playerState.isAuto);
         return playerState.isAuto;
     }
 

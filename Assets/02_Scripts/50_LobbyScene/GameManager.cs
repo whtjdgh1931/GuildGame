@@ -14,12 +14,19 @@ public class GameManager : MonoBehaviour
     //public InputField playerLevelInputField;
 
     [Header("Game References")]
-    public BattleSceneLoad battleSceneLoad;
+    
     public PlayerScriptableObject playerClassScriptableObject;
 
     [Header("Player Data")]
     public string playerClass;
     public bool isAuto;
+
+    private string _stageKey;
+    public string stageKey { get { return _stageKey; } }
+    public void SetStageKey(string stageKey)
+    {
+        _stageKey = stageKey;
+    }
 
     public static GameManager GetInstance()
     {

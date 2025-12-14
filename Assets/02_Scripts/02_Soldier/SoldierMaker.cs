@@ -13,6 +13,7 @@ public class SoldierMaker : MonoBehaviour
 		private Soldier previewInstance;
 		private string previewClassName;
 		private bool isDrag = false;
+	
 		private Camera mainCam;
 
 		public void Start()

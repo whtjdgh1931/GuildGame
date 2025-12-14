@@ -9,4 +9,14 @@ public class HomeScene : MonoBehaviour
     {
         SceneManager.LoadScene("StageScene");
     }
+
+    public void LoadCharacterScene()
+    {
+        SceneManager.LoadScene("CharacterScene");
+    }
+
+    public void LoadLevelScene()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
 }

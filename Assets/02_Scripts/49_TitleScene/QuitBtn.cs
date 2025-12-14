@@ -9,6 +9,7 @@ public class QuitBtn : BtnUI
 		{
 				base.Start();
 				button.onClick.AddListener(CALLBACK_QuitBtnClicked);
+				AddBtnAnim();
 		}
 
 		private void CALLBACK_QuitBtnClicked()

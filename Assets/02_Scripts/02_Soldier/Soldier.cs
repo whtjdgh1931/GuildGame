@@ -10,6 +10,13 @@ public class Soldier : MonoBehaviour
 
 		public SoldierRange attackRangeObject;
 
+		[SerializeField] private CharacterHp _hpSlider;
+
+		public CharacterHp hpSlider { get { return _hpSlider; } }
+		public void SetHpSlider(CharacterHp hpSlider)
+		{
+				_hpSlider = hpSlider;
+		}
 
 		public int shield { get; set;}
 		public int maxHp{get;set;}
@@ -39,7 +46,7 @@ public class Soldier : MonoBehaviour
 
 
 				GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
-
+				
 				attackRangeObject = GetComponentInChildren<SoldierRange>();
 				if (attackRangeObject != null)
 				{
@@ -48,16 +55,25 @@ public class Soldier : MonoBehaviour
 				attackRangeObject.gameObject.SetActive(false);
 				}
 
+
+
 				isInit = true;
 		}
 
-
+		public void SetHpRatio()
+		{
+				_hpSlider.SetSliderValue((float)currentHp / (float)maxHp);
+		}
 		
 
 
 		public void DieSoldier()
 		{
 				Animator anim = GetComponentInChildren<Animator>();
+				if(_hpSlider != null)
+				{
+						Destroy(_hpSlider.gameObject);
+				}
 				if (anim!= null)
 				anim.SetTrigger("IsDead");
 				Destroy(gameObject,1f);

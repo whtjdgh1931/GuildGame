@@ -60,7 +60,7 @@ public class FSM : MonoBehaviour
 						soldier_Anim = GetComponentInChildren<PlayerAnim>();
 				}
 
-				Debug.Log(soldier_Anim,gameObject);
+				
 
 
 				if(soldier.name == Constants.NAME_Player)
@@ -70,7 +70,7 @@ public class FSM : MonoBehaviour
 				if(player_Attack != null)
 				{
 						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
-						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+						
 				}
 				skillCoolTime = Constants.skillCoolTime;
 
@@ -91,15 +91,15 @@ public class FSM : MonoBehaviour
 				if (soldier_Anim == null)
 				{
 						soldier_Anim=GetComponentInChildren<PlayerAnim>();
-						Debug.Log("Search PlayerAnim");
+						
 				}
-				Debug.Log(soldier_Anim, gameObject);
+				
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
 				if (player_Attack != null)
 				{
 						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
-						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+						
 				}
 				skillCoolTime = Constants.skillCoolTime;
 
