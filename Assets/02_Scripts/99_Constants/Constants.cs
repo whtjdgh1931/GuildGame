@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.LookDev;
 
 public static class Constants
 {
@@ -29,6 +30,7 @@ public static class Constants
     public static string CLASS_MAGICIAN = "Magician";
 
     public static string CLASS_PLAYER_LEVEL = "PLAYER_Level";
+    public static string CLASS_PLAYER_EXP = "PLAYER_Exp";
     public static string CLASS_PLAYER_CLASS = "PLAYER_Class";
 
 
