@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Archer
 --- !u!1 &8338841746351217216
@@ -372,6 +373,21 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 577328685d9ad0d43bce28ea3fd97019, type: 2}
     - target: {fileID: 6817661897827237723, guid: a0f47986940a9324190504cc3666e698,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817661897827237723, guid: a0f47986940a9324190504cc3666e698,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817661897827237723, guid: a0f47986940a9324190504cc3666e698,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817661897827237723, guid: a0f47986940a9324190504cc3666e698,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -420,6 +436,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6817661897827237723, guid: a0f47986940a9324190504cc3666e698,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7333039950792787199, guid: a0f47986940a9324190504cc3666e698, type: 3}
     - {fileID: 2533976726935589330, guid: a0f47986940a9324190504cc3666e698, type: 3}
@@ -457,3 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0

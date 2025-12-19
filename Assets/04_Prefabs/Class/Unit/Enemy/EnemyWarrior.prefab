@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Warrior
 --- !u!1001 &6465867295290257181
@@ -367,6 +368,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyWarrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240454715396626185, guid: 3a6f790f897e0cb469615a267e562a0d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240454715396626185, guid: 3a6f790f897e0cb469615a267e562a0d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240454715396626185, guid: 3a6f790f897e0cb469615a267e562a0d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6240454715396626185, guid: 3a6f790f897e0cb469615a267e562a0d,
         type: 3}
@@ -418,6 +434,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6240454715396626185, guid: 3a6f790f897e0cb469615a267e562a0d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6441554379407143790, guid: 3a6f790f897e0cb469615a267e562a0d, type: 3}
     - {fileID: 3755306304932295966, guid: 3a6f790f897e0cb469615a267e562a0d, type: 3}
@@ -455,3 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0

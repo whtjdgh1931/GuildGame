@@ -39,6 +39,7 @@ public class Player_Move : Soldier_Move
         if (playerState.currentHp <= 0) return;
 
         float h = Input.GetAxis("Horizontal"); //x -1f ~ 1f
+        soldier_Anim.SetHorizontal(h);
         float v = Input.GetAxis("Vertical"); //y -1f ~ 1f
 
 #if UNITY_ANDROID

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Tanker
 --- !u!1001 &2649264389453790447
@@ -353,6 +354,21 @@ PrefabInstance:
     - target: {fileID: 2626096989327581244, guid: e70ae97e1963e384f9e89a4aface93ef,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451068919830577061, guid: e70ae97e1963e384f9e89a4aface93ef,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451068919830577061, guid: e70ae97e1963e384f9e89a4aface93ef,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451068919830577061, guid: e70ae97e1963e384f9e89a4aface93ef,
+        type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3451068919830577061, guid: e70ae97e1963e384f9e89a4aface93ef,
@@ -404,6 +420,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451068919830577061, guid: e70ae97e1963e384f9e89a4aface93ef,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4274350972449073138, guid: e70ae97e1963e384f9e89a4aface93ef,
         type: 3}
@@ -469,6 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0
 --- !u!1001 &3502392561143223814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,6 +506,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
         type: 3}

@@ -55,12 +55,7 @@ public class FSM : MonoBehaviour
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
-				if (soldier_Anim == null)
-				{
-						soldier_Anim = GetComponentInChildren<PlayerAnim>();
-				}
-
-				
+			
 
 
 				if(soldier.name == Constants.NAME_Player)
@@ -88,11 +83,7 @@ public class FSM : MonoBehaviour
 						player_Attack = GetComponent<Player_Attack>();
 
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
-				if (soldier_Anim == null)
-				{
-						soldier_Anim=GetComponentInChildren<PlayerAnim>();
-						
-				}
+
 				
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;

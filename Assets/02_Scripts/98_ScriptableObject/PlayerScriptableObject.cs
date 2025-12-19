@@ -22,8 +22,6 @@ public class PlayerClass
     [Header("# 클래스 로고")]
     public Sprite soldierLogoPrefab;
 
-    [Header("# 클래스 이미지")]
-    public Sprite classImage;
 
 }
 

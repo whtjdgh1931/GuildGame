@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Healer
 --- !u!1 &7792525733547112673
@@ -354,6 +355,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1772496873822359290, guid: 623dc7752c0b5504ab8af7c81da21642,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772496873822359290, guid: 623dc7752c0b5504ab8af7c81da21642,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772496873822359290, guid: 623dc7752c0b5504ab8af7c81da21642,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772496873822359290, guid: 623dc7752c0b5504ab8af7c81da21642,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -401,6 +417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772496873822359290, guid: 623dc7752c0b5504ab8af7c81da21642,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2001378410976318507, guid: 623dc7752c0b5504ab8af7c81da21642,
         type: 3}
@@ -459,3 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0

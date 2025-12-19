@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Assassin
 --- !u!1001 &6092904575746646301
@@ -369,6 +370,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyAssassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202899316604885074, guid: 56c5ecce90c72f845a7dbc05725fb7ea,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202899316604885074, guid: 56c5ecce90c72f845a7dbc05725fb7ea,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202899316604885074, guid: 56c5ecce90c72f845a7dbc05725fb7ea,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5202899316604885074, guid: 56c5ecce90c72f845a7dbc05725fb7ea,
         type: 3}
@@ -420,6 +436,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5202899316604885074, guid: 56c5ecce90c72f845a7dbc05725fb7ea,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8821391141416517206, guid: 56c5ecce90c72f845a7dbc05725fb7ea, type: 3}
     - {fileID: 4773557825966937596, guid: 56c5ecce90c72f845a7dbc05725fb7ea, type: 3}
@@ -457,3 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0

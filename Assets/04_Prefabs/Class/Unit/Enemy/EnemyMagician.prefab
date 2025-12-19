@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRangeObject: {fileID: 0}
+  _hpSlider: {fileID: 0}
   level: 1
   EnemyClassName: Magician
 --- !u!114 &8742154591895273677
@@ -364,6 +365,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -412,6 +428,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3865114857902127755, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,
         type: 3}
       propertyPath: m_Name
@@ -453,6 +474,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdcf952b2f8d444799754b2587d784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  FSM: {fileID: 0}
+  character: {fileID: 0}
+  horizontal: 0
 --- !u!4 &8089361975553377061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1514499013751311958, guid: 753e81dcfa73f9e4e8926c9e3ff7529d,

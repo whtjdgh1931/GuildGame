@@ -44,7 +44,7 @@ public class HpCanvas : MonoBehaviour
 						if (soldier != null && soldier.hpSlider != null)
 						{
 								// HP바 위치를 캐릭터 위에 표시
-								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 2.5f);
+								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 3f);
 								soldier.hpSlider.transform.position = screenPos;
 
 								// HP 값 업데이트
@@ -60,7 +60,7 @@ public class HpCanvas : MonoBehaviour
 						if (soldier != null && soldier.hpSlider != null)
 						{
 								// HP바 위치를 캐릭터 위에 표시
-								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 2.5f);
+								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 3f);
 								soldier.hpSlider.transform.position = screenPos;
 
 								// HP 값 업데이트
