@@ -10,26 +10,29 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Game References")]
-    
+
     public PlayerScriptableObject playerClassScriptableObject;
 
     [Header("Player Data")]
     public string playerClass;
     public bool isAuto;
 
+    [Header("Stage")]
     private string _stageKey;
     public string stageKey { get { return _stageKey; } }
     public void SetStageKey(string stageKey)
     {
         _stageKey = stageKey;
     }
+
+    
     #region PLAYER_Level
     [SerializeField] private int _playerLevel;
     public int playerLevel { get { return _playerLevel; } }
     public void SetPlayerLevel(int playerLevel)
     {
         _playerLevel = playerLevel;
-        PlayerPrefs.SetInt(Constants.CLASS_PLAYER_LEVEL,_playerLevel);
+        PlayerPrefs.SetInt(Constants.CLASS_PLAYER_LEVEL, _playerLevel);
     }
 
     [SerializeField] private int _playerLevelupExp;
@@ -39,17 +42,17 @@ public class GameManager : MonoBehaviour
     public void SetPlayerExp(int exp)
     {
         _playerExp = exp;
-        while(_playerExp > _playerLevelupExp)
+        while (_playerExp > _playerLevelupExp)
         {
             LevelUp();
         }
-        PlayerPrefs.SetInt(Constants.CLASS_PLAYER_EXP,_playerExp);
+        PlayerPrefs.SetInt(Constants.CLASS_PLAYER_EXP, _playerExp);
     }
     public void PlusExp(int exp)
     {
         _playerExp += exp;
         PlayerPrefs.SetInt(Constants.CLASS_PLAYER_EXP, _playerExp);
-        if(_playerExp>=_playerLevelupExp)
+        if (_playerExp >= _playerLevelupExp)
         {
             LevelUp();
         }
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    public static GameManager GetInstance()
+		public static GameManager GetInstance()
     {
         if (Instance == null)
         {

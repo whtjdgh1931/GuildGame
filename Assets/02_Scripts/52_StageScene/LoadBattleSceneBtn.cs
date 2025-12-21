@@ -31,7 +31,7 @@ public class LoadBattleSceneBtn : BtnUI
 		{
 				_world = world;
 				_level = level;
-				
+
 				if (stageNum != null)
 				{
 

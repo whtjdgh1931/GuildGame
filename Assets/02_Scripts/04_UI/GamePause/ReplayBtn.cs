@@ -8,7 +8,7 @@ public class ReplayBtn : BtnUI
 		{
 				base.Start();
 				button.onClick.AddListener(CALLBACK_ReplayBtnClicked);
-
+				AddBtnAnim();
 		}
 
 

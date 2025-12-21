@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +13,7 @@ public class BtnUI : MonoBehaviour
 		protected Color originalColor;
 
 		protected virtual void Start()
-    {
+		{
 				DOTween.Init();
 				if (button == null)
 				{
@@ -45,6 +43,10 @@ public class BtnUI : MonoBehaviour
 				// 이전 시퀀스가 살아있으면 먼저 Kill
 				currentSequence?.Kill();
 
+				if (Time.timeScale == 0)
+				{
+						Time.timeScale = 1.0f;
+				}
 				currentSequence = DOTween.Sequence();
 				currentSequence.Append(button.transform.DOScale(1.2f, 0.1f));
 				currentSequence.Append(button.transform.DOScale(1f, 0.1f));
