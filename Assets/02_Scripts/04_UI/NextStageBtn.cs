@@ -17,6 +17,10 @@ public class NextStageBtn : BtnUI
     {
 				Time.timeScale = 1f;
 
+        string nextStageString = GameManager.GetInstance().NextStage();
+        PlayerPrefs.SetString(Constants.ENEMYSCENE, nextStageString);
+
+
 				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 				if (PlayerPrefs.GetString(Constants.ENEMYSCENE) != null)
 						SceneManager.LoadScene(PlayerPrefs.GetString(Constants.ENEMYSCENE), LoadSceneMode.Additive);

@@ -15,8 +15,8 @@ public class UIManager : MonoBehaviour
 
 		public Soldier player;
 		public Slider playerHp;
-		public Image victoryImage;
-		public Image defeatImage;
+		public GameObject victoryImage;
+		public GameObject defeatImage;
 		public JoyStickPanel joystickPanel;
 
 		public RectTransform gameResultPanel;

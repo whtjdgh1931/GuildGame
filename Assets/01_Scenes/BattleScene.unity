@@ -698,6 +698,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetUI: {fileID: 8559785800843584188}
+  _expSlider: {fileID: 8559785801829453091}
+  _playerLevel: {fileID: 8559785801750702307}
+  _currentExp: {fileID: 8559785802566688619}
+  _goalExp: 0
+  _sliderSpead: 10
 --- !u!1 &112253212
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,9 +734,9 @@ RectTransform:
   - {fileID: 5731288072167631617}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1785.7141, y: -70}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &171212305
@@ -1578,7 +1583,7 @@ GameObject:
   - component: {fileID: 461976132}
   - component: {fileID: 461976135}
   m_Layer: 5
-  m_Name: Button_Claim
+  m_Name: ReplayBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1737,9 +1742,9 @@ RectTransform:
   - {fileID: 2049839765}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1551.4285, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463786949
@@ -2620,7 +2625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &684225108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3870,9 +3875,9 @@ RectTransform:
   - {fileID: 1238954313}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 982.8571, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1021251597
@@ -4027,7 +4032,7 @@ GameObject:
   - component: {fileID: 1023964437}
   - component: {fileID: 1023964436}
   m_Layer: 5
-  m_Name: Button_Collect
+  m_Name: LobbyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4270,8 +4275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerHp: {fileID: 3486656682728630249}
-  victoryImage: {fileID: 0}
-  defeatImage: {fileID: 0}
+  victoryImage: {fileID: 112216773}
+  defeatImage: {fileID: 1360645888}
   joystickPanel: {fileID: 1592537889}
   gameResultPanel: {fileID: 1151829830}
 --- !u!1 &1063531018
@@ -4465,9 +4470,9 @@ RectTransform:
   - {fileID: 471011021}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1115144176
@@ -6591,9 +6596,9 @@ RectTransform:
   - {fileID: 2029266708}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1267.1428, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1702433479
@@ -8523,9 +8528,9 @@ RectTransform:
   - {fileID: 1158047169}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 414.2857, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033649783
@@ -8779,9 +8784,9 @@ RectTransform:
   - {fileID: 431146259}
   m_Father: {fileID: 863066205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 698.5714, y: -120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071689152
@@ -11056,7 +11061,7 @@ GameObject:
   - component: {fileID: 8559785801204912589}
   - component: {fileID: 8559785801204912592}
   m_Layer: 5
-  m_Name: Button_Collect
+  m_Name: LobbyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12275,7 +12280,7 @@ GameObject:
   - component: {fileID: 8559785802513770456}
   - component: {fileID: 8559785802513770459}
   m_Layer: 5
-  m_Name: Button_Claim
+  m_Name: NextStageBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

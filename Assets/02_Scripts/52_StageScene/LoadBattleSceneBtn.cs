@@ -20,7 +20,7 @@ public class LoadBattleSceneBtn : BtnUI
 		{
 				string sceneName = StageHelper.ToSceneName(_world, _level);
 
-				GameManager.GetInstance().SetStageKey($"Stage_{(int)_world}_{(int)_level}_Cleared");
+				GameManager.GetInstance().SetStageKey(_world,_level);
 				PlayerPrefs.SetString(Constants.ENEMYSCENE, sceneName);
 
 				SceneManager.LoadScene(Constants.BATTLESCENE);

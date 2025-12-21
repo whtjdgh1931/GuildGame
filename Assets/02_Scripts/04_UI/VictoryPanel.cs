@@ -1,14 +1,23 @@
 using DG.Tweening;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VictoryPanel : MonoBehaviour
 {
 		public RectTransform targetUI;   // 버튼이나 이미지
-		
+		[SerializeField] private Slider _expSlider;
+		[SerializeField] private TextMeshProUGUI _playerLevel;
+		[SerializeField] private TextMeshProUGUI _currentExp;
+		[SerializeField] private float _goalExp;
+		[SerializeField] private float _sliderSpead;
 
 		void Start()
 		{
+				_playerLevel.text = GameManager.GetInstance().playerLevel.ToString();
 				PlayVictoryEffect();
+
 		}
 
 		void PlayVictoryEffect()
@@ -27,8 +36,22 @@ public class VictoryPanel : MonoBehaviour
 								{
 										targetUI.localPosition = originalPos;
 										targetUI.localScale = originalScale;
+										GetExp();
 								});
 
+		}
+
+		public void GetExp()
+		{
+				GameManager.GetInstance().PlusExpByStage();
+
+				_goalExp = GameManager.GetInstance().GetExpRatio();
+				_currentExp.text = GameManager.GetInstance().playerExp.ToString() + " / " + GameManager.GetInstance().playerLevelupExp.ToString();
+		}
+
+		public void Update()
+		{
+			_expSlider.value = Mathf.Lerp(_expSlider.value, _goalExp, _sliderSpead*Time.deltaTime);	
 		}
 
 }
