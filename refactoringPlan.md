@@ -1,122 +1,96 @@
-# 📌 GuildGame Refactoring Plan
+# 📌 GuildGame Refactoring Checklist (Code-based)
 
-> 목표: 구조 개선 + 성능 개선 + 면접 대응력 강화  
-> 우선순위: 🔥 Object Pool 최우선
-
----
-
-# 🥇 1. Object Pool 도입 (최우선)
-
-## 🎯 목표
-- Instantiate / Destroy 제거
-- GC Alloc 감소
-- 성능 안정화
-- 포트폴리오에 성과 기록
+> Scope: 내 코드(Assets/02_Scripts) 중심. 외부 에셋 폴더는 제외.
+> Goal: 성능 + 구조 개선 + 면접 어필(개선 전/후 기록)
 
 ---
 
-## 1️⃣ Pool 시스템 구현
+## 🥇 P0. Object Pool (최우선 / 반드시 성과 남기기)
 
-- [ ] PoolManager 생성
-- [ ] Get() / Release() 메서드 구현
-- [ ] Prewarm 기능 구현 (초기 생성 수량 지정)
-- [ ] PoolContainer 정리 구조 추가
-- [ ] Poolable 초기화/해제 인터페이스 정의 (선택)
+### 0-1) 적용 대상 선정 (우선순위 높은 것부터)
+- [ ] Arrow(투사체) 풀링 적용 (Arrow.cs: Destroy 제거 → Release로 변경)
+- [ ] Archer SkillEffect 풀링 적용 (Player_Archer: Instantiate/Destroy 제거)
+- [ ] Magicial_Explosion(폭발 이펙트) 풀링 적용 (Destroy(gameObject, t) 제거)
+- [ ] (선택) 기타 이펙트/투사체 동일 패턴 확장
 
----
+### 0-2) Pool 시스템 구현
+- [ ] PoolManager(or ObjectPool<T>) 생성 (Core/Pooling 폴더)
+- [ ] API 정의: Get(prefab), Release(instance)
+- [ ] Prewarm(초기 N개 생성) 지원
+- [ ] 반환 시 Reset 규칙 정의
+  - [ ] 위치/회전 초기화
+  - [ ] 부모(PoolContainer)로 이동
+  - [ ] SetActive(false)
+- [ ] Poolable 훅(선택)
+  - [ ] IPoolable.OnSpawned()
+  - [ ] IPoolable.OnDespawned()
 
-## 2️⃣ 적용 대상 선정 (1개 이상 필수)
+### 0-3) Arrow 풀링 마이그레이션
+- [ ] Player_Archer: Instantiate(arrowPrefab) → Pool.Get(arrowPrefab)
+- [ ] Arrow: Destroy(gameObject) → Pool.Release(this)
+- [ ] Arrow: 타겟 null 처리도 Release로 변경
+- [ ] Arrow: 재사용 시 값 초기화(타겟/스피드/데미지/스케일)
 
-### 우선 적용 후보
-- [ ] 투사체
-- [ ] 이펙트
-- [ ] HP바
-- [ ] Soldier 생성
+### 0-4) Effect 풀링 마이그레이션
+- [ ] Player_Archer StartSkillEffect: Instantiate/Destroy → Pool.Get/Release
+- [ ] Magicial_Explosion: Destroy(gameObject, 0.5f) → Delay 후 Release
+- [ ] Particle/Trail reset 필요 여부 확인 후 OnDespawned에서 처리
 
----
-
-## 3️⃣ 실제 적용
-
-- [ ] 기존 Instantiate 제거
-- [ ] Destroy 제거
-- [ ] Spawn → Release 흐름으로 변경
-- [ ] 반환 시 위치/회전/상태 초기화
-
----
-
-## 4️⃣ 성능 확인
-
-- [ ] Profiler 적용 전 캡처
-- [ ] Profiler 적용 후 캡처
-- [ ] GC Alloc 감소 여부 확인
-- [ ] README에 결과 정리
-
----
-
-# 🥈 2. 이벤트 기반 UI 구조 전환
-
-## 🎯 목표
-- Update 의존 제거
-- 이벤트 기반 구조 적용
+### 0-5) 성능 측정(포트폴리오용)
+- [ ] Profiler 캡처(적용 전): 투사체 100~200회 생성 시 GC/프레임 확인
+- [ ] Profiler 캡처(적용 후): GC Alloc 감소 확인
+- [ ] README에 “문제 → 해결 → 결과” 3줄 기록
 
 ---
 
-- [ ] UIManager.Update() 제거
-- [ ] OnHpChanged 이벤트 추가
-- [ ] HP 변경 시 이벤트 발생 구조로 수정
-- [ ] UI는 이벤트 구독 방식으로 변경
+## 🥈 P1. Update 의존 제거 (이벤트 기반 구조로)
+
+### 1-1) UI Update 제거
+- [ ] UIManager.Update()에서 매 프레임 UI 갱신 제거
+- [ ] Soldier(또는 Health)에서 OnHpChanged 이벤트 발행
+- [ ] UI는 이벤트 구독으로만 Slider 갱신
+
+### 1-2) SoldierManager Update 최소화
+- [ ] 매 프레임 RemoveAll / 리스트 정리 로직 제거 또는 빈도 축소
+- [ ] Spawn/Die 시점에 Register/Unregister로 리스트 관리
+- [ ] 승/패 판단도 이벤트 기반(카운트 감소)으로 전환
 
 ---
 
-# 🥉 3. ClassManager 구조 개선
+## 🥉 P2. Find 계열 제거 (성능/안정성)
 
-## 🎯 목표
-- switch 제거
-- 확장성 향상
-
----
-
-- [ ] Dictionary 기반 데이터 관리로 변경
-- [ ] 문자열 의존 최소화
-- [ ] Constants 기반 키 통일
+- [ ] GameObject.Find 사용 제거 (UIManager 등)
+- [ ] FindGameObjectsWithTag 사용 제거 (SoldierManager StartBattle 등)
+- [ ] SerializeField로 참조 주입
+- [ ] 동적 생성 객체는 Register 패턴 적용
+  - [ ] SoldierSpawn 시 Register
+  - [ ] Soldier Die 시 Unregister
 
 ---
 
-# 🏅 4. Soldier 책임 분리
+## 🏅 P3. Singleton 정리 (안전한 초기화)
 
-## 🎯 목표
-- SRP 적용
-- 유지보수성 향상
-
----
-
-- [ ] SoldierStat 분리
-- [ ] SoldierLife(Health) 분리
-- [ ] SoldierCombat 분리
-- [ ] UI 의존 제거
+- [ ] instance 초기화는 Awake에서 처리
+- [ ] 중복 생성 방지(있으면 Destroy)
+- [ ] DontDestroyOnLoad 사용 여부 명확히 결정(필요한 것만)
+- [ ] Instance() 메서드 null 방어 및 초기화 순서 보장
 
 ---
 
-# 🏅 5. FSM 개선 (선택)
+## 🏅 P4. 책임 분리(SRP)
 
-- [ ] 인터페이스 기반 상태 패턴 적용
-- [ ] Enter / Update / Exit 구조로 변경
-
----
-
-# 📈 완료 후 README에 추가할 내용
-
-- 적용한 시스템
-- 개선 전 문제점
-- 개선 방법
-- 성능 변화 결과
-- 구조 개선 포인트
+- [ ] Soldier에서 Health 분리 (HP/Shield/Die)
+- [ ] Soldier에서 Stat 분리 (레벨/스탯 적용)
+- [ ] Combat/Attack 분리 (타겟팅/공격)
+- [ ] UI가 Soldier 컴포넌트 직접 탐색(GetComponent)하지 않도록 구조 개선
 
 ---
 
-# 🧠 면접 대비 포인트
+## 📌 마무리(면접 대비 문서화)
 
-- Object Pool 도입 이유 설명 가능
-- GC 발생 원인 설명 가능
-- 이벤트 기반 설계 장점 설명 가능
-- 책임 분리 이유 설명 가능
+- [ ] “Pooling 적용 전/후” 비교 스크린샷 1~2장 준비
+- [ ] “왜 Pool이 필요한가” 한 문장 정리(GC/Instantiate 비용)
+- [ ] “내가 적용한 범위/설계” 한 문장 정리(Prewarm/Reset/Release 규칙)
+- [ ] README에 핵심 코드 링크 2개 추가
+  - [ ] PoolManager
+  - [ ] Arrow(또는 Effect) 적용 코드
