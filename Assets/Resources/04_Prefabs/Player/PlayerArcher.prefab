@@ -15073,8 +15073,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 3855060189204375498, guid: f5e194d95d036304c977c82827f9aab6,
     type: 3}
-  skillEffect: {fileID: 6363972876970291531, guid: 747646d1cf720ae42b57f0963c6895e0,
-    type: 3}
 --- !u!1 &6867695569945023323
 GameObject:
   m_ObjectHideFlags: 0

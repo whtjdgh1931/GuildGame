@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Player_Archer : Player_Skill
 {
 		public Arrow arrowPrefab;
-		public GameObject skillEffect;
+		public PoolableObject skillEffect;
 		private FSM player_FSM;
 		private Player_Attack player_Attack;
 
@@ -19,9 +19,8 @@ public class Player_Archer : Player_Skill
 
 		public override void DoAttack(Soldier target)
 		{
-				Arrow arrow = Instantiate(arrowPrefab);
+				Arrow arrow = GameManager.Instance.ObjectPool.GetFromPool(arrowPrefab,transform.position,Quaternion.identity).GetComponent<Arrow>();
 				arrow.target = target;
-				arrow.transform.position = transform.position;
 				arrow.arrowPower = soldier.attackPower;
 				arrow.gameObject.tag = gameObject.tag;
 
@@ -41,10 +40,10 @@ public class Player_Archer : Player_Skill
 
 		public override void DoUlti(Vector3 mousePosition)
 		{
-				Arrow arrow = Instantiate(arrowPrefab);
+			Arrow arrow = GameManager.Instance.ObjectPool.GetFromPool(arrowPrefab,transform.position,Quaternion.identity).GetComponent<Arrow>();
+
 				Soldier target = SearchEnemyTarget(mousePosition);
 				arrow.target = target;
-				arrow.transform.position = transform.position;
 				arrow.arrowPower = soldier.attackPower*3f;
 				arrow.transform.localScale = Vector3.one * 2f;
 
@@ -54,9 +53,10 @@ public class Player_Archer : Player_Skill
 
 		public override void DoUlti(Soldier target)
 		{
-				Arrow arrow = Instantiate(arrowPrefab);
+								Arrow arrow = GameManager.Instance.ObjectPool.GetFromPool(arrowPrefab,transform.position,Quaternion.identity).GetComponent<Arrow>();
+
 				arrow.target = target;
-				arrow.transform.position = transform.position;
+				
 				arrow.arrowPower = soldier.attackPower* 3f;
 				arrow.transform.localScale = Vector3.one * 2f;
 				arrow.gameObject.tag = gameObject.tag;
@@ -65,12 +65,12 @@ public class Player_Archer : Player_Skill
 
 		public IEnumerator StartSkillEffect(float seconds)
 		{
-				GameObject skillEffect = Instantiate(this.skillEffect,transform.position,Quaternion.identity);
+				GameObject skillEffect = GameManager.Instance.ObjectPool.GetFromPool(this.skillEffect,transform.position,Quaternion.identity);
 				player_FSM.SetAttackSpeed(1/1.5f);
 				player_Attack.SetAttackSpeed(1 / 1.5f);
 				yield return new WaitForSeconds(seconds);
 				player_FSM.SetAttackSpeed(1.5f);
 				player_Attack.SetAttackSpeed(1.5f);
-				Destroy(skillEffect.gameObject);
+				GameManager.Instance.ObjectPool.ReturnToPool(skillEffect);
 		}
 }

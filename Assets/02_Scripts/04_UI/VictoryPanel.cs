@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class VictoryPanel : MonoBehaviour
 {
-		public RectTransform targetUI;   // ¹öÆ°ÀÌ³ª ÀÌ¹ÌÁö
+		public RectTransform targetUI;   // ë²„íŠ¼ì´ë‚˜ ì´ë¯¸ì§€
 		[SerializeField] private Slider _expSlider;
 		[SerializeField] private TextMeshProUGUI _playerLevel;
 		[SerializeField] private TextMeshProUGUI _currentExp;

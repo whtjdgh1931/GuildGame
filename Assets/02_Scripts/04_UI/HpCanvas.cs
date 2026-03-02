@@ -15,8 +15,8 @@ public class HpCanvas : MonoBehaviour
 		{
 				foreach (Soldier soldier in soldierManager.teamSoldiers)
 				{
-						Debug.Log(soldier.name);
-						// HP¹Ù ÀÎ½ºÅÏ½º »ı¼º
+						
+						// HPë°” ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
 						soldier.SetHpSlider(Instantiate(hpSlider, transform));
 						soldier.hpSlider.ChangeColor(0);
 				}
@@ -43,11 +43,11 @@ public class HpCanvas : MonoBehaviour
 				{
 						if (soldier != null && soldier.hpSlider != null)
 						{
-								// HP¹Ù À§Ä¡¸¦ Ä³¸¯ÅÍ À§¿¡ Ç¥½Ã
+								// HPë°” ìœ„ì¹˜ë¥¼ ìºë¦­í„° ìœ„ì— í‘œì‹œ
 								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 3f);
 								soldier.hpSlider.transform.position = screenPos;
 
-								// HP °ª ¾÷µ¥ÀÌÆ®
+								// HP ê°’ ì—…ë°ì´íŠ¸
 								soldier.SetHpRatio();
 						}
 				}
@@ -59,11 +59,11 @@ public class HpCanvas : MonoBehaviour
 				{
 						if (soldier != null && soldier.hpSlider != null)
 						{
-								// HP¹Ù À§Ä¡¸¦ Ä³¸¯ÅÍ À§¿¡ Ç¥½Ã
+								// HPë°” ìœ„ì¹˜ë¥¼ ìºë¦­í„° ìœ„ì— í‘œì‹œ
 								Vector3 screenPos = Camera.main.WorldToScreenPoint(soldier.transform.position + Vector3.forward * 3f);
 								soldier.hpSlider.transform.position = screenPos;
 
-								// HP °ª ¾÷µ¥ÀÌÆ®
+								// HP ê°’ ì—…ë°ì´íŠ¸
 								soldier.SetHpRatio();
 						}
 				}

@@ -6,7 +6,7 @@ using UnityEngine.Rendering.LookDev;
 public static class Constants
 {
     /// <summary>
-    /// ÅÂ±×
+    /// íƒœê·¸
     /// </summary>
     public static string TAG_ENEMY = "Enemy";
     public static string TAG_TEAM = "Team";
@@ -20,7 +20,7 @@ public static class Constants
 
 
         /// <summary>
-        /// Å¬·¡½º
+        /// í´ë˜ìŠ¤
         /// </summary>
         public static string CLASS_TANKER = "Tanker";
     public static string CLASS_WARRIOR = "Warrior";
@@ -35,7 +35,7 @@ public static class Constants
 
 
     /// <summary>
-    /// ÃÖ´ëÄ¡
+    /// ìµœëŒ€ì¹˜
     /// </summary>
     public static int maxLevel = 50;
     public static int minLevel = 1;
@@ -46,7 +46,7 @@ public static class Constants
 
 
     /// <summary>
-    /// °è¼ö
+    /// ê³„ìˆ˜
     /// </summary>
     public static float Multi_HP = 5.0f;
 }
@@ -71,7 +71,7 @@ public enum World
     World16 = 16,
     World17 = 17,
     World18 = 18,
-		// °è¼Ó È®Àå °¡´É
+		// ê³„ì† í™•ì¥ ê°€ëŠ¥
 }
 
 public enum Level
@@ -94,14 +94,14 @@ public enum Level
     Level16 = 16,
     Level17 = 17,
     Level18 = 18,
-		// °è¼Ó È®Àå °¡´É
+		// ê³„ì† í™•ì¥ ê°€ëŠ¥
 }
 
 public static class StageHelper
 {
 		public static string ToSceneName(World world, Level level)
 		{
-				// "1-2" ÇüÅÂ·Î º¯È¯
+				// "1-2" í˜•íƒœë¡œ ë³€í™˜
 				return $"{(int)world}-{(int)level}";
 		}
 

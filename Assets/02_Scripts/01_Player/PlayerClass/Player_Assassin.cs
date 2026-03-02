@@ -24,7 +24,11 @@ public class Player_Assassin : Player_Skill
 
 		public override void DoSkill(Soldier target)
 		{
-				throw new System.NotImplementedException();
+				if (target == null)
+				{
+						return;
+				}
+				DoDamage(target, soldier.attackPower * 2f);
 		}
 
 		public override void DoUlti(Vector3 mousePosition)

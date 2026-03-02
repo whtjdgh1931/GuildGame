@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DefeatPanel : MonoBehaviour
 {
-		public RectTransform targetUI;   // ¹öÆ°ÀÌ³ª ÀÌ¹ÌÁö
+		public RectTransform targetUI;   // ë²„íŠ¼ì´ë‚˜ ì´ë¯¸ì§€
 
 
 		void Start()

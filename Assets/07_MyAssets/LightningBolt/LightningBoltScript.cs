@@ -12,7 +12,7 @@ namespace DigitalRuby.LightningBolt
 		}
 
 		[RequireComponent(typeof(LineRenderer))]
-		public class LightningBoltScript : MonoBehaviour
+		public class LightningBoltScript : MonoBehaviour,IPoolable,IReleasePoolable
 		{
 				public GameObject StartObject;
 				public Vector3 StartPosition;
@@ -266,5 +266,19 @@ namespace DigitalRuby.LightningBolt
 								}
 						}
 				}
-		}
+
+        public void OnGetFromPool(Vector3 position, Quaternion rotation)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+        }
+
+        public void ReleaseObjectPool()
+        {
+            StartObject = null;
+            StartPosition = Vector3.zero;
+            EndObject = null;
+            EndPosition = Vector3.zero;
+        }
+    }
 }

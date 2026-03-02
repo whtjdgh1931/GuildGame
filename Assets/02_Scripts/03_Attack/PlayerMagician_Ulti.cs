@@ -3,86 +3,98 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerMagician_Ulti : MonoBehaviour
+public class PlayerMagician_Ulti : MonoBehaviour, IPoolable, IReleasePoolable
 {
 
-		private List<Soldier> slowedEnemies = new List<Soldier>();
+	private List<Soldier> slowedEnemies = new List<Soldier>();
 
-		private void OnTriggerStay(Collider other)
+	private void OnTriggerStay(Collider other)
+	{
+		Soldier enemy = other.GetComponent<Soldier>();
+		if (enemy != null && enemy.tag != tag)
 		{
-				Soldier enemy = other.GetComponent<Soldier>();
-				if (enemy != null && enemy.tag != tag)
+			if (!slowedEnemies.Contains(enemy))
+			{
+				slowedEnemies.Add(enemy);
+				enemy.GetComponent<NavMeshAgent>().speed = enemy.moveSpeed * 0.5f;
+			}
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		Soldier enemy = other.GetComponent<Soldier>();
+		if (enemy != null && slowedEnemies.Contains(enemy))
+		{
+			enemy.GetComponent<NavMeshAgent>().speed = enemy.moveSpeed;
+			slowedEnemies.Remove(enemy);
+		}
+	}
+
+	private void OnDisable()
+	{
+		RestoreAll();
+	}
+
+	private void OnDestroy()
+	{
+		RestoreAll();
+	}
+
+	private void RestoreAll()
+	{
+		foreach (Soldier enemy in slowedEnemies)
+		{
+			if (enemy != null)
+			{
+				NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+				if (agent != null)
 				{
-						if (!slowedEnemies.Contains(enemy))
-						{
-								slowedEnemies.Add(enemy);
-								enemy.GetComponent<NavMeshAgent>().speed = enemy.moveSpeed * 0.5f;
-						}
+					agent.speed = enemy.moveSpeed;
 				}
+			}
 		}
+		slowedEnemies.Clear();
+	}
 
-		private void OnTriggerExit(Collider other)
+	public void SearchAndHitEnemy(Soldier soldier, Soldier target)
+	{
+		tag = soldier.tag;
+		Collider[] hitEnemies = Physics.OverlapSphere(target.transform.position, 6f);
+		foreach (Collider hitEnemy in hitEnemies)
 		{
-				Soldier enemy = other.GetComponent<Soldier>();
-				if (enemy != null && slowedEnemies.Contains(enemy))
+			if (hitEnemy.GetComponent<Soldier>() == null || hitEnemy.CompareTag(soldier.tag)) continue;
+			Soldier targetSoldier = hitEnemy.GetComponent<Soldier>();
+
+			if (targetSoldier.shield > 0)
+			{
+				targetSoldier.shield -= Mathf.RoundToInt(soldier.attackPower * 2f);
+				if (targetSoldier.shield < 0)
 				{
-						enemy.GetComponent<NavMeshAgent>().speed = enemy.moveSpeed;
-						slowedEnemies.Remove(enemy);
+					targetSoldier.currentHp += targetSoldier.shield;
+					targetSoldier.shield = 0;
 				}
+			}
+			else targetSoldier.currentHp -= Mathf.RoundToInt(soldier.attackPower * 2f);
+			if (targetSoldier.currentHp < 0)
+			{
+				targetSoldier.DieSoldier();
+			}
 		}
 
-		private void OnDisable()
-		{
-				RestoreAll();
-		}
+		Destroy(gameObject, 2f);
+	}
 
-		private void OnDestroy()
-		{
-				RestoreAll();
-		}
+	public void ReleaseObjectPool()
+	{
+		slowedEnemies.Clear();
+		tag = null;
+	}
 
-		private void RestoreAll()
-		{
-				foreach (Soldier enemy in slowedEnemies)
-				{
-						if (enemy != null)
-						{
-								NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-								if (agent != null)
-								{
-										agent.speed = enemy.moveSpeed;
-								}
-						}
-				}
-				slowedEnemies.Clear();
-		}
-
-public void SearchAndHitEnemy(Soldier soldier,Soldier target)
-		{
-				tag = soldier.tag;
-				Collider[] hitEnemies = Physics.OverlapSphere(target.transform.position, 6f);
-				foreach (Collider hitEnemy in hitEnemies)
-				{
-						if (hitEnemy.GetComponent<Soldier>() == null || hitEnemy.CompareTag(soldier.tag)) continue;
-						Soldier targetSoldier = hitEnemy.GetComponent<Soldier>();
-
-						if (targetSoldier.shield > 0)
-						{
-								targetSoldier.shield -= Mathf.RoundToInt(soldier.attackPower * 2f);
-								if (targetSoldier.shield < 0)
-								{
-										targetSoldier.currentHp += targetSoldier.shield;
-										targetSoldier.shield = 0;
-								}
-						}
-						else targetSoldier.currentHp -= Mathf.RoundToInt(soldier.attackPower * 2f);
-						if (targetSoldier.currentHp < 0)
-						{
-								targetSoldier.DieSoldier();
-						}
-				}
-
-				Destroy(gameObject, 2f);
-		}
-
+	public void OnGetFromPool(Vector3 position, Quaternion rotation)
+	{
+		transform.position = position;
+		transform.rotation = rotation;
+	}
 }
+

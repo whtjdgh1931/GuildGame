@@ -14,7 +14,7 @@ public class ClassManager : MonoBehaviour
 				return instance;
 		}
 
-		//TODO »èÁ¦ÇÒÁö ¾Æ´ÒÁö °áÁ¤
+		//TODO ì‚­ì œí• ì§€ ì•„ë‹ì§€ ê²°ì •
 		//public int tankerLevel;
 		//public int warriorLevel;
 		//public int assassinLevel;
@@ -139,7 +139,7 @@ public class ClassManager : MonoBehaviour
 
 		}
 
-		//TODO »èÁ¦ÇÒÁö ¸»Áö °áÁ¤
+		//TODO ì‚­ì œí• ì§€ ë§ì§€ ê²°ì •
 		//public void LoadClassLevel()
 		//{
 		//		tankerLevel = PlayerPrefs.GetInt(Constants.CLASS_TANKER);

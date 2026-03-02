@@ -9,7 +9,7 @@ public class BtnUI : MonoBehaviour
 
 		protected UnityEngine.Events.UnityEvent inspectorEvents;
 		protected Image buttonImage;
-		protected Sequence currentSequence; // ½ÇÇà ÁßÀÎ ½ÃÄö½º¸¦ ÀúÀå
+		protected Sequence currentSequence; // ì‹¤í–‰ ì¤‘ì¸ ì‹œí€€ìŠ¤ë¥¼ ì €ì¥
 		protected Color originalColor;
 
 		protected virtual void Start()
@@ -40,7 +40,7 @@ public class BtnUI : MonoBehaviour
 
 		protected void PlayEffect()
 		{
-				// ÀÌÀü ½ÃÄö½º°¡ »ì¾ÆÀÖÀ¸¸é ¸ÕÀú Kill
+				// ì´ì „ ì‹œí€€ìŠ¤ê°€ ì‚´ì•„ìˆìœ¼ë©´ ë¨¼ì € Kill
 				currentSequence?.Kill();
 
 				if (Time.timeScale == 0)
@@ -67,7 +67,7 @@ public class BtnUI : MonoBehaviour
 
 		public void OnDisable()
 		{
-				// ¹öÆ° ºñÈ°¼ºÈ­ ½Ã ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+				// ë²„íŠ¼ ë¹„í™œì„±í™” ì‹œ ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
 				currentSequence?.Kill();
 				currentSequence = null;
 		}

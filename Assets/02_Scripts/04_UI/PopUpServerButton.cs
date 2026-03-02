@@ -19,7 +19,7 @@ public class CyberpunkButtonAnimator
 		}
 
 		/// <summary>
-		/// ¹öÆ° Å¬¸¯ ½Ã ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà ÈÄ ÁöÁ¤µÈ ·ÎÁ÷ ½ÇÇà
+		/// ë²„íŠ¼ í´ë¦­ ì‹œ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰ í›„ ì§€ì •ëœ ë¡œì§ ì‹¤í–‰
 		/// </summary>
 		public void Bind(Action onCompleteAction)
 		{
@@ -28,14 +28,14 @@ public class CyberpunkButtonAnimator
 				{
 						Sequence seq = DOTween.Sequence();
 
-						// ³×¿Â ÆŞ½º
+						// ë„¤ì˜¨ í„ìŠ¤
 						if (buttonImage != null)
 						{
 								seq.Append(buttonImage.DOColor(Color.cyan, 0.1f));
 								seq.Append(buttonImage.DOColor(originalColor, 0.1f));
 						}
 
-						// ±Û¸®Ä¡ Èçµé¸²
+						// ê¸€ë¦¬ì¹˜ í”ë“¤ë¦¼
 						seq.Join(button.transform.DOShakePosition(
 								0.25f,
 								strength: new Vector3(10, 0, 0),
@@ -45,7 +45,7 @@ public class CyberpunkButtonAnimator
 								fadeOut: true
 						));
 
-						// ¾Ö´Ï¸ŞÀÌ¼Ç ³¡³­ µÚ ·ÎÁ÷ ½ÇÇà
+						// ì• ë‹ˆë©”ì´ì…˜ ëë‚œ ë’¤ ë¡œì§ ì‹¤í–‰
 						seq.OnComplete(() =>
 						{
 								onCompleteAction?.Invoke();
@@ -54,7 +54,7 @@ public class CyberpunkButtonAnimator
 		}
 
 		/// <summary>
-		/// async ·ÎÁ÷µµ Áö¿ø
+		/// async ë¡œì§ë„ ì§€ì›
 		/// </summary>
 		public void BindAsync(Func<Task> onCompleteAsync)
 		{

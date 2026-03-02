@@ -12,7 +12,7 @@ public class CharacterInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _characterImage.sprite = GameManager.GetInstance().playerClassScriptableObject.GetClassDataByClassName(GameManager.GetInstance().playerClass).soldierLogoPrefab;
+        _characterImage.sprite = GameManager.GetInstance().PlayerClassScriptableObject.GetClassDataByClassName(GameManager.GetInstance().playerClass).soldierLogoPrefab;
         _characterText.text = GameManager.GetInstance().playerClass;
     }
 
