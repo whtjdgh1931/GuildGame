@@ -25,7 +25,7 @@ public class SoldierMaker : MonoBehaviour
 
 		public void StartDrag(string className)
 		{
-				if (previewInstance != null) Destroy(previewInstance);
+				if (previewInstance != null) GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 				previewInstance = MakeSoldierPreview(className);
 				isDrag = previewInstance != null;
 		}
@@ -46,13 +46,13 @@ public class SoldierMaker : MonoBehaviour
 				if (Input.GetMouseButtonUp(0))
 				{
 						MakeSoldier(previewClassName, previewInstance.transform.position);
-						Destroy(previewInstance.gameObject);
+						GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 						isDrag = false;
 				}
 
 				if (Input.GetMouseButtonDown(1))
 				{
-						Destroy(previewInstance.gameObject);
+						GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 						isDrag = false;
 				}
 #elif UNITY_ANDROID
@@ -72,7 +72,7 @@ public class SoldierMaker : MonoBehaviour
 				{
 						case TouchPhase.Ended:
 								MakeSoldier(previewClassName, previewInstance.transform.position);
-								Destroy(previewInstance.gameObject);
+								GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 								isDrag = false;
 								break;
 				}
@@ -90,7 +90,7 @@ public class SoldierMaker : MonoBehaviour
 				}
 
 				ClassData classData = classScriptableObject.GetClassDataByClassName(className);
-				Soldier soldier = Instantiate(classData.soldierPrefab, navMeshPosition, Quaternion.identity);
+				Soldier soldier = GameManager.Instance.ObjectPool.GetFromPool(classData.soldierPrefab, navMeshPosition, Quaternion.identity).GetComponent<Soldier>();
 				soldier.classLevelData = ClassManager.Instance().GetLevelData(className);
 				soldier.level = Mathf.Min(PlayerPrefs.GetInt(className),Constants.maxLevel);
 				soldier.SetLevelData(soldier.level);

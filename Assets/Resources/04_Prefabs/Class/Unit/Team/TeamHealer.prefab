@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holyPrefab: {fileID: -3479631539153563000, guid: 28a69279a650c1c48a8bb39e1089ea12,
     type: 3}
-  healEffectPrefab: {fileID: 6363972876970291531, guid: 747646d1cf720ae42b57f0963c6895e0,
+  healEffectPrefab: {fileID: 6791789623160276525, guid: 747646d1cf720ae42b57f0963c6895e0,
     type: 3}
 --- !u!1 &3518596295925219333
 GameObject:

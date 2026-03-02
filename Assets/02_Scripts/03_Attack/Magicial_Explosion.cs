@@ -3,9 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Magicial_Explosion : MonoBehaviour
+public class Magicial_Explosion : MonoBehaviour,IPoolable,IReleasePoolable
 {
-		public void SearchAndHitEnemy(Soldier soldier)
+    public void OnGetFromPool(Vector3 position, Quaternion rotation)
+    {
+        transform.position = position;
+		transform.rotation = rotation;
+    }
+
+    public void ReleaseObjectPool()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void SearchAndHitEnemy(Soldier soldier)
 		{
 				Collider[] hitEnemies = Physics.OverlapSphere(transform.position, soldier.skillRange);
 				foreach(Collider hitEnemy in hitEnemies)
@@ -29,6 +40,6 @@ public class Magicial_Explosion : MonoBehaviour
 						}
 				}
 
-				Destroy(gameObject, 0.5f);
+				GameManager.Instance.ObjectPool.ReturnToPool(gameObject, 0.5f);
 		}
 }

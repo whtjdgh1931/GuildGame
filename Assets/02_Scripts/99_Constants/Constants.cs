@@ -49,10 +49,16 @@ public static class Constants
     /// 계수
     /// </summary>
     public static float Multi_HP = 5.0f;
+    public static float ARROW_SPEED = 5.0f;
+    public static float DART_SPEED = 10.0f;
+
+    public static float FIREBALL_SPEED = 5.0f;
+    public static float HOLY_SPEED = 5.0f;
 }
 
 public enum World
 {
+  NONE = 0,
 		World1 = 1,
 		World2 = 2,
 		World3 = 3,
@@ -76,6 +82,7 @@ public enum World
 
 public enum Level
 {
+  NONE = 0,
 		Level1 = 1,
 		Level2 = 2,
 		Level3 = 3,

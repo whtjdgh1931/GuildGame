@@ -9,6 +9,8 @@ public class PoolableObject : MonoBehaviour,IPoolable
         transform.position = position;
         transform.rotation = rotation;
     }
+
+
 }
 
 

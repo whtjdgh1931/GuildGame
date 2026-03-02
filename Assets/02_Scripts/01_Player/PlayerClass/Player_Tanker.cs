@@ -64,7 +64,7 @@ public class Player_Tanker : Player_Skill
 
 				GameObject tauntEffect = GameManager.Instance.ObjectPool.GetFromPool(tauntEffectPrefab, transform.position, Quaternion.identity);
 				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
-				Destroy(tauntEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(tauntEffect, 1f);
 
 		}
 
@@ -81,7 +81,7 @@ public class Player_Tanker : Player_Skill
 
 				GameObject tauntEffect = GameManager.Instance.ObjectPool.GetFromPool(tauntEffectPrefab, transform.position, Quaternion.identity);
 				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
-				Destroy(tauntEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(tauntEffect, 1f);
 		}
 
 		public void Update()

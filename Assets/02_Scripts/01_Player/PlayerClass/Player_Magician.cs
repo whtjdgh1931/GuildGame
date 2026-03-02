@@ -56,6 +56,8 @@ public class Player_Magician : Player_Skill
 						}
 						DoDamage(targetSoldiers[i], soldier.attackPower);
 				}
+						
+
 		}
 
 		public override void DoUlti(Vector3 mousePosition)

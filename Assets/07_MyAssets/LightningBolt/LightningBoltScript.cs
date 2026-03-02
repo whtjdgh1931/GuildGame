@@ -213,7 +213,6 @@ namespace DigitalRuby.LightningBolt
 						lineRenderer = GetComponent<LineRenderer>();
 						lineRenderer.positionCount = 0;
 						UpdateFromMaterialChange();
-						Destroy(gameObject, 0.3f);
 				}
 
 				private void Update()
@@ -271,6 +270,7 @@ namespace DigitalRuby.LightningBolt
         {
             transform.position = position;
             transform.rotation = rotation;
+			GameManager.Instance.ObjectPool.ReturnToPool(gameObject,0.5f);
         }
 
         public void ReleaseObjectPool()

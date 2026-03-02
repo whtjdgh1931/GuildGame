@@ -46,24 +46,12 @@ public class Arrow : MonoBehaviour, IPoolable, IReleasePoolable
 		transform.SetPositionAndRotation(position, rotation);
 	}
 
-	private void ReleaseOrDestroy()
-	{
-		ObjectPool pool = GameManager.Instance != null ? GameManager.Instance.ObjectPool : null;
-		if (pool != null)
-		{
-			pool.ReturnToPool(gameObject);
-		}
-		else
-		{
-			GameManager.Instance.ObjectPool.ReturnToPool(gameObject);
-		}
-	}
 
-	public void ReleaseObjectPool()
+	public virtual void ReleaseObjectPool()
 	{
 		target = null;
 		arrowPower = 0f;
-		arrowSpeed = 0f;
+		arrowSpeed = Constants.ARROW_SPEED;
 	}
 
 }

@@ -137,14 +137,14 @@ public abstract class ClassSkill : MonoBehaviour
 				return attackedSoldierList;
 		}
 
-		public IEnumerator TargetStun(Soldier target, float stunTime, GameObject effect)
+		public IEnumerator TargetStun(Soldier target, float stunTime, PoolableObject effect)
 		{
 				FSM targetFSM = target.GetComponent<FSM>();
-				GameObject stunEffect = Instantiate(effect, target.transform.position, Quaternion.identity);
+				GameObject stunEffect = GameManager.Instance.ObjectPool.GetFromPool(effect, target.transform.position, Quaternion.identity);
 				targetFSM.isStun = true;
 				yield return new WaitForSeconds(stunTime);
 				targetFSM.isStun = false;
-				Destroy(stunEffect.gameObject);
+				GameManager.Instance.ObjectPool.ReturnToPool(stunEffect, 0.5f);
 
 		}
 

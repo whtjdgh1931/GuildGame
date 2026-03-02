@@ -1,26 +1,36 @@
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadBattleSceneBtn : BtnUI
+public class LoadBattleSceneBtn : BtnUI,IPoolable,IReleasePoolable
 {
 		[SerializeField] private World _world;
 		[SerializeField] private Level _level;
 		[SerializeField] TextMeshProUGUI stageNum;
 
+		
+
 		public void InitBtn()
 		{
 				base.Start();
+				
 				button.onClick.AddListener(CALLBACK_LoadBattleSceneBtnClicked);
 				AddBtnAnim();
 		}
 
 		private void CALLBACK_LoadBattleSceneBtnClicked()
 		{
-				string sceneName = StageHelper.ToSceneName(_world, _level);
+				World selectedWorld = _world;
+				Level selectedLevel = _level;
+				string sceneName = StageHelper.ToSceneName(selectedWorld, selectedLevel);
 
-				GameManager.GetInstance().SetStageKey(_world,_level);
+				StagePanel stagePanel = GetComponentInParent<StagePanel>();
+				if (stagePanel != null)
+				{
+						stagePanel.ReleaseStageButtons();
+				}
+
+				GameManager.GetInstance().SetStageKey(selectedWorld, selectedLevel);
 				PlayerPrefs.SetString(Constants.ENEMYSCENE, sceneName);
 
 				SceneManager.LoadScene(Constants.BATTLESCENE);
@@ -39,5 +49,23 @@ public class LoadBattleSceneBtn : BtnUI
 				}
 		}
 
+    public void OnGetFromPool(Vector3 position, Quaternion rotation)
+    {
+		transform.position = position;
+		transform.rotation = rotation;
+    }
 
+    public void ReleaseObjectPool()
+    {
+		if (button != null)
+		{
+				button.onClick.RemoveAllListeners();
+		}
+       _world = World.NONE;
+				_level = Level.NONE;
+				if (stageNum != null)
+				{
+						stageNum.text = "";
+				}
+    }
 }

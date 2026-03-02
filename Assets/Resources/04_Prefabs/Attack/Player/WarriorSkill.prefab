@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781571801778595961}
   - component: {fileID: -4021772725222407541}
+  - component: {fileID: 2727314201201790716}
   m_Layer: 0
   m_Name: WarriorSkill
   m_TagString: Untagged
@@ -129,6 +130,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2727314201201790716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311820884364426638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edfebc7aa1dd8d43bbcb5f00c0d1817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6010040813523666217
 GameObject:
   m_ObjectHideFlags: 0

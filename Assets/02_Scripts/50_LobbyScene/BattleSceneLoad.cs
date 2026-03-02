@@ -44,11 +44,11 @@ public class BattleSceneLoad : MonoBehaviour
 				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);
 				if (existingPlayer != null)
 				{
-						Destroy(existingPlayer);
+						GameManager.Instance.ObjectPool.ReturnToPool(existingPlayer);
 				}
 
 				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierPrefab;
-      Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+      Soldier player = GameManager.Instance.ObjectPool.GetFromPool(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Soldier>();
         player.name = Constants.NAME_Player;
         player.level = Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER_LEVEL),1);
 		player.GetComponent<Player_Soldier>().isAuto = GameManager.GetInstance().isAuto;

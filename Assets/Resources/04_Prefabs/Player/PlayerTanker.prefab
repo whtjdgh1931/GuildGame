@@ -926,8 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: 0}
   isDash: 0
-  shieldGameObject: {fileID: 359574506219708301}
-  tauntEffectPrefab: {fileID: 6363972876970291531, guid: 63ccb2329ec88144f9bc96a091e73b63,
+  shieldGameObject: {fileID: 3707790088999069130}
+  tauntEffectPrefab: {fileID: 7731156012015888650, guid: 63ccb2329ec88144f9bc96a091e73b63,
     type: 3}
 --- !u!1 &116963520355499265
 GameObject:
@@ -19298,15 +19298,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b939676615e55c3439d46819e1257ac5, type: 3}
---- !u!1 &359574506219708301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1313391807561967362, guid: b939676615e55c3439d46819e1257ac5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641401502547359887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2293682077267322026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 654049208563817509, guid: b939676615e55c3439d46819e1257ac5,
     type: 3}
   m_PrefabInstance: {fileID: 1641401502547359887}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3707790088999069130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6506616756258185915, guid: b939676615e55c3439d46819e1257ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1641401502547359887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edfebc7aa1dd8d43bbcb5f00c0d1817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

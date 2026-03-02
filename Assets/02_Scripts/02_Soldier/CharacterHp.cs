@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterHp : MonoBehaviour
+public class CharacterHp : MonoBehaviour,IPoolable,IReleasePoolable
 {
 
 		private Slider hpSlider;
@@ -28,4 +28,14 @@ public class CharacterHp : MonoBehaviour
 		{
 				barImage.sprite = barColor[barIndex];
 		}
+
+    public void OnGetFromPool(Vector3 position, Quaternion rotation)
+    {
+        
+    }
+
+    public void ReleaseObjectPool()
+    {
+        hpSlider = null;
+    }
 }

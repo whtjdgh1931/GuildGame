@@ -30,17 +30,10 @@ public class PlayerMagician_Ulti : MonoBehaviour, IPoolable, IReleasePoolable
 			slowedEnemies.Remove(enemy);
 		}
 	}
-
-	private void OnDisable()
-	{
-		RestoreAll();
-	}
-
-	private void OnDestroy()
-	{
-		RestoreAll();
-	}
-
+	
+	/// <summary>
+	/// 비활성화시 리스트 초기화 및 적 이동속도 원래대로 복구
+	/// </summary>
 	private void RestoreAll()
 	{
 		foreach (Soldier enemy in slowedEnemies)
@@ -82,12 +75,12 @@ public class PlayerMagician_Ulti : MonoBehaviour, IPoolable, IReleasePoolable
 			}
 		}
 
-		Destroy(gameObject, 2f);
+		GameManager.Instance.ObjectPool.ReturnToPool(gameObject, 2f);
 	}
 
 	public void ReleaseObjectPool()
 	{
-		slowedEnemies.Clear();
+		RestoreAll();
 		tag = null;
 	}
 

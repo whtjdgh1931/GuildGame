@@ -2,80 +2,94 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier : MonoBehaviour
+public class Soldier : MonoBehaviour, IPoolable, IReleasePoolable
 {
-		protected bool isInit = false;
+	protected bool isInit = false;
 
-		public List<Dictionary<string, object>> classLevelData;
+	public List<Dictionary<string, object>> classLevelData;
 
-		public SoldierRange attackRangeObject;
+	public SoldierRange attackRangeObject;
 
-		[SerializeField] private CharacterHp _hpSlider;
+	[SerializeField] private CharacterHp _hpSlider;
 
-		public CharacterHp hpSlider { get { return _hpSlider; } }
-		public void SetHpSlider(CharacterHp hpSlider)
+	public CharacterHp hpSlider { get { return _hpSlider; } }
+	public void SetHpSlider(CharacterHp hpSlider)
+	{
+		_hpSlider = hpSlider;
+	}
+
+	public int shield { get; set; }
+	public int maxHp { get; set; }
+	public int currentHp { get; set; }
+	public int attackPower { get; set; }
+	public float attackRange { get; set; }
+	public float attackSpeed { get; set; }
+	public float moveSpeed { get; set; }
+	public float skillRange { get; set; }
+
+	public float skillCoefficient { get; set; }
+
+	public int level;
+
+	public void SetLevelData(int level)
+	{
+		if (level < 1) level = 1;
+		maxHp = int.Parse(classLevelData[level - 1]["MaxHp"].ToString());
+		maxHp = Mathf.RoundToInt(maxHp * Constants.Multi_HP);
+		attackPower = int.Parse(classLevelData[level - 1]["AttackPower"].ToString());
+		attackRange = float.Parse(classLevelData[level - 1]["AttackRange"].ToString());
+		attackSpeed = float.Parse(classLevelData[level - 1]["AttackSpeed"].ToString());
+		moveSpeed = float.Parse(classLevelData[level - 1]["MoveSpeed"].ToString());
+		skillRange = float.Parse(classLevelData[level - 1]["SkillRange"].ToString());
+		skillCoefficient = float.Parse(classLevelData[level - 1]["SkillCoefficient"].ToString());
+		currentHp = maxHp;
+
+
+		GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
+
+		attackRangeObject = GetComponentInChildren<SoldierRange>();
+		if (attackRangeObject != null)
 		{
-				_hpSlider = hpSlider;
+			Vector3 rangeScale = new(attackRange, 0.1f, attackRange);
+			attackRangeObject.transform.localScale = rangeScale;
+			attackRangeObject.gameObject.SetActive(false);
 		}
 
-		public int shield { get; set;}
-		public int maxHp{get;set;}
-		public int currentHp { get; set;}
-		public int attackPower{get;set;}
-		public float attackRange{get;set;}
-		public float attackSpeed{get;set;}
-		public float moveSpeed{get;set;}
-		public float skillRange { get;set;}
 
-		public float skillCoefficient { get;set;}
 
-		public int level;
+		isInit = true;
+	}
 
-		public void SetLevelData(int level)
+	public void SetHpRatio()
+	{
+		_hpSlider.SetSliderValue((float)currentHp / (float)maxHp);
+	}
+
+
+
+	public void DieSoldier()
+	{
+		Animator anim = GetComponentInChildren<Animator>();
+		if (_hpSlider != null)
 		{
-				if(level<1) level=1;		
-				maxHp = int.Parse(classLevelData[level-1]["MaxHp"].ToString());
-				maxHp = Mathf.RoundToInt(maxHp * Constants.Multi_HP);
-				attackPower = int.Parse(classLevelData[level-1]["AttackPower"].ToString());
-				attackRange = float.Parse(classLevelData[level - 1]["AttackRange"].ToString());
-				attackSpeed = float.Parse(classLevelData[level - 1]["AttackSpeed"].ToString());
-				moveSpeed = float.Parse(classLevelData[level - 1]["MoveSpeed"].ToString());
-				skillRange = float.Parse(classLevelData[level - 1]["SkillRange"].ToString());
-				skillCoefficient = float.Parse(classLevelData[level - 1]["SkillCoefficient"].ToString());
-				currentHp = maxHp;
-
-
-				GetComponent<Soldier_Move>().soldierNav.speed = moveSpeed;
-				
-				attackRangeObject = GetComponentInChildren<SoldierRange>();
-				if (attackRangeObject != null)
-				{
-						Vector3 rangeScale = new(attackRange, 0.1f, attackRange);
-						attackRangeObject.transform.localScale = rangeScale;
-				attackRangeObject.gameObject.SetActive(false);
-				}
-
-
-
-				isInit = true;
+			GameManager.Instance.ObjectPool.ReturnToPool(_hpSlider.gameObject, 0f);
 		}
-
-		public void SetHpRatio()
+		if (anim != null)
 		{
-				_hpSlider.SetSliderValue((float)currentHp / (float)maxHp);
+			anim.SetTrigger("IsDead");
 		}
-		
+		GameManager.Instance.ObjectPool.ReturnToPool(gameObject, 1f);
+	}
 
+	public void OnGetFromPool(Vector3 position, Quaternion rotation)
+	{
+		transform.SetPositionAndRotation(position, rotation);
+	}
 
-		public void DieSoldier()
-		{
-				Animator anim = GetComponentInChildren<Animator>();
-				if(_hpSlider != null)
-				{
-						Destroy(_hpSlider.gameObject);
-				}
-				if (anim!= null)
-				anim.SetTrigger("IsDead");
-				Destroy(gameObject,1f);
-		}
+	public void ReleaseObjectPool()
+	{
+		isInit = false;
+		_hpSlider = null;
+		attackRangeObject = null;
+	}
 }

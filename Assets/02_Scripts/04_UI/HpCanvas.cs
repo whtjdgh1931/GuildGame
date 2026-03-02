@@ -11,20 +11,22 @@ public class HpCanvas : MonoBehaviour
 
 		[SerializeField] bool isInit = false;
 
-		public void StartGame()
+   
+
+    public void StartGame()
 		{
 				foreach (Soldier soldier in soldierManager.teamSoldiers)
 				{
 						
 						// HP바 인스턴스 생성
-						soldier.SetHpSlider(Instantiate(hpSlider, transform));
+						soldier.SetHpSlider(GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>());
 						soldier.hpSlider.ChangeColor(0);
 				}
 
 
 				foreach (Soldier soldier in soldierManager.enemySoldiers)
 				{
-						soldier.SetHpSlider(Instantiate(hpSlider,transform));
+						soldier.SetHpSlider(GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>());
 						soldier.hpSlider.ChangeColor(1);
 				}
 
