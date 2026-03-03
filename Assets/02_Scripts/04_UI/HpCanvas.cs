@@ -19,14 +19,18 @@ public class HpCanvas : MonoBehaviour
 				{
 						
 						// HP바 인스턴스 생성
-						soldier.SetHpSlider(GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>());
+						CharacterHp hpSliderInstance = GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>();
+						hpSliderInstance.transform.SetParent(transform);
+						soldier.SetHpSlider(hpSliderInstance);
 						soldier.hpSlider.ChangeColor(0);
 				}
 
 
 				foreach (Soldier soldier in soldierManager.enemySoldiers)
 				{
-						soldier.SetHpSlider(GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>());
+					CharacterHp hpSliderInstance = GameManager.Instance.ObjectPool.GetFromPool(hpSlider, transform.position, Quaternion.identity).GetComponent<CharacterHp>();
+						hpSliderInstance.transform.SetParent(transform);
+						soldier.SetHpSlider(hpSliderInstance);
 						soldier.hpSlider.ChangeColor(1);
 				}
 
