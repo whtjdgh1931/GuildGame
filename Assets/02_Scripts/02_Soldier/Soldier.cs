@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Soldier : MonoBehaviour, IPoolable, IReleasePoolable
 {
@@ -91,5 +92,6 @@ public class Soldier : MonoBehaviour, IPoolable, IReleasePoolable
 		isInit = false;
 		_hpSlider = null;
 		attackRangeObject = null;
+		GetComponent<NavMeshAgent>().enabled = true;
 	}
 }
