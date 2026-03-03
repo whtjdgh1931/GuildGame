@@ -246,7 +246,7 @@ public class FSM : MonoBehaviour
 				attackSpeed *= multi;
 		}
 
-		internal void ResearchTarget()
+		public void ResearchTarget()
 		{
 				targetSoldier = null;
 				float targetDistacne = int.MaxValue;

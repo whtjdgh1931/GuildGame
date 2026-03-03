@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    [SerializeField] private bool bIsPool = true;
+
     private Dictionary<string, List<GameObject>> availablePools = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<GameObject>> inUsePools = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, GameObject> poolContainers = new Dictionary<string, GameObject>();
@@ -20,6 +22,23 @@ public class ObjectPool : MonoBehaviour
         }
 
         GameObject prefabObject = poolableComponent.gameObject;
+
+        if (!bIsPool)
+        {
+            GameObject createdObj = parentTransform == null
+                ? Instantiate(prefabObject, position, rotation)
+                : Instantiate(prefabObject, position, rotation, parentTransform);
+
+            if (poolable is IInitializePoolable)
+            {
+                IInitializePoolable initializePoolable = createdObj.GetComponent<IInitializePoolable>();
+                initializePoolable?.Initialize(data);
+            }
+
+            createdObj.GetComponent<IPoolable>()?.OnGetFromPool(position, rotation);
+            return createdObj;
+        }
+
         string poolKey = prefabObject.name;
         EnsurePool(poolKey);
 
@@ -107,6 +126,14 @@ public class ObjectPool : MonoBehaviour
     {
         if (obj == null)
         {
+            return;
+        }
+
+        if (!bIsPool)
+        {
+            IReleasePoolable releasePoolable = obj.GetComponent<IReleasePoolable>();
+            releasePoolable?.ReleaseObjectPool();
+            Destroy(obj);
             return;
         }
 

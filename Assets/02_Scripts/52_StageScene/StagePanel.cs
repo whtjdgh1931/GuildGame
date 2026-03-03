@@ -21,10 +21,9 @@ public class StagePanel : MonoBehaviour
         for (int i = 0; i < maxInt; ++i)
         {
             LoadBattleSceneBtn stageBtn = GameManager.Instance.ObjectPool
-                .GetFromPool(UpdateStageButton((int)stageWorld, i + 1, maxInt), transform.position, Quaternion.identity)
+                .GetFromPool(UpdateStageButton((int)stageWorld, i + 1, maxInt), transform.position, Quaternion.identity,transform)
                 .GetComponent<LoadBattleSceneBtn>();
 
-            stageBtn.transform.SetParent(transform);
             stageBtn.SetStage(stageWorld, (Level)i + 1);
             stageBtn.InitBtn();
         }
