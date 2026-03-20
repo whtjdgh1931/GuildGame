@@ -11,9 +11,9 @@ public class Player_Tanker : Player_Skill
 		public bool isDash;
 
 
-		public GameObject shieldGameObject;
+		public PoolableObject shieldGameObject;
 
-		public GameObject tauntEffectPrefab;
+		public PoolableObject tauntEffectPrefab;
 		public override void DoAttack(Soldier target)
 		{
 				DoDamage(target, soldier.attackPower);
@@ -62,9 +62,9 @@ public class Player_Tanker : Player_Skill
 
 				}
 
-				GameObject tauntEffect = Instantiate(tauntEffectPrefab, transform.position, Quaternion.identity);
+				GameObject tauntEffect = GameManager.Instance.ObjectPool.GetFromPool(tauntEffectPrefab, transform.position, Quaternion.identity);
 				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
-				Destroy(tauntEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(tauntEffect, 1f);
 
 		}
 
@@ -79,15 +79,15 @@ public class Player_Tanker : Player_Skill
 
 				}
 
-				GameObject tauntEffect = Instantiate(tauntEffectPrefab, transform.position, Quaternion.identity);
+				GameObject tauntEffect = GameManager.Instance.ObjectPool.GetFromPool(tauntEffectPrefab, transform.position, Quaternion.identity);
 				tauntEffect.transform.localScale = new Vector3(15f, 1, 15f);
-				Destroy(tauntEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(tauntEffect, 1f);
 		}
 
 		public void Update()
 		{
-				if (soldier.shield > 0) shieldGameObject.SetActive(true);
-				else shieldGameObject.SetActive(false);
+				if (soldier.shield > 0) shieldGameObject.gameObject.SetActive(true);
+				else shieldGameObject.gameObject.SetActive(false);
 				if (!isDash) return;
 				transform.position = Vector3.MoveTowards(transform.position, targetPos, soldier.moveSpeed * 50f * Time.deltaTime);
 

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class SoldierMaker : MonoBehaviour
@@ -13,6 +14,7 @@ public class SoldierMaker : MonoBehaviour
 		private Soldier previewInstance;
 		private string previewClassName;
 		private bool isDrag = false;
+	
 		private Camera mainCam;
 
 		public void Start()
@@ -22,7 +24,7 @@ public class SoldierMaker : MonoBehaviour
 
 		public void StartDrag(string className)
 		{
-				if (previewInstance != null) Destroy(previewInstance);
+				if (previewInstance != null) GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 				previewInstance = MakeSoldierPreview(className);
 				isDrag = true;
 		}
@@ -42,13 +44,13 @@ public class SoldierMaker : MonoBehaviour
 				if (Input.GetMouseButtonUp(0))
 				{
 						MakeSoldier(previewClassName, previewInstance.transform.position);
-						Destroy(previewInstance.gameObject);
+						GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 						isDrag = false;
 				}
 
 				if (Input.GetMouseButtonDown(1))
 				{
-						Destroy(previewInstance.gameObject);
+						GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 						isDrag = false;
 				}
 #elif UNITY_ANDROID
@@ -68,7 +70,7 @@ public class SoldierMaker : MonoBehaviour
 				{
 						case TouchPhase.Ended:
 								MakeSoldier(previewClassName, previewInstance.transform.position);
-								Destroy(previewInstance.gameObject);
+								GameManager.Instance.ObjectPool.ReturnToPool(previewInstance.gameObject);
 								isDrag = false;
 								break;
 				}
@@ -80,7 +82,7 @@ public class SoldierMaker : MonoBehaviour
 		public Soldier MakeSoldier(string className, Vector3 position)
 		{
 				ClassData classData = classScriptableObject.GetClassDataByClassName(className);
-				Soldier soldier = Instantiate(classData.soldierPrefab, position, Quaternion.identity);
+				Soldier soldier = GameManager.Instance.ObjectPool.GetFromPool(classData.soldierPrefab, position, Quaternion.identity).GetComponent<Soldier>();
 				soldier.classLevelData = ClassManager.Instance().GetLevelData(className);
 				soldier.level = Mathf.Min(PlayerPrefs.GetInt(className),Constants.maxLevel);
 				soldier.SetLevelData(soldier.level);
@@ -93,6 +95,7 @@ public class SoldierMaker : MonoBehaviour
 		public Soldier MakeSoldierPreview(string className)
 		{
 				Soldier soldierPreview = MakeSoldier(className,Input.mousePosition);
+				soldierPreview.GetComponent<NavMeshAgent>().enabled = false;	
 				SpriteRenderer[] spriteRenderers = soldierPreview.GetComponentsInChildren<SpriteRenderer>();
 				foreach(SpriteRenderer spriteRenderer in spriteRenderers)
 				{

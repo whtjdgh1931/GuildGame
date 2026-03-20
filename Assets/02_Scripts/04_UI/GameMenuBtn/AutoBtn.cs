@@ -13,7 +13,7 @@ public class AutoBtn : BtnUI
 		{
 				base.Start();
 				player_Move = GameObject.Find(Constants.NAME_Player).GetComponent<Player_Move>();
-				btnColor = player_Move.GetComponent<Player_Soldier>().isAuto ? Color.black: Color.white;
+				btnColor = player_Move.GetComponent<Player_Soldier>().isAuto ? Color.white : Color.gray;
 				button.image.color = btnColor;
 
 
@@ -23,7 +23,7 @@ public class AutoBtn : BtnUI
 		public void CALLBACK_OnAutoBtnClicked()
 		{
 				bool isAutoEnabled = player_Move.SetAuto();
-				btnColor = isAutoEnabled ? Color.black: Color.white;
+				btnColor = isAutoEnabled ? Color.white : Color.gray;
 				button.image.color = btnColor;
 		}
 }

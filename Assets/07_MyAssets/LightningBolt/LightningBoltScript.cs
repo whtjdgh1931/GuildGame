@@ -12,7 +12,7 @@ namespace DigitalRuby.LightningBolt
 		}
 
 		[RequireComponent(typeof(LineRenderer))]
-		public class LightningBoltScript : MonoBehaviour
+		public class LightningBoltScript : MonoBehaviour,IPoolable,IReleasePoolable
 		{
 				public GameObject StartObject;
 				public Vector3 StartPosition;
@@ -213,7 +213,6 @@ namespace DigitalRuby.LightningBolt
 						lineRenderer = GetComponent<LineRenderer>();
 						lineRenderer.positionCount = 0;
 						UpdateFromMaterialChange();
-						Destroy(gameObject, 0.3f);
 				}
 
 				private void Update()
@@ -266,5 +265,20 @@ namespace DigitalRuby.LightningBolt
 								}
 						}
 				}
-		}
+
+        public void OnGetFromPool(Vector3 position, Quaternion rotation)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+			GameManager.Instance.ObjectPool.ReturnToPool(gameObject,0.5f);
+        }
+
+        public void ReleaseObjectPool()
+        {
+            StartObject = null;
+            StartPosition = Vector3.zero;
+            EndObject = null;
+            EndPosition = Vector3.zero;
+        }
+    }
 }

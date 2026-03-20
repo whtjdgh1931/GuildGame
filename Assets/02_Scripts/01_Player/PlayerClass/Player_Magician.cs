@@ -11,9 +11,8 @@ public class Player_Magician : Player_Skill
 
 		public override void DoAttack(Soldier target)
 		{
-				FireBall fireBall = Instantiate(fireBallPrefab);
+				FireBall fireBall = GameManager.Instance.ObjectPool.GetFromPool(fireBallPrefab,transform.position,Quaternion.identity).GetComponent<FireBall>();
 				fireBall.target = target;
-				fireBall.transform.position = transform.position;
 				fireBall.arrowPower = soldier.attackPower;
 				fireBall.gameObject.tag = gameObject.tag;
 		}
@@ -22,7 +21,7 @@ public class Player_Magician : Player_Skill
 		{
 				Soldier targetSoldier = SearchEnemyTarget(mousePosition);
 				if (targetSoldier == null) return;
-				LightningBoltScript attackLightning = Instantiate(lightning);
+				LightningBoltScript attackLightning = GameManager.Instance.ObjectPool.GetFromPool(lightning,transform.position,Quaternion.identity).GetComponent<LightningBoltScript>();
 				attackLightning.StartObject = gameObject;
 				attackLightning.EndObject = targetSoldier.gameObject;
 				List<Soldier> targetSoldiers = SearchEnemyTarget(targetSoldier, 3);
@@ -31,7 +30,7 @@ public class Player_Magician : Player_Skill
 				{
 						if (i!=targetSoldiers.Count-1)
 						{
-						LightningBoltScript soldierLightning = Instantiate(lightning);
+						LightningBoltScript soldierLightning = GameManager.Instance.ObjectPool.GetFromPool(lightning,transform.position,Quaternion.identity).GetComponent<LightningBoltScript>();
 								soldierLightning.StartObject = targetSoldiers[i].gameObject;
 								soldierLightning.EndObject = targetSoldiers[i + 1].gameObject;
 						}
@@ -42,7 +41,7 @@ public class Player_Magician : Player_Skill
 		public override void DoSkill(Soldier target)
 		{
 				if (target == null) return;
-				LightningBoltScript attackLightning = Instantiate(lightning);
+				LightningBoltScript attackLightning = GameManager.Instance.ObjectPool.GetFromPool(lightning,transform.position,Quaternion.identity).GetComponent<LightningBoltScript>();
 				attackLightning.StartObject = gameObject;
 				attackLightning.EndObject = target.gameObject;
 				List<Soldier> targetSoldiers = SearchEnemyTarget(target, 3);
@@ -51,23 +50,25 @@ public class Player_Magician : Player_Skill
 				{
 						if (i != targetSoldiers.Count - 1)
 						{
-								LightningBoltScript soldierLightning = Instantiate(lightning);
+								LightningBoltScript soldierLightning = GameManager.Instance.ObjectPool.GetFromPool(lightning,transform.position,Quaternion.identity).GetComponent<LightningBoltScript>();
 								soldierLightning.StartObject = targetSoldiers[i].gameObject;
 								soldierLightning.EndObject = targetSoldiers[i + 1].gameObject;
 						}
 						DoDamage(targetSoldiers[i], soldier.attackPower);
 				}
+						
+
 		}
 
 		public override void DoUlti(Vector3 mousePosition)
 		{
-				Instantiate(playerMagiacian_Ulti, SearchEnemyTarget(mousePosition).transform.position, Quaternion.identity).SearchAndHitEnemy(soldier, SearchEnemyTarget(mousePosition));
-
+				GameManager.Instance.ObjectPool.GetFromPool(playerMagiacian_Ulti, SearchEnemyTarget(mousePosition).transform.position, Quaternion.identity).GetComponent<PlayerMagician_Ulti>().SearchAndHitEnemy(soldier, SearchEnemyTarget(mousePosition));
+	
 		}
 
 		public override void DoUlti(Soldier target)
 		{
-				Instantiate(playerMagiacian_Ulti,target.transform.position,Quaternion.identity).SearchAndHitEnemy(soldier, target);
-
+				GameManager.Instance.ObjectPool.GetFromPool(playerMagiacian_Ulti,target.transform.position,Quaternion.identity).GetComponent<PlayerMagician_Ulti>().SearchAndHitEnemy(soldier, target);
+	
 		}
 }

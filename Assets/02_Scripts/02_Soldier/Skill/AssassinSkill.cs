@@ -13,9 +13,8 @@ public class AssassinSkill : ClassSkill
 
 		public override void DoSkill(Soldier target)
 		{
-				Dart dart = Instantiate(dartPrefab);
+				Dart dart = GameManager.Instance.ObjectPool.GetFromPool(dartPrefab, transform.position, Quaternion.identity).GetComponent<Dart>();
 				dart.target = target;
-				dart.transform.position = transform.position;
 				dart.arrowPower = soldier.attackPower;
 				dart.gameObject.tag = gameObject.tag;
 		}

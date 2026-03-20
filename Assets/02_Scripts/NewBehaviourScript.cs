@@ -8,22 +8,22 @@ public class TransparentRenderTextureSaver : MonoBehaviour
 
     public void SaveTransparentPNG(string fileName = "TransparentCapture.png")
     {
-        // Ä«¸Ş¶ó ¼³Á¤: Åõ¸í ¹è°æ
+        // ì¹´ë©”ë¼ ì„¤ì •: íˆ¬ëª… ë°°ê²½
         targetCamera.clearFlags = CameraClearFlags.SolidColor;
-        targetCamera.backgroundColor = new Color(0, 0, 0, 0); // ¿ÏÀü Åõ¸í
+        targetCamera.backgroundColor = new Color(0, 0, 0, 0); // ì™„ì „ íˆ¬ëª…
 
-        // RenderTexture È°¼ºÈ­
+        // RenderTexture í™œì„±í™”
         RenderTexture.active = renderTexture;
 
-        // ¾ËÆÄ Ã¤³Î Æ÷ÇÔÇÑ Texture2D »ı¼º
+        // ì•ŒíŒŒ ì±„ë„ í¬í•¨í•œ Texture2D ìƒì„±
         Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
         tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
         tex.Apply();
 
-        // PNG·Î ÀúÀå
+        // PNGë¡œ ì €ì¥
         byte[] bytes = tex.EncodeToPNG();
 
-        // ÀúÀå °æ·Î ¼³Á¤
+        // ì €ì¥ ê²½ë¡œ ì„¤ì •
         string folderPath = @"C:\Users\User\Desktop\guild\Assets\Resources";
         if (!Directory.Exists(folderPath))
         {
@@ -33,9 +33,9 @@ public class TransparentRenderTextureSaver : MonoBehaviour
         string fullPath = Path.Combine(folderPath, fileName);
         File.WriteAllBytes(fullPath, bytes);
 
-        Debug.Log("Åõ¸í PNG ÀúÀå ¿Ï·á: " + fullPath);
+        Debug.Log("íˆ¬ëª… PNG ì €ì¥ ì™„ë£Œ: " + fullPath);
 
-        // Á¤¸®
+        // ì •ë¦¬
         RenderTexture.active = null;
         Destroy(tex);
     }

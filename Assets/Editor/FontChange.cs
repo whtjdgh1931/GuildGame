@@ -30,20 +30,20 @@ public class TMPFontChangerAll : EditorWindow
     {
         if (newFont == null)
         {
-            Debug.LogWarning("»õ TMP ÆùÆ®°¡ ÁöÁ¤µÇÁö ¾Ê¾Ò½À´Ï´Ù!");
+            Debug.LogWarning("ìƒˆ TMP í°íŠ¸ê°€ ì§€ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤!");
             return;
         }
 
-        // === ¾À Ã³¸® ===
+        // === ì”¬ ì²˜ë¦¬ ===
         string[] sceneGuids = AssetDatabase.FindAssets("t:Scene");
         foreach (string guid in sceneGuids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
 
-            // ÆĞÅ°Áö ³»ºÎ ¾ÀÀº pass
+            // íŒ¨í‚¤ì§€ ë‚´ë¶€ ì”¬ì€ pass
             if (path.StartsWith("Packages/"))
             {
-                Debug.Log($"ÆĞÅ°Áö ¾À {path} Àº °Ç³Ê¶İ´Ï´Ù.");
+                Debug.Log($"íŒ¨í‚¤ì§€ ì”¬ {path} ì€ ê±´ë„ˆëœë‹ˆë‹¤.");
                 continue;
             }
 
@@ -58,19 +58,19 @@ public class TMPFontChangerAll : EditorWindow
             }
 
             EditorSceneManager.SaveScene(scene);
-            Debug.Log($"¾À {path} ¿¡¼­ TMP ÆùÆ® º¯°æ ¿Ï·á ({tmpTexts.Length}°³)");
+            Debug.Log($"ì”¬ {path} ì—ì„œ TMP í°íŠ¸ ë³€ê²½ ì™„ë£Œ ({tmpTexts.Length}ê°œ)");
         }
 
-        // === ÇÁ¸®ÆÕ Ã³¸® ===
+        // === í”„ë¦¬íŒ¹ ì²˜ë¦¬ ===
         string[] prefabGuids = AssetDatabase.FindAssets("t:Prefab");
         foreach (string guid in prefabGuids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
 
-            // ÆĞÅ°Áö ³»ºÎ ÇÁ¸®ÆÕµµ pass
+            // íŒ¨í‚¤ì§€ ë‚´ë¶€ í”„ë¦¬íŒ¹ë„ pass
             if (path.StartsWith("Packages/"))
             {
-                Debug.Log($"ÆĞÅ°Áö ÇÁ¸®ÆÕ {path} Àº °Ç³Ê¶İ´Ï´Ù.");
+                Debug.Log($"íŒ¨í‚¤ì§€ í”„ë¦¬íŒ¹ {path} ì€ ê±´ë„ˆëœë‹ˆë‹¤.");
                 continue;
             }
 
@@ -86,10 +86,10 @@ public class TMPFontChangerAll : EditorWindow
             }
 
             PrefabUtility.SavePrefabAsset(prefab);
-            Debug.Log($"ÇÁ¸®ÆÕ {path} ¿¡¼­ TMP ÆùÆ® º¯°æ ¿Ï·á ({tmpTexts.Length}°³)");
+            Debug.Log($"í”„ë¦¬íŒ¹ {path} ì—ì„œ TMP í°íŠ¸ ë³€ê²½ ì™„ë£Œ ({tmpTexts.Length}ê°œ)");
         }
 
         AssetDatabase.SaveAssets();
-        Debug.Log("¸ğµç ¾À°ú ÇÁ¸®ÆÕ¿¡ TMP ÆùÆ® Àû¿ë ¿Ï·á!");
+        Debug.Log("ëª¨ë“  ì”¬ê³¼ í”„ë¦¬íŒ¹ì— TMP í°íŠ¸ ì ìš© ì™„ë£Œ!");
     }
 }

@@ -4,11 +4,14 @@ using UnityEngine.AI;
 
 public class SoldierAnim : MonoBehaviour
 {
-    protected Animator anim;
-    protected FSM FSM;
-    private Character4D character;
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected FSM FSM;
+    [SerializeField] protected Character4D character;
+    [SerializeField] protected float horizontal;
 
-    private void Awake()
+
+
+    protected void Awake()
     {
         anim = GetComponent<Animator>();
         character = GetComponent<Character4D>();
@@ -27,11 +30,20 @@ public class SoldierAnim : MonoBehaviour
 
         }
 
+        if(horizontal>0)
+        {
+						character.SetDirection(Vector2.right);
+				}
+        else if(horizontal<0)
+        {
+						character.SetDirection(Vector2.left);
+				}
+
     }
 
     public virtual void SetAnimAttack()
     {
-        Debug.Log("Attack");
+        
         anim.SetTrigger("IsAttack");
     }
 
@@ -49,5 +61,10 @@ public class SoldierAnim : MonoBehaviour
     public virtual void SetAnimUlti()
     {
         anim.SetTrigger("IsUlti");
+    }
+
+    public void SetHorizontal(float horizontal)
+    {
+        this.horizontal = horizontal;
     }
 }

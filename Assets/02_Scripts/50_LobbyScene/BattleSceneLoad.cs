@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,8 @@ public class BattleSceneLoad : MonoBehaviour
 {
     public PlayerScriptableObject playerClassScriptableObject;
 
-	public string playerClass;
+		
+
 
 
 		public void Awake()
@@ -35,22 +37,21 @@ public class BattleSceneLoad : MonoBehaviour
 
     private void CALLBACK_MakePlayer(Scene arg0, LoadSceneMode arg1)
 		{
-		if (LobbySceneUIMgr.Instance() != null) LobbySceneUIMgr.Instance().playerClass = playerClass;
-
-		playerClass = LobbySceneUIMgr.Instance().playerClass;
+				
+		string playerClass = GameManager.GetInstance().playerClass;
 				if (arg0.buildIndex != 2) return;
 
 				GameObject existingPlayer = GameObject.Find(Constants.NAME_Player);
 				if (existingPlayer != null)
 				{
-						Destroy(existingPlayer);
+						GameManager.Instance.ObjectPool.ReturnToPool(existingPlayer);
 				}
 
 				Soldier playerPrefab =  playerClassScriptableObject.GetClassDataByClassName(playerClass).soldierPrefab;
-      Soldier player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+      Soldier player = GameManager.Instance.ObjectPool.GetFromPool(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Soldier>();
         player.name = Constants.NAME_Player;
-        player.level = Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER),1);
-		player.GetComponent<Player_Soldier>().isAuto = LobbySceneUIMgr.Instance().isAuto;
+        player.level = Mathf.Max(PlayerPrefs.GetInt(Constants.CLASS_PLAYER_LEVEL),1);
+		player.GetComponent<Player_Soldier>().isAuto = GameManager.GetInstance().isAuto;
 		}
 
  

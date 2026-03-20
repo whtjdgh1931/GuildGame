@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player_Warrior : Player_Skill
 {
-		public GameObject skillEffectPrefab;
-		public GameObject stunEffectPrefab;
+		public PoolableObject skillEffectPrefab;
+		public PoolableObject stunEffectPrefab;
 
 		public override void DoAttack(Soldier target)
 		{
@@ -23,9 +23,9 @@ public class Player_Warrior : Player_Skill
 
 				}  
 
-				GameObject skillEffect = Instantiate(skillEffectPrefab, transform.position, Quaternion.identity);
+				GameObject skillEffect = GameManager.Instance.ObjectPool.GetFromPool(skillEffectPrefab, transform.position, Quaternion.identity);
 				skillEffect.transform.localScale = new Vector3(6f,6f,6f);
-				Destroy(skillEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(skillEffect, 1f);
 		}
 
 		public override void DoSkill(Soldier target)
@@ -39,9 +39,9 @@ public class Player_Warrior : Player_Skill
 
 				}
 
-				GameObject skillEffect = Instantiate(skillEffectPrefab, transform.position, Quaternion.identity);
+				GameObject skillEffect = GameManager.Instance.ObjectPool.GetFromPool(skillEffectPrefab, transform.position, Quaternion.identity);
 				skillEffect.transform.localScale = new Vector3(6f, 1, 6f);
-				Destroy(skillEffect, 1f);
+				GameManager.Instance.ObjectPool.ReturnToPool(skillEffect, 1f);
 		}
 
 		public override void DoUlti(Vector3 mousePosition)

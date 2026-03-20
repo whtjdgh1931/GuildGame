@@ -9,10 +9,11 @@ public class StartBtn : BtnUI
 
 
     // Start is called before the first frame update
-    new void Start()
+    protected override void Start()
     {
         base.Start();
         button.onClick.AddListener(CALLBACK_StartBtnClicked);
+        AddBtnAnim();
     }
 
 		private void CALLBACK_StartBtnClicked()

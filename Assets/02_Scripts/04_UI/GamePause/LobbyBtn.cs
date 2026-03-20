@@ -11,7 +11,7 @@ public class LobbyBtn : BtnUI
 		{
 				base.Start();
 				button.onClick.AddListener(CALLBACK_LobbyBtnClicked);
-
+				AddBtnAnim();
 		}
 
 

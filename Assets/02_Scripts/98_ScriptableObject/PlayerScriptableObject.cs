@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerClass", menuName = "ScriptableObject/PlayerClass", order = int.MaxValue)]
 public class PlayerScriptableObject : ScriptableObject
 {
-    [Header("# Å¬·¡½º µ¥ÀÌÅÍ ¸®½ºÆ®")]
+    [Header("# í´ë˜ìŠ¤ ë°ì´í„° ë¦¬ìŠ¤íŠ¸")]
     public List<PlayerClass> playerClasses;
 
 
@@ -13,17 +13,15 @@ public class PlayerScriptableObject : ScriptableObject
 [System.Serializable]
 public class PlayerClass
 {
-    [Header("# Å¬·¡½º ÀÌ¸§")]
+    [Header("# í´ë˜ìŠ¤ ì´ë¦„")]
     public string className;
 
-    [Header("# Å¬·¡½º ÇÁ¸®ÆÕ")]
+    [Header("# í´ë˜ìŠ¤ í”„ë¦¬íŒ¹")]
     public Soldier soldierPrefab;
 
-    [Header("# Å¬·¡½º ·Î°í")]
+    [Header("# í´ë˜ìŠ¤ ë¡œê³ ")]
     public Sprite soldierLogoPrefab;
 
-    [Header("# Å¬·¡½º ÀÌ¹ÌÁö")]
-    public Sprite classImage;
 
 }
 

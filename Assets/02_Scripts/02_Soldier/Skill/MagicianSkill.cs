@@ -11,9 +11,8 @@ public class MagicianSkill : ClassSkill
 		public override void DoAttack(Soldier target)
 		{
 				
-				FireBall fireBall = Instantiate(fireBallPrefab);
+				FireBall fireBall = GameManager.Instance.ObjectPool.GetFromPool(fireBallPrefab, transform.position, Quaternion.identity).GetComponent<FireBall>();
 				fireBall.target = target;
-				fireBall.transform.position = transform.position;
 				fireBall.arrowPower = soldier.attackPower;
 				fireBall.gameObject.tag = gameObject.tag;
 		}
@@ -21,6 +20,7 @@ public class MagicianSkill : ClassSkill
 		public override void DoSkill(Soldier target)
 		{
 				
-				Instantiate(magician_Explosion,target.transform.position,Quaternion.identity).SearchAndHitEnemy(soldier);
+				Magicial_Explosion explosion = GameManager.Instance.ObjectPool.GetFromPool(magician_Explosion, target.transform.position, Quaternion.identity).GetComponent<Magicial_Explosion>();
+				explosion.SearchAndHitEnemy(soldier);
 		}
 }

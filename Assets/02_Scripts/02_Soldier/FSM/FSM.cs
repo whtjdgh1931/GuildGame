@@ -12,39 +12,39 @@ public enum Soldier_Condition
 
 public class FSM : MonoBehaviour
 {
-		//ÀÌµ¿ ÄÄÆ÷³ÍÆ®
+		//ì´ë™ ì»´í¬ë„ŒíŠ¸
 		private Soldier_Move soldier_Move;
 
-		// °ø°İ ÄÄÆ÷³ÍÆ®
+		// ê³µê²© ì»´í¬ë„ŒíŠ¸
 		private ClassSkill soldier_Attack;
 		private Player_Attack player_Attack;
 
-		// ¾Ö´Ï¸ŞÀÌÅÍ
+		// ì• ë‹ˆë©”ì´í„°
 		private SoldierAnim soldier_Anim;
 
-		// ÇöÀç ¼ÖÁ® »óÅÂ 
+		// í˜„ì¬ ì†”ì ¸ ìƒíƒœ 
 		[SerializeField]
 		private Soldier_Condition condition;
 
-		// Å¸°ÙÆÃ µÈ Àû ¼ÖÁ®
+		// íƒ€ê²ŸíŒ… ëœ ì  ì†”ì ¸
 		[SerializeField]
 		public Soldier targetSoldier { get; private set; }
 
-		// »óÅÂ
+		// ìƒíƒœ
 		private Soldier soldier;
 
-		// ½ºÅ³ ÄğÅ¸ÀÓ
+		// ìŠ¤í‚¬ ì¿¨íƒ€ì„
 		public float skillCoolTime;
 		public float curTime;
 
-		// ±âº» °ø°İ ÄğÅ¸ÀÓ
+		// ê¸°ë³¸ ê³µê²© ì¿¨íƒ€ì„
 		public float attackSpeed;
 		public float curAttackTime;
 
-		// µµ¹ß »óÅÂÀÎÁö
+		// ë„ë°œ ìƒíƒœì¸ì§€
 		public bool isTaunt;
 
-		// ½ºÅÏ »óÅÂÀÎÁö
+		// ìŠ¤í„´ ìƒíƒœì¸ì§€
 		public bool isStun;
 
 
@@ -55,12 +55,7 @@ public class FSM : MonoBehaviour
 				soldier = GetComponent<Soldier>();
 				soldier_Attack = GetComponent<ClassSkill>();
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
-				if (soldier_Anim == null)
-				{
-						soldier_Anim = GetComponentInChildren<PlayerAnim>();
-				}
-
-				Debug.Log(soldier_Anim,gameObject);
+			
 
 
 				if(soldier.name == Constants.NAME_Player)
@@ -70,7 +65,7 @@ public class FSM : MonoBehaviour
 				if(player_Attack != null)
 				{
 						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
-						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+						
 				}
 				skillCoolTime = Constants.skillCoolTime;
 
@@ -88,18 +83,14 @@ public class FSM : MonoBehaviour
 						player_Attack = GetComponent<Player_Attack>();
 
 				soldier_Anim = GetComponentInChildren<SoldierAnim>();
-				if (soldier_Anim == null)
-				{
-						soldier_Anim=GetComponentInChildren<PlayerAnim>();
-						Debug.Log("Search PlayerAnim");
-				}
-				Debug.Log(soldier_Anim, gameObject);
+
+				
 
 				attackSpeed = Constants.AttackTime / soldier.attackSpeed;
 				if (player_Attack != null)
 				{
 						attackSpeed = Constants.AttackTime / player_Attack.AttackCoolTime;
-						Debug.Log("PlayerAttackSpeed : " + attackSpeed);
+						
 				}
 				skillCoolTime = Constants.skillCoolTime;
 
@@ -146,9 +137,9 @@ public class FSM : MonoBehaviour
 		}
 
 		/// <summary>
-		/// Å¸°Ù ¼­Äª
+		/// íƒ€ê²Ÿ ì„œì¹­
 		/// </summary>
-		/// <param name="tag">ÀÚ½ÅÀÇ Áø¿µ</param>
+		/// <param name="tag">ìì‹ ì˜ ì§„ì˜</param>
 		public void SearchEnemy(string tag)
 		{
 
@@ -191,7 +182,7 @@ public class FSM : MonoBehaviour
 		}
 
 		/// <summary>
-		/// ÀüÅõ¿ø ÀÌµ¿
+		/// ì „íˆ¬ì› ì´ë™
 		/// </summary>
 		public void SoldierMove()
 		{
@@ -205,7 +196,7 @@ public class FSM : MonoBehaviour
 		}
 
 		/// <summary>
-		/// ÀüÅõ¿ø °ø°İ
+		/// ì „íˆ¬ì› ê³µê²©
 		/// </summary>
 		public void SoldierAttack()
 		{
@@ -255,7 +246,7 @@ public class FSM : MonoBehaviour
 				attackSpeed *= multi;
 		}
 
-		internal void ResearchTarget()
+		public void ResearchTarget()
 		{
 				targetSoldier = null;
 				float targetDistacne = int.MaxValue;
