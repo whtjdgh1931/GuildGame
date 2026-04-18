@@ -29,7 +29,7 @@ GuildGame은 **길드 운영과 전투 흐름**을 중심으로 구성한 Unity 
 | 주요 패키지 | URP, AI Navigation, TextMeshPro, UGUI, Memory Profiler, Newtonsoft JSON |
 | 주요 대상 플랫폼 | PC (Standalone) |
 | 플랫폼 설정 값 | Android Min SDK 22 / Target SDK 34, iOS Target 12.0 |
-| 현재 배포 상태 | GitHub Release 미사용 |
+| 현재 배포 상태 | Release에 Demo버전 |
 | 데모 영상 | 준비 중 |
 
 ### 이런 점을 중점으로 설계했습니다
