@@ -64,27 +64,13 @@ cd GuildGame
 
 Unity 메뉴에서 **File > Build Settings** 로 이동한 뒤, 포함된 씬을 확인하고 Standalone PC 기준으로 빌드합니다.
 
-현재 Build Settings에 포함된 대표 씬은 다음과 같습니다.
-
 - `TitleScene`
 - `LobbyScene`
 - `BattleScene`
 - `LevelScene`
 - `StageScene`
 - `CharacterScene`
-- `EnemyScene/1-1 ~ 1-6`
 
-### 4) Release / 실행 파일 안내
-
-현재 이 저장소는 **GitHub Release를 사용하고 있지 않으며**, 실행 파일(.exe) 패키지를 별도로 제공하지 않습니다.  
-즉, 실행은 **소스 클론 후 Unity에서 직접 여는 방식**이 기본입니다.
-
-추후 Windows 빌드를 배포할 경우에는 아래 파일들이 **같은 폴더 구조로 함께 포함**되어야 합니다.
-
-- `GuildGame.exe`
-- `GuildGame_Data/`
-- `UnityPlayer.dll`
-- `MonoBleedingEdge/` *(Mono 빌드 기준)*
 
 ---
 
