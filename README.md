@@ -23,7 +23,7 @@ GuildGame은 **길드 운영과 전투 흐름**을 중심으로 구성한 Unity 
 | 저장소 형태 | 개인 프로젝트 / Public Repository |
 | 저장소 비고 | GitHub 공개용 미러 저장소 |
 | 개발 인원 | 1인 |
-| 개발 기간 | 2025.09 ~ 2026.04 *(확인 가능한 GitHub 커밋 기준)* |
+| 개발 기간 | 2025.09 ~ |
 | 사용 엔진 | Unity 2022.3.62f2 |
 | 사용 언어 | C# |
 | 주요 패키지 | URP, AI Navigation, TextMeshPro, UGUI, Memory Profiler, Newtonsoft JSON |
