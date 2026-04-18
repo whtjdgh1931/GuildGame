@@ -74,6 +74,8 @@ Unity 메뉴에서 **File > Build Settings** 로 이동한 뒤, 포함된 씬을
 ### 4) Release 기준
 zip 파일 해제 후 .exe 파일 실행
 
+### 5) Mobile 기준
+Release의 apk파일 설치 후 실행
 
 ---
 
