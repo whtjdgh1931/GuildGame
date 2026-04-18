@@ -27,7 +27,7 @@ GuildGame은 **길드 운영과 전투 흐름**을 중심으로 구성한 Unity 
 | 사용 엔진 | Unity 2022.3.62f2 |
 | 사용 언어 | C# |
 | 주요 패키지 | URP, AI Navigation, TextMeshPro, UGUI, Memory Profiler, Newtonsoft JSON |
-| 주요 대상 플랫폼 | PC (Standalone) |
+| 주요 대상 플랫폼 | PC (Standalone),Android |
 | 플랫폼 설정 값 | Android Min SDK 22 / Target SDK 34, iOS Target 12.0 |
 | 현재 배포 상태 | Release에 Demo버전 |
 | 데모 영상 | 준비 중 |
