@@ -1,7 +1,7 @@
 # GuildGame
 
 <p align="center">
-  <img src="./guildgame-cover.png" alt="GuildGame cover" width="100%" />
+  <img src="https://raw.githubusercontent.com/whtjdgh1931/GuildGame/feat-2D/Assets/Resources/Image/Gemini_Generated_Image_3d4y1a3d4y1a3d4y.png" alt="GuildGame cover" width="100%" />
 </p>
 
 <p align="center">
